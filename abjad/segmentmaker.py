@@ -9,7 +9,7 @@ from .overrides import LilyPondLiteral
 from .parentage import Parentage
 from .path import Path
 from .score import Container, Context, Score, Staff, Voice
-from .segments.PartAssignment import PartAssignment
+from .segments import PartAssignment
 from .selectx import Selection
 from .storage import StorageFormatManager
 from .stringx import String

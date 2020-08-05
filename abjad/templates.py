@@ -13,9 +13,7 @@ from .new import new
 from .ordereddict import OrderedDict
 from .overrides import LilyPondLiteral
 from .score import Context, Score, Skip, Staff, StaffGroup, Voice
-from .segments.Part import Part
-from .segments.PartAssignment import PartAssignment
-from .segments.PartManifest import PartManifest
+from .segments import Part, PartAssignment, PartManifest
 from .selectx import Selection
 from .storage import StorageFormatManager
 from .tag import Tag

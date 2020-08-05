@@ -285,13 +285,15 @@ from .score import (
     Voice,
 )
 from .segmentmaker import SegmentMaker
-from .segments.Job import Job
-from .segments.Momento import Momento
-from .segments.Part import Part
-from .segments.PartAssignment import PartAssignment
-from .segments.PartManifest import PartManifest
-from .segments.PersistentOverride import PersistentOverride
-from .segments.Section import Section
+from .segments import (
+    Job,
+    Momento,
+    Part,
+    PartAssignment,
+    PartManifest,
+    PersistentOverride,
+    Section,
+)
 from .selectx import (
     DurationInequality,
     Inequality,
