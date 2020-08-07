@@ -1900,14 +1900,20 @@ class Path(pathlib.PosixPath):
         return path
 
     def write_metadata_py(
-        self, metadata, *, file_name="__metadata__.py", variable_name="metadata",
+        self,
+        metadata,
+        *,
+        file_name="__metadata__.py",
+        import_statements=("import abjad",),
+        variable_name="metadata",
     ) -> None:
         """
         Writes ``metadata`` to metadata file in current directory.
         """
         metadata_py_path = self / file_name
         lines = []
-        lines.append("import abjad")
+        for line in import_statements:
+            lines.append(line)
         lines.append("")
         lines.append("")
         dictionary = OrderedDict(metadata)

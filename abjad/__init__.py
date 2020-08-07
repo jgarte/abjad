@@ -285,15 +285,6 @@ from .score import (
     Voice,
 )
 from .segmentmaker import SegmentMaker
-from .segments import (
-    Job,
-    Momento,
-    Part,
-    PartAssignment,
-    PartManifest,
-    PersistentOverride,
-    Section,
-)
 from .selectx import (
     DurationInequality,
     Inequality,
@@ -473,7 +464,6 @@ __all__ = [
     "IntervalVector",
     "Inversion",
     "Iteration",
-    "Job",
     "KeyCluster",
     "KeySignature",
     "Label",
@@ -514,7 +504,6 @@ __all__ = [
     "MezzoSopranoVoice",
     "MissingMetronomeMarkError",
     "Mode",
-    "Momento",
     "More",
     "MultimeasureRest",
     "Multiplication",
@@ -552,9 +541,6 @@ __all__ = [
     "Parentage",
     "ParentageError",
     "Parser",
-    "Part",
-    "PartAssignment",
-    "PartManifest",
     "Path",
     "Pattern",
     "PatternTuple",
@@ -562,7 +548,6 @@ __all__ = [
     "Percussion",
     "PersistenceManager",
     "PersistentIndicatorError",
-    "PersistentOverride",
     "Piano",
     "Piccolo",
     "Pitch",
@@ -602,7 +587,6 @@ __all__ = [
     "SchemeVectorConstant",
     "Score",
     "ScoreTemplate",
-    "Section",
     "Segment",
     "SegmentMaker",
     "Selection",
