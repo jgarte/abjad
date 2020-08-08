@@ -83,7 +83,7 @@ class LilyPondLiteral:
         >>> staff = abjad.Staff("c'8 d'8 e'8 f'8")
         >>> abjad.slur(staff[:])
         >>> literal = abjad.LilyPondLiteral(r'\slurDotted')
-        >>> abjad.attach(literal, staff[0], tag=abjad.tags.ONLY_PARTS)
+        >>> abjad.attach(literal, staff[0], tag=abjad.Tag("+PARTS"))
         >>> abjad.show(staff) # doctest: +SKIP
 
         >>> abjad.f(staff)
@@ -110,7 +110,7 @@ class LilyPondLiteral:
         ...     r'\once \override Staff.StaffSymbol.color = #red',
         ...     ]
         >>> literal = abjad.LilyPondLiteral(lines)
-        >>> abjad.attach(literal, staff[2], tag=abjad.tags.ONLY_PARTS)
+        >>> abjad.attach(literal, staff[2], tag=abjad.Tag("+PARTS"))
         >>> abjad.show(staff) # doctest: +SKIP
 
         >>> abjad.f(staff)
@@ -1615,7 +1615,7 @@ class TweakInterface(Interface):
 
             >>> staff = abjad.Staff("c'4 d' e' f'")
             >>> markup = abjad.Markup('Allegro', direction=abjad.Up).italic()
-            >>> abjad.tweak(markup, tag=abjad.tags.ONLY_PARTS).color = 'red'
+            >>> abjad.tweak(markup, tag=abjad.Tag("+PARTS")).color = 'red'
             >>> abjad.attach(markup, staff[0])
             >>> abjad.show(staff) # doctest: +SKIP
 
@@ -1638,7 +1638,7 @@ class TweakInterface(Interface):
             >>> staff = abjad.Staff("c'4 d' e' f'")
             >>> markup = abjad.Markup('Allegro', direction=abjad.Up).italic()
             >>> abjad.tweak(
-            ...     markup, deactivate=True, tag=abjad.tags.ONLY_PARTS
+            ...     markup, deactivate=True, tag=abjad.Tag("+PARTS")
             ... ).color = 'red'
             >>> abjad.attach(markup, staff[0])
             >>> abjad.show(staff) # doctest: +SKIP
@@ -1661,7 +1661,7 @@ class TweakInterface(Interface):
 
             >>> staff = abjad.Staff("c'4 d' e' f'")
             >>> markup = abjad.Markup("Allegro", direction=abjad.Up).italic()
-            >>> abjad.tweak(markup, tag=abjad.tags.ONLY_PARTS).color = "red"
+            >>> abjad.tweak(markup, tag=abjad.Tag("+PARTS")).color = "red"
             >>> abjad.attach(markup, staff[0], tag=abjad.Tag("RED:M1"))
             >>> abjad.show(staff) # doctest: +SKIP
 

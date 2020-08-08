@@ -1,6 +1,6 @@
 from quicktions import Fraction
 
-from . import cli, demos, deprecated, illustrators, iterpitches, ly, makers, tags
+from . import cli, demos, deprecated, illustrators, iterpitches, ly, makers
 from ._version import __version__, __version_info__
 from .attach import Wrapper, annotate, attach, detach
 from .bundle import LilyPondFormatBundle, SlotContributions
@@ -727,7 +727,6 @@ __all__ = [
     "show",
     "slur",
     "storage",
-    "tags",
     "text_spanner",
     "tie",
     "timespan",
