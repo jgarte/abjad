@@ -6,7 +6,6 @@ from .lilypondfile import LilyPondFile
 from .ordereddict import OrderedDict
 from .overrides import LilyPondLiteral
 from .parentage import Parentage
-from .path import Path
 from .score import Context, Score
 from .selectx import Selection
 from .storage import StorageFormatManager
@@ -46,7 +45,7 @@ class SegmentMaker:
         self._previous_metadata: typing.Optional[OrderedDict] = None
         self._previous_persist: typing.Optional[OrderedDict] = None
         self._score: typing.Optional[Score] = None
-        self._segment_directory: typing.Optional[Path] = None
+        self._segment_directory = None
 
     ### SPECIAL METHODS ###
 
@@ -151,7 +150,7 @@ class SegmentMaker:
         return self._score
 
     @property
-    def segment_directory(self) -> typing.Optional[Path]:
+    def segment_directory(self):
         """
         Gets segment directory.
         """
@@ -210,7 +209,7 @@ class SegmentMaker:
         previous_metadata: OrderedDict = None,
         previous_persist: OrderedDict = None,
         remove: typing.List[Tag] = None,
-        segment_directory: Path = None,
+        segment_directory=None,
     ) -> LilyPondFile:
         """
         Runs segment-maker.

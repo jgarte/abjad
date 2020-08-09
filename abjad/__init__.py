@@ -200,7 +200,6 @@ from .parentage import Parentage
 from .parsers import parser
 from .parsers.base import Parser
 from .parsers.parse import parse
-from .path import Path
 from .pattern import Pattern, PatternTuple
 from .pitch.Accidental import Accidental
 from .pitch.Octave import Octave
@@ -541,7 +540,6 @@ __all__ = [
     "Parentage",
     "ParentageError",
     "Parser",
-    "Path",
     "Pattern",
     "PatternTuple",
     "PatternTyping",
