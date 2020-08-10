@@ -169,10 +169,12 @@ from .lilypondfile import (
     LilyPondVersionToken,
     PackageGitCommitToken,
 )
-from .ly.LilyPondContext import LilyPondContext
-from .ly.LilyPondEngraver import LilyPondEngraver
-from .ly.LilyPondGrob import LilyPondGrob
-from .ly.LilyPondGrobInterface import LilyPondGrobInterface
+from .ly.model import (
+    LilyPondContext,
+    LilyPondEngraver,
+    LilyPondGrob,
+    LilyPondGrobInterface,
+)
 from .makers import LeafMaker, NoteMaker
 from .markups import Markup, MarkupCommand, MarkupList, Postscript, PostscriptOperator
 from .mathx import Infinity, NegativeInfinity
