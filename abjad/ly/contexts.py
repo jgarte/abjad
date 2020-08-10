@@ -30,7 +30,7 @@ contexts = {
     },
     "ChordNames": {
         "accepts": set([]),
-        "aliases": set(["Staff",]),
+        "aliases": set(["Staff"]),
         "consists": set(
             [
                 "Axis_group_engraver",
@@ -42,7 +42,7 @@ contexts = {
     },
     "CueVoice": {
         "accepts": set([]),
-        "aliases": set(["Voice",]),
+        "aliases": set(["Voice"]),
         "consists": set(
             [
                 "Arpeggio_engraver",
@@ -96,12 +96,12 @@ contexts = {
     },
     "Devnull": {
         "accepts": set([]),
-        "aliases": set(["Staff", "Voice",]),
+        "aliases": set(["Staff", "Voice"]),
         "consists": set([]),
     },
     "DrumStaff": {
-        "accepts": set(["CueVoice", "DrumVoice", "NullVoice",]),
-        "aliases": set(["Staff",]),
+        "accepts": set(["CueVoice", "DrumVoice", "NullVoice"]),
+        "aliases": set(["Staff"]),
         "consists": set(
             [
                 "Axis_group_engraver",
@@ -132,7 +132,7 @@ contexts = {
     },
     "DrumVoice": {
         "accepts": set([]),
-        "aliases": set(["Voice",]),
+        "aliases": set(["Voice"]),
         "consists": set(
             [
                 "Auto_beam_engraver",
@@ -180,7 +180,7 @@ contexts = {
     },
     "Dynamics": {
         "accepts": set([]),
-        "aliases": set(["Voice",]),
+        "aliases": set(["Voice"]),
         "consists": set(
             [
                 "Axis_group_engraver",
@@ -209,7 +209,7 @@ contexts = {
     },
     "FretBoards": {
         "accepts": set([]),
-        "aliases": set(["Staff",]),
+        "aliases": set(["Staff"]),
         "consists": set(
             [
                 "Axis_group_engraver",
@@ -222,7 +222,7 @@ contexts = {
         ),
     },
     "Global": {
-        "accepts": set(["Score",]),
+        "accepts": set(["Score"]),
         "aliases": set([]),
         "consists": set([]),
         "default_child": "Score",
@@ -254,8 +254,8 @@ contexts = {
         "default_child": "Staff",
     },
     "GregorianTranscriptionStaff": {
-        "accepts": set(["CueVoice", "GregorianTranscriptionVoice", "NullVoice",]),
-        "aliases": set(["Staff",]),
+        "accepts": set(["CueVoice", "GregorianTranscriptionVoice", "NullVoice"]),
+        "aliases": set(["Staff"]),
         "consists": set(
             [
                 "Accidental_engraver",
@@ -290,7 +290,7 @@ contexts = {
     },
     "GregorianTranscriptionVoice": {
         "accepts": set([]),
-        "aliases": set(["Voice",]),
+        "aliases": set(["Voice"]),
         "consists": set(
             [
                 "Arpeggio_engraver",
@@ -344,8 +344,8 @@ contexts = {
         ),
     },
     "KievanStaff": {
-        "accepts": set(["CueVoice", "KievanVoice", "NullVoice",]),
-        "aliases": set(["Staff",]),
+        "accepts": set(["CueVoice", "KievanVoice", "NullVoice"]),
+        "aliases": set(["Staff"]),
         "consists": set(
             [
                 "Accidental_engraver",
@@ -379,7 +379,7 @@ contexts = {
     },
     "KievanVoice": {
         "accepts": set([]),
-        "aliases": set(["Voice",]),
+        "aliases": set(["Voice"]),
         "consists": set(
             [
                 "Arpeggio_engraver",
@@ -448,8 +448,8 @@ contexts = {
         ),
     },
     "MensuralStaff": {
-        "accepts": set(["CueVoice", "MensuralVoice", "NullVoice",]),
-        "aliases": set(["Staff",]),
+        "accepts": set(["CueVoice", "MensuralVoice", "NullVoice"]),
+        "aliases": set(["Staff"]),
         "consists": set(
             [
                 "Accidental_engraver",
@@ -485,7 +485,7 @@ contexts = {
     },
     "MensuralVoice": {
         "accepts": set([]),
-        "aliases": set(["Voice",]),
+        "aliases": set(["Voice"]),
         "consists": set(
             [
                 "Arpeggio_engraver",
@@ -538,7 +538,7 @@ contexts = {
     },
     "NoteNames": {
         "accepts": set([]),
-        "aliases": set(["Staff",]),
+        "aliases": set(["Staff"]),
         "consists": set(
             [
                 "Axis_group_engraver",
@@ -550,7 +550,7 @@ contexts = {
     },
     "NullVoice": {
         "accepts": set([]),
-        "aliases": set(["Staff", "Voice",]),
+        "aliases": set(["Staff", "Voice"]),
         "consists": set(
             [
                 "Beam_engraver",
@@ -583,12 +583,12 @@ contexts = {
             ]
         ),
         "aliases": set([]),
-        "consists": set(["Axis_group_engraver",]),
+        "consists": set(["Axis_group_engraver"]),
         "default_child": "Staff",
     },
     "PetrucciStaff": {
-        "accepts": set(["CueVoice", "NullVoice", "PetrucciVoice",]),
-        "aliases": set(["Staff",]),
+        "accepts": set(["CueVoice", "NullVoice", "PetrucciVoice"]),
+        "aliases": set(["Staff"]),
         "consists": set(
             [
                 "Accidental_engraver",
@@ -624,7 +624,7 @@ contexts = {
     },
     "PetrucciVoice": {
         "accepts": set([]),
-        "aliases": set(["Voice",]),
+        "aliases": set(["Voice"]),
         "consists": set(
             [
                 "Arpeggio_engraver",
@@ -689,7 +689,7 @@ contexts = {
                 "TabStaff",
             ]
         ),
-        "aliases": set(["GrandStaff",]),
+        "aliases": set(["GrandStaff"]),
         "consists": set(
             [
                 "Instrument_name_engraver",
@@ -705,8 +705,8 @@ contexts = {
         "default_child": "Staff",
     },
     "RhythmicStaff": {
-        "accepts": set(["CueVoice", "NullVoice", "Voice",]),
-        "aliases": set(["Staff",]),
+        "accepts": set(["CueVoice", "NullVoice", "Voice"]),
+        "aliases": set(["Staff"]),
         "consists": set(
             [
                 "Axis_group_engraver",
@@ -750,7 +750,7 @@ contexts = {
                 "VaticanaStaff",
             ]
         ),
-        "aliases": set(["Timing",]),
+        "aliases": set(["Timing"]),
         "consists": set(
             [
                 "Bar_number_engraver",
@@ -779,7 +779,7 @@ contexts = {
         "default_child": "Staff",
     },
     "Staff": {
-        "accepts": set(["CueVoice", "NullVoice", "Voice",]),
+        "accepts": set(["CueVoice", "NullVoice", "Voice"]),
         "aliases": set([]),
         "consists": set(
             [
@@ -846,8 +846,8 @@ contexts = {
         "default_child": "Staff",
     },
     "TabStaff": {
-        "accepts": set(["CueVoice", "NullVoice", "TabVoice",]),
-        "aliases": set(["Staff",]),
+        "accepts": set(["CueVoice", "NullVoice", "TabVoice"]),
+        "aliases": set(["Staff"]),
         "consists": set(
             [
                 "Axis_group_engraver",
@@ -880,7 +880,7 @@ contexts = {
     },
     "TabVoice": {
         "accepts": set([]),
-        "aliases": set(["Voice",]),
+        "aliases": set(["Voice"]),
         "consists": set(
             [
                 "Arpeggio_engraver",
@@ -931,8 +931,8 @@ contexts = {
         ),
     },
     "VaticanaStaff": {
-        "accepts": set(["CueVoice", "NullVoice", "VaticanaVoice",]),
-        "aliases": set(["Staff",]),
+        "accepts": set(["CueVoice", "NullVoice", "VaticanaVoice"]),
+        "aliases": set(["Staff"]),
         "consists": set(
             [
                 "Accidental_engraver",
@@ -967,7 +967,7 @@ contexts = {
     },
     "VaticanaVoice": {
         "accepts": set([]),
-        "aliases": set(["Voice",]),
+        "aliases": set(["Voice"]),
         "consists": set(
             [
                 "Arpeggio_engraver",

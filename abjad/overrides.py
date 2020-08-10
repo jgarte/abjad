@@ -3,9 +3,9 @@ import typing
 
 from . import enums
 from .bundle import LilyPondFormatBundle
-from .ly.colors import colors
 from .ly.contexts import contexts
 from .ly.grob_interfaces import grob_interfaces
+from .lyconst import colors
 from .scheme import Scheme, SchemePair
 from .storage import FormatSpecification, StorageFormatManager
 from .stringx import String
