@@ -8,7 +8,7 @@ from . import (
     iterpitches,
     ly,
     lyconst,
-    lymodel,
+    lyscrape,
     makers,
 )
 from ._version import __version__, __version_info__
@@ -718,7 +718,7 @@ __all__ = [
     "list_all_functions",
     "ly",
     "lyconst",
-    "lymodel",
+    "lyscrape",
     "makers",
     "mutate",
     "new",
