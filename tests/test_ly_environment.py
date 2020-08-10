@@ -3,29 +3,29 @@ import abjad
 
 def test_ly_environment_01():
 
-    assert abjad.ly.contexts is not None
-    print(abjad.ly.contexts)
+    assert abjad.lyscrape.contexts is not None
+    print(abjad.lyscrape.contexts)
 
-    assert abjad.ly.current_module is not None
-    print(abjad.ly.current_module)
+    assert abjad.lyscrape.current_module is not None
+    print(abjad.lyscrape.current_module)
 
-    assert abjad.ly.engravers is not None
-    print(abjad.ly.engravers)
+    assert abjad.lyscrape.engravers is not None
+    print(abjad.lyscrape.engravers)
 
-    assert abjad.ly.grob_interfaces is not None
-    print(abjad.ly.grob_interfaces)
+    assert abjad.lyscrape.grob_interfaces is not None
+    print(abjad.lyscrape.grob_interfaces)
 
-    assert abjad.ly.interface_properties is not None
-    print(abjad.ly.interface_properties)
+    assert abjad.lyscrape.interface_properties is not None
+    print(abjad.lyscrape.interface_properties)
 
-    assert abjad.ly.language_pitch_names is not None
-    print(abjad.ly.language_pitch_names)
+    assert abjad.lyscrape.language_pitch_names is not None
+    print(abjad.lyscrape.language_pitch_names)
 
-    assert abjad.ly.markup_functions is not None
-    print(abjad.ly.markup_functions)
+    assert abjad.lyscrape.markup_functions is not None
+    print(abjad.lyscrape.markup_functions)
 
-    assert abjad.ly.markup_functions.markup_list_functions is not None
-    print(abjad.ly.markup_functions.markup_list_functions)
+    assert abjad.lyscrape.markup_list_functions is not None
+    print(abjad.lyscrape.markup_list_functions)
 
-    assert abjad.ly.music_glyphs is not None
-    print(abjad.ly.music_glyphs)
+    assert abjad.lyscrape.music_glyphs is not None
+    print(abjad.lyscrape.music_glyphs)

@@ -9,8 +9,8 @@ import quicktions
 
 from . import enums, mathx
 from .bundle import LilyPondFormatBundle
-from .ly.music_glyphs import music_glyphs
 from .lyconst import colors
+from .lyscrape import music_glyphs
 from .new import new
 from .overrides import TweakInterface
 from .scheme import Scheme, SchemeColor, SchemePair

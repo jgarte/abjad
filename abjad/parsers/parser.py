@@ -44,12 +44,15 @@ from ..indicators.StopTrillSpan import StopTrillSpan
 from ..indicators.Tie import Tie
 from ..indicators.TimeSignature import TimeSignature
 from ..lilypondfile import Block, LilyPondFile
-from ..ly.contexts import contexts
-from ..ly.current_module import current_module
-from ..ly.grob_interfaces import grob_interfaces
-from ..ly.language_pitch_names import language_pitch_names
-from ..ly.markup_functions import markup_functions, markup_list_functions
 from ..lyconst import drums
+from ..lyscrape import (
+    contexts,
+    current_module,
+    grob_interfaces,
+    language_pitch_names,
+    markup_functions,
+    markup_list_functions,
+)
 from ..markups import Markup, MarkupCommand
 from ..overrides import LilyPondLiteral
 from ..pitch import constants as pitch_constants
