@@ -1,10 +1,7 @@
 import typing
 
-from ..ly.contexts import contexts
-from ..ly.engravers import engravers
-from ..storage import StorageFormatManager
-from .grob_interfaces import grob_interfaces
-from .interface_properties import interface_properties
+from .lyscrape import contexts, engravers, grob_interfaces, interface_properties
+from .storage import StorageFormatManager
 
 
 class LilyPondContext:

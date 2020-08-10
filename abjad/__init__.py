@@ -179,7 +179,7 @@ from .lilypondfile import (
     LilyPondVersionToken,
     PackageGitCommitToken,
 )
-from .ly.model import (
+from .lymodel import (
     LilyPondContext,
     LilyPondEngraver,
     LilyPondGrob,
