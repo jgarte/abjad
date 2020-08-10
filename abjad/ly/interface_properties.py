@@ -1,4 +1,4 @@
-lilypond_version = "2.19.24"
+lilypond_version = "2.19.84"
 
 interface_properties = {
     "accidental-interface": [
@@ -36,7 +36,6 @@ interface_properties = {
     "axis-group-interface": [
         "axes",
         "default-staff-staff-spacing",
-        "max-stretch",
         "no-alignment",
         "nonstaff-nonstaff-spacing",
         "nonstaff-relatedstaff-spacing",
@@ -121,6 +120,7 @@ interface_properties = {
     "font-interface": [
         "font-encoding",
         "font-family",
+        "font-features",
         "font-name",
         "font-series",
         "font-shape",
@@ -158,6 +158,7 @@ interface_properties = {
         "layer",
         "minimum-X-extent",
         "minimum-Y-extent",
+        "output-attributes",
         "parenthesis-friends",
         "rotation",
         "skyline-horizontal-padding",
@@ -166,7 +167,7 @@ interface_properties = {
         "transparent",
         "vertical-skylines",
         "whiteout",
-        "whiteout-box",
+        "whiteout-style",
     ],
     "hairpin-interface": [
         "bound-padding",
@@ -174,6 +175,7 @@ interface_properties = {
         "circled-tip",
         "grow-direction",
         "height",
+        "shorten-pair",
     ],
     "hara-kiri-group-spanner-interface": [
         "remove-empty",
@@ -186,6 +188,7 @@ interface_properties = {
         "edge-height",
         "shorten-pair",
     ],
+    "horizontal-bracket-text-interface": [],
     "inline-accidental-interface": [],
     "instrument-specific-markup-interface": [
         "fret-diagram-details",
@@ -205,6 +208,7 @@ interface_properties = {
         "alteration-alist",
         "flat-positions",
         "glyph-name-alist",
+        "non-default",
         "padding",
         "padding-pairs",
         "sharp-positions",
@@ -252,7 +256,7 @@ interface_properties = {
     "lyric-interface": [],
     "lyric-syllable-interface": [],
     "mark-interface": [],
-    "measure-counter-interface": ["count-from"],
+    "measure-counter-interface": ["count-from", "spacing-pair"],
     "measure-grouping-interface": ["height", "style", "thickness"],
     "melody-spanner-interface": ["neutral-direction"],
     "mensural-ligature-interface": ["thickness"],
@@ -262,6 +266,7 @@ interface_properties = {
         "bound-padding",
         "expand-limit",
         "hair-thickness",
+        "max-symbol-separation",
         "measure-count",
         "minimum-length",
         "round-up-exceptions",
@@ -273,14 +278,21 @@ interface_properties = {
     "note-collision-interface": [
         "merge-differently-dotted",
         "merge-differently-headed",
+        "note-collision-threshold",
         "positioning-done",
         "prefer-dotted-right",
     ],
-    "note-column-interface": ["force-hshift", "horizontal-shift", "ignore-collision"],
+    "note-column-interface": [
+        "force-hshift",
+        "glissando-skip",
+        "horizontal-shift",
+        "ignore-collision",
+    ],
     "note-head-interface": [
         "duration-log",
         "glyph-name",
         "ignore-ambitus",
+        "ledger-positions",
         "note-names",
         "stem-attachment",
         "style",
@@ -377,6 +389,7 @@ interface_properties = {
         "details",
         "direction",
         "head-direction",
+        "line-thickness",
         "thickness",
     ],
     "separation-item-interface": [
@@ -445,6 +458,7 @@ interface_properties = {
         "ledger-extra",
         "ledger-line-thickness",
         "ledger-positions",
+        "ledger-positions-function",
         "line-count",
         "line-positions",
         "staff-space",
@@ -469,6 +483,7 @@ interface_properties = {
         "max-beam-connect",
         "neutral-direction",
         "no-stem-extend",
+        "note-collision-threshold",
         "positioning-done",
         "stem-begin-position",
         "stemlet-length",

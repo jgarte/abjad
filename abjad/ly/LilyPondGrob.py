@@ -124,6 +124,7 @@ class LilyPondGrob:
             'extra-offset'
             'font-encoding'
             'font-family'
+            'font-features'
             'font-name'
             'font-series'
             'font-shape'
@@ -145,6 +146,7 @@ class LilyPondGrob:
             'minimum-length-after-break'
             'neutral-direction'
             'normalized-endpoints'
+            'output-attributes'
             'parenthesis-friends'
             'positions'
             'rotation'
@@ -158,7 +160,7 @@ class LilyPondGrob:
             'transparent'
             'vertical-skylines'
             'whiteout'
-            'whiteout-box'
+            'whiteout-style'
 
         """
         property_names: typing.Set[str] = set()
@@ -231,6 +233,7 @@ class LilyPondGrob:
             LilyPondGrob(name='GridPoint')
             LilyPondGrob(name='Hairpin')
             LilyPondGrob(name='HorizontalBracket')
+            LilyPondGrob(name='HorizontalBracketText')
             LilyPondGrob(name='InstrumentName')
             LilyPondGrob(name='InstrumentSwitch')
             LilyPondGrob(name='KeyCancellation')

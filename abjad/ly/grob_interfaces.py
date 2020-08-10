@@ -1,4 +1,4 @@
-lilypond_version = "2.19.24"
+lilypond_version = "2.19.84"
 
 grob_interfaces = {
     "Accidental": [
@@ -394,6 +394,16 @@ grob_interfaces = {
         "outside-staff-interface",
         "side-position-interface",
         "spanner-interface",
+    ],
+    "HorizontalBracketText": [
+        "font-interface",
+        "grob-interface",
+        "horizontal-bracket-text-interface",
+        "outside-staff-interface",
+        "self-alignment-interface",
+        "side-position-interface",
+        "spanner-interface",
+        "text-interface",
     ],
     "InstrumentName": [
         "font-interface",

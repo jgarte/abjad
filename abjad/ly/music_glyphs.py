@@ -1,4 +1,4 @@
-lilypond_version = "2.19.24"
+lilypond_version = "2.19.84"
 
 music_glyphs = set(
     [

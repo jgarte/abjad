@@ -53,6 +53,7 @@ class LilyPondContext:
         [ ] [ ] [ ] [ ] [X] MensuralVoice
         [ ] [ ] [ ] [ ] [X] NoteNames
         [ ] [ ] [ ] [ ] [X] NullVoice
+        [ ] [ ] [X] [ ] [ ] OneStaff
         [ ] [ ] [ ] [X] [ ] PetrucciStaff
         [ ] [ ] [ ] [ ] [X] PetrucciVoice
         [ ] [ ] [X] [ ] [ ] PianoStaff
@@ -111,6 +112,7 @@ class LilyPondContext:
             >>> for accepting_context in context.accepted_by:
             ...     accepting_context
             ...
+            LilyPondContext(name='OneStaff')
             LilyPondContext(name='Score')
 
             >>> for lilypond_context in abjad.LilyPondContext.list_all_contexts():
@@ -127,6 +129,7 @@ class LilyPondContext:
             ChordNames:
                 ChoirStaff,
                 GrandStaff,
+                OneStaff,
                 PianoStaff,
                 Score,
                 StaffGroup
@@ -145,21 +148,27 @@ class LilyPondContext:
             DrumStaff:
                 ChoirStaff,
                 GrandStaff,
+                OneStaff,
                 PianoStaff,
                 Score,
                 StaffGroup
             DrumVoice:
                 DrumStaff
             Dynamics:
+                ChoirStaff,
                 GrandStaff,
-                PianoStaff
+                OneStaff,
+                PianoStaff,
+                Score
             FiguredBass:
                 ChoirStaff,
                 GrandStaff,
+                OneStaff,
                 PianoStaff,
                 Score,
                 StaffGroup
             FretBoards:
+                OneStaff,
                 Score,
                 StaffGroup
             Global:
@@ -168,24 +177,29 @@ class LilyPondContext:
                 Score,
                 StaffGroup
             GregorianTranscriptionStaff:
+                OneStaff,
                 Score
             GregorianTranscriptionVoice:
                 GregorianTranscriptionStaff
             KievanStaff:
+                OneStaff,
                 Score
             KievanVoice:
                 KievanStaff
             Lyrics:
                 ChoirStaff,
                 GrandStaff,
+                OneStaff,
                 PianoStaff,
                 Score,
                 StaffGroup
             MensuralStaff:
+                OneStaff,
                 Score
             MensuralVoice:
                 MensuralStaff
             NoteNames:
+                OneStaff,
                 Score
             NullVoice:
                 DrumStaff,
@@ -197,7 +211,12 @@ class LilyPondContext:
                 Staff,
                 TabStaff,
                 VaticanaStaff
+            OneStaff:
+                ChoirStaff,
+                Score,
+                StaffGroup
             PetrucciStaff:
+                OneStaff,
                 Score
             PetrucciVoice:
                 PetrucciStaff
@@ -208,6 +227,7 @@ class LilyPondContext:
             RhythmicStaff:
                 ChoirStaff,
                 GrandStaff,
+                OneStaff,
                 PianoStaff,
                 Score,
                 StaffGroup
@@ -216,6 +236,7 @@ class LilyPondContext:
             Staff:
                 ChoirStaff,
                 GrandStaff,
+                OneStaff,
                 PianoStaff,
                 Score,
                 StaffGroup
@@ -225,12 +246,14 @@ class LilyPondContext:
                 StaffGroup
             TabStaff:
                 GrandStaff,
+                OneStaff,
                 PianoStaff,
                 Score,
                 StaffGroup
             TabVoice:
                 TabStaff
             VaticanaStaff:
+                OneStaff,
                 Score
             VaticanaVoice:
                 VaticanaStaff
@@ -334,6 +357,8 @@ class LilyPondContext:
             MensuralVoice:
             NoteNames:
             NullVoice:
+            OneStaff:
+                Staff
             PetrucciStaff:
                 PetrucciVoice
             PetrucciVoice:
@@ -504,6 +529,7 @@ class LilyPondContext:
             [X] MensuralVoice
             [X] NoteNames
             [X] NullVoice
+            [ ] OneStaff
             [ ] PetrucciStaff
             [X] PetrucciVoice
             [ ] PianoStaff
@@ -569,6 +595,7 @@ class LilyPondContext:
             [ ] MensuralVoice
             [ ] NoteNames
             [ ] NullVoice
+            [ ] OneStaff
             [ ] PetrucciStaff
             [ ] PetrucciVoice
             [ ] PianoStaff
@@ -622,6 +649,7 @@ class LilyPondContext:
             [ ] MensuralVoice
             [ ] NoteNames
             [ ] NullVoice
+            [ ] OneStaff
             [ ] PetrucciStaff
             [ ] PetrucciVoice
             [ ] PianoStaff
@@ -675,6 +703,7 @@ class LilyPondContext:
             [ ] MensuralVoice
             [ ] NoteNames
             [ ] NullVoice
+            [ ] OneStaff
             [X] PetrucciStaff
             [ ] PetrucciVoice
             [ ] PianoStaff
@@ -728,6 +757,7 @@ class LilyPondContext:
             [ ] MensuralVoice
             [ ] NoteNames
             [ ] NullVoice
+            [X] OneStaff
             [ ] PetrucciStaff
             [ ] PetrucciVoice
             [X] PianoStaff
@@ -874,6 +904,7 @@ class LilyPondContext:
             LilyPondContext(name='MensuralVoice')
             LilyPondContext(name='NoteNames')
             LilyPondContext(name='NullVoice')
+            LilyPondContext(name='OneStaff')
             LilyPondContext(name='PetrucciStaff')
             LilyPondContext(name='PetrucciVoice')
             LilyPondContext(name='PianoStaff')
@@ -1039,6 +1070,7 @@ class LilyPondContext:
             LilyPondContext(name='ChordNames')
             LilyPondContext(name='Devnull')
             LilyPondContext(name='DrumStaff')
+            LilyPondContext(name='Dynamics')
             LilyPondContext(name='FiguredBass')
             LilyPondContext(name='FingeringStaff')
             LilyPondContext(name='FretBoards')
@@ -1048,6 +1080,7 @@ class LilyPondContext:
             LilyPondContext(name='Lyrics')
             LilyPondContext(name='MensuralStaff')
             LilyPondContext(name='NoteNames')
+            LilyPondContext(name='OneStaff')
             LilyPondContext(name='PetrucciStaff')
             LilyPondContext(name='PianoStaff')
             LilyPondContext(name='RhythmicStaff')
@@ -1066,6 +1099,7 @@ class LilyPondContext:
             LilyPondContext(name='ChordNames')
             LilyPondContext(name='Devnull')
             LilyPondContext(name='DrumStaff')
+            LilyPondContext(name='Dynamics')
             LilyPondContext(name='FiguredBass')
             LilyPondContext(name='FretBoards')
             LilyPondContext(name='GrandStaff')
@@ -1074,6 +1108,7 @@ class LilyPondContext:
             LilyPondContext(name='Lyrics')
             LilyPondContext(name='MensuralStaff')
             LilyPondContext(name='NoteNames')
+            LilyPondContext(name='OneStaff')
             LilyPondContext(name='PetrucciStaff')
             LilyPondContext(name='PianoStaff')
             LilyPondContext(name='RhythmicStaff')

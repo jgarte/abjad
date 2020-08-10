@@ -1,4 +1,4 @@
-lilypond_version = "2.19.24"
+lilypond_version = "2.19.84"
 
 engravers = {
     "Accidental_engraver": {
@@ -297,11 +297,6 @@ engravers = {
         ),
         "properties_written": set([]),
     },
-    "Engraver": {
-        "grobs_created": set([]),
-        "properties_read": set([]),
-        "properties_written": set([]),
-    },
     "Episema_engraver": {
         "grobs_created": set(["Episema"]),
         "properties_read": set([]),
@@ -424,7 +419,7 @@ engravers = {
         "properties_written": set(["busyGrobs"]),
     },
     "Horizontal_bracket_engraver": {
-        "grobs_created": set(["HorizontalBracket"]),
+        "grobs_created": set(["HorizontalBracket", "HorizontalBracketText"]),
         "properties_read": set([]),
         "properties_written": set([]),
     },
@@ -474,7 +469,7 @@ engravers = {
     },
     "Key_performer": {
         "grobs_created": set([]),
-        "properties_read": set([]),
+        "properties_read": set(["instrumentTransposition"]),
         "properties_written": set([]),
     },
     "Kievan_ligature_engraver": {
@@ -514,6 +509,13 @@ engravers = {
         "properties_read": set(["markFormatter", "rehearsalMark", "stavesFound"]),
         "properties_written": set([]),
     },
+    "Measure_counter_engraver": {
+        "grobs_created": set(["MeasureCounter"]),
+        "properties_read": set(
+            ["currentBarNumber", "currentCommandColumn", "measurePosition"]
+        ),
+        "properties_written": set([]),
+    },
     "Measure_grouping_engraver": {
         "grobs_created": set(["MeasureGrouping"]),
         "properties_read": set(
@@ -531,6 +533,11 @@ engravers = {
         "properties_read": set([]),
         "properties_written": set([]),
     },
+    "Merge_rests_engraver": {
+        "grobs_created": set([]),
+        "properties_read": set(["suspendRestMerging"]),
+        "properties_written": set([]),
+    },
     "Metronome_mark_engraver": {
         "grobs_created": set(["MetronomeMark"]),
         "properties_read": set(
@@ -544,7 +551,7 @@ engravers = {
         ),
         "properties_written": set([]),
     },
-    "Midi_control_function_performer": {
+    "Midi_control_change_performer": {
         "grobs_created": set([]),
         "properties_read": set(
             [
@@ -567,6 +574,7 @@ engravers = {
                 "internalBarNumber",
                 "measurePosition",
                 "restNumberThreshold",
+                "whichBar",
             ]
         ),
         "properties_written": set([]),
@@ -749,11 +757,6 @@ engravers = {
         "properties_read": set([]),
         "properties_written": set([]),
     },
-    "Scheme_engraver": {
-        "grobs_created": set([]),
-        "properties_read": set([]),
-        "properties_written": set([]),
-    },
     "Script_column_engraver": {
         "grobs_created": set(["ScriptColumn"]),
         "properties_read": set([]),
@@ -812,6 +815,11 @@ engravers = {
     },
     "Span_bar_stub_engraver": {
         "grobs_created": set(["SpanBarStub"]),
+        "properties_read": set([]),
+        "properties_written": set([]),
+    },
+    "Span_stem_engraver": {
+        "grobs_created": set(["Stem"]),
         "properties_read": set([]),
         "properties_written": set([]),
     },
@@ -875,6 +883,7 @@ engravers = {
                 "defaultStrings",
                 "fretLabels",
                 "highStringOne",
+                "maximumFretStretch",
                 "middleCPosition",
                 "minimumFret",
                 "noteToFretFunction",
@@ -955,11 +964,6 @@ engravers = {
                 "timeSignatureFraction",
             ]
         ),
-    },
-    "Translator": {
-        "grobs_created": set([]),
-        "properties_read": set([]),
-        "properties_written": set([]),
     },
     "Trill_spanner_engraver": {
         "grobs_created": set(["TrillSpanner"]),

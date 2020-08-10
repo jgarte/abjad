@@ -108,6 +108,7 @@ class LilyPondGrobInterface:
             LilyPondGrobInterface(name='hairpin-interface')
             LilyPondGrobInterface(name='hara-kiri-group-spanner-interface')
             LilyPondGrobInterface(name='horizontal-bracket-interface')
+            LilyPondGrobInterface(name='horizontal-bracket-text-interface')
             LilyPondGrobInterface(name='inline-accidental-interface')
             LilyPondGrobInterface(name='instrument-specific-markup-interface')
             LilyPondGrobInterface(name='item-interface')

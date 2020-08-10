@@ -1,4 +1,4 @@
-lilypond_version = "2.19.24"
+lilypond_version = "2.19.84"
 
 contexts = {
     "ChoirStaff": {
@@ -7,9 +7,11 @@ contexts = {
                 "ChoirStaff",
                 "ChordNames",
                 "DrumStaff",
+                "Dynamics",
                 "FiguredBass",
                 "GrandStaff",
                 "Lyrics",
+                "OneStaff",
                 "PianoStaff",
                 "RhythmicStaff",
                 "Staff",
@@ -536,7 +538,7 @@ contexts = {
     },
     "NoteNames": {
         "accepts": set([]),
-        "aliases": set([]),
+        "aliases": set(["Staff"]),
         "consists": set(
             [
                 "Axis_group_engraver",
@@ -559,6 +561,30 @@ contexts = {
                 "Tie_engraver",
             ]
         ),
+    },
+    "OneStaff": {
+        "accepts": set(
+            [
+                "ChordNames",
+                "DrumStaff",
+                "Dynamics",
+                "FiguredBass",
+                "FretBoards",
+                "GregorianTranscriptionStaff",
+                "KievanStaff",
+                "Lyrics",
+                "MensuralStaff",
+                "NoteNames",
+                "PetrucciStaff",
+                "RhythmicStaff",
+                "Staff",
+                "TabStaff",
+                "VaticanaStaff",
+            ]
+        ),
+        "aliases": set([]),
+        "consists": set(["Axis_group_engraver"]),
+        "default_child": "Staff",
     },
     "PetrucciStaff": {
         "accepts": set(["CueVoice", "NullVoice", "PetrucciVoice"]),
@@ -705,6 +731,7 @@ contexts = {
                 "ChordNames",
                 "Devnull",
                 "DrumStaff",
+                "Dynamics",
                 "FiguredBass",
                 "FretBoards",
                 "GrandStaff",
@@ -713,6 +740,7 @@ contexts = {
                 "Lyrics",
                 "MensuralStaff",
                 "NoteNames",
+                "OneStaff",
                 "PetrucciStaff",
                 "PianoStaff",
                 "RhythmicStaff",
@@ -795,6 +823,7 @@ contexts = {
                 "FretBoards",
                 "GrandStaff",
                 "Lyrics",
+                "OneStaff",
                 "PianoStaff",
                 "RhythmicStaff",
                 "Staff",
