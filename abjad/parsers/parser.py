@@ -45,7 +45,7 @@ from ..indicators.Tie import Tie
 from ..indicators.TimeSignature import TimeSignature
 from ..lilypondfile import Block, LilyPondFile
 from ..lyconst import drums
-from ..lyscrape import (
+from ..lyenv import (
     contexts,
     current_module,
     grob_interfaces,

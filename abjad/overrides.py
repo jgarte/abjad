@@ -4,7 +4,7 @@ import typing
 from . import enums
 from .bundle import LilyPondFormatBundle
 from .lyconst import colors
-from .lyscrape import contexts, grob_interfaces
+from .lyenv import contexts, grob_interfaces
 from .scheme import Scheme, SchemePair
 from .storage import FormatSpecification, StorageFormatManager
 from .stringx import String

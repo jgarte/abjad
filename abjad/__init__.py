@@ -1,15 +1,6 @@
 from quicktions import Fraction
 
-from . import (
-    cli,
-    demos,
-    deprecated,
-    illustrators,
-    iterpitches,
-    lyconst,
-    lyscrape,
-    makers,
-)
+from . import cli, demos, deprecated, illustrators, iterpitches, lyconst, lyenv, makers
 from ._version import __version__, __version_info__
 from .attach import Wrapper, annotate, attach, detach
 from .bundle import LilyPondFormatBundle, SlotContributions
@@ -716,7 +707,7 @@ __all__ = [
     "list_all_classes",
     "list_all_functions",
     "lyconst",
-    "lyscrape",
+    "lyenv",
     "makers",
     "mutate",
     "new",

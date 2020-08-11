@@ -1,6 +1,6 @@
 import typing
 
-from .lyscrape import contexts, engravers, grob_interfaces, interface_properties
+from .lyenv import contexts, engravers, grob_interfaces, interface_properties
 from .storage import StorageFormatManager
 
 
