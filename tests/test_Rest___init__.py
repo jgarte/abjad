@@ -46,7 +46,7 @@ def test_Rest___init___04():
     """
 
     chord = abjad.Chord([2, 3, 4], abjad.Duration(1, 4))
-    chords = abjad.mutate(chord).copy(3)
+    chords = abjad.mutate.copy(chord, 3)
     tuplet = abjad.Tuplet((2, 3), chords)
     rest = abjad.Rest(tuplet[0])
 
@@ -65,7 +65,7 @@ def test_Rest___init___05():
     """
 
     chord = abjad.Chord([2, 3, 4], abjad.Duration(1, 8))
-    chords = abjad.mutate(chord).copy(3)
+    chords = abjad.mutate.copy(chord, 3)
     staff = abjad.Staff(chords)
     abjad.beam(staff[:])
     rest = abjad.Rest(staff[0])
@@ -191,7 +191,7 @@ def test_Rest___init___12():
     voice = abjad.Voice("c'8 ( d'8 e'8 f'8 )")
     for note in voice:
         rest = abjad.Rest(note)
-        abjad.mutate(note).replace(rest)
+        abjad.mutate.replace(note, rest)
 
     assert abjad.lilypond(voice) == abjad.String.normalize(
         r"""

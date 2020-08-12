@@ -137,7 +137,7 @@ def test_Staff___setitem___08():
 
     staff = abjad.Staff("c'8 c'8 c'8 c'8 c'8 c'8 c'8 c'8")
     chord = abjad.Chord([2, 3, 4], (1, 4))
-    chords = abjad.mutate(chord).copy(4)
+    chords = abjad.mutate.copy(chord, 4)
     staff[0:4] = chords
     assert len(staff) == 8
     for x in staff[0:4]:
@@ -154,7 +154,7 @@ def test_Staff___setitem___09():
 
     staff = abjad.Staff("c'8 c'8 c'8 c'8 c'8 c'8 c'8 c'8")
     tuplet = abjad.Tuplet((2, 3), "c'8 c'8 c'8")
-    tuplets = abjad.mutate(tuplet).copy(2)
+    tuplets = abjad.mutate.copy(tuplet, 2)
     staff[0:4] = tuplets
     assert len(staff) == 6
     for i, x in enumerate(staff):

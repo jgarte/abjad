@@ -1,7 +1,7 @@
 import abjad
 
 
-def test_Mutation_replace_01():
+def test_mutate_replace_01():
     """
     Moves parentage from two old notes to five new notes.
 
@@ -41,7 +41,7 @@ def test_Mutation_replace_01():
             abjad.Note("c''16"),
         ]
     )
-    abjad.mutate(old_notes).replace(new_notes)
+    abjad.mutate.replace(old_notes, new_notes)
 
     assert abjad.lilypond(staff) == abjad.String.normalize(
         r"""
@@ -65,7 +65,7 @@ def test_Mutation_replace_01():
     assert abjad.wellformed(staff)
 
 
-def test_Mutation_replace_02():
+def test_mutate_replace_02():
     """
     Moves parentage from one old note to five new notes.
 
@@ -102,7 +102,7 @@ def test_Mutation_replace_02():
             abjad.Note("c''16"),
         ]
     )
-    abjad.mutate(old_notes).replace(new_notes)
+    abjad.mutate.replace(old_notes, new_notes)
 
     assert abjad.lilypond(staff) == abjad.String.normalize(
         r"""
@@ -126,7 +126,7 @@ def test_Mutation_replace_02():
     assert abjad.wellformed(staff)
 
 
-def test_Mutation_replace_03():
+def test_mutate_replace_03():
     """
     Moves parentage from two old notes to five new notes.
 
@@ -163,7 +163,7 @@ def test_Mutation_replace_03():
             abjad.Note("c''16"),
         ]
     )
-    abjad.mutate(old_notes).replace(new_notes)
+    abjad.mutate.replace(old_notes, new_notes)
 
     assert abjad.lilypond(staff) == abjad.String.normalize(
         r"""
@@ -185,7 +185,7 @@ def test_Mutation_replace_03():
     assert abjad.wellformed(staff)
 
 
-def test_Mutation_replace_04():
+def test_mutate_replace_04():
     """
     Moves parentage from three old notes to five new notes.
 
@@ -222,7 +222,7 @@ def test_Mutation_replace_04():
             abjad.Note("c''16"),
         ]
     )
-    abjad.mutate(old_notes).replace(new_notes)
+    abjad.mutate.replace(old_notes, new_notes)
 
     assert abjad.lilypond(staff) == abjad.String.normalize(
         r"""
@@ -242,7 +242,7 @@ def test_Mutation_replace_04():
     assert abjad.wellformed(staff)
 
 
-def test_Mutation_replace_05():
+def test_mutate_replace_05():
     """
     Moves parentage from four old notes to five new notes.
 
@@ -279,7 +279,7 @@ def test_Mutation_replace_05():
             abjad.Note("c''16"),
         ]
     )
-    abjad.mutate(old_notes).replace(new_notes)
+    abjad.mutate.replace(old_notes, new_notes)
 
     assert abjad.lilypond(staff) == abjad.String.normalize(
         r"""
@@ -297,7 +297,7 @@ def test_Mutation_replace_05():
     assert abjad.wellformed(staff)
 
 
-def test_Mutation_replace_06():
+def test_mutate_replace_06():
     """
     Moves parentage from container to children of container.
 
@@ -330,7 +330,7 @@ def test_Mutation_replace_06():
 
     voice_selection = staff[:1]
     voice = voice_selection[0]
-    abjad.mutate(voice_selection).replace(staff[0][:])
+    abjad.mutate.replace(voice_selection, staff[0][:])
 
     assert abjad.lilypond(staff) == abjad.String.normalize(
         r"""

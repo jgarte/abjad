@@ -10,6 +10,7 @@ from . import (
     lyconst,
     lyenv,
     makers,
+    mutate,
     persist,
 )
 from ._version import __version__, __version_info__
@@ -191,7 +192,6 @@ from .markups import Markup, MarkupCommand, MarkupList, Postscript, PostscriptOp
 from .mathx import Infinity, NegativeInfinity
 from .meter import Meter, MeterList, MetricAccentKernel, OffsetCounter
 from .metricmodulation import MetricModulation
-from .mutate import Mutation, mutate
 from .new import new
 from .obgc import OnBeatGraceContainer, on_beat_grace_container
 from .ordereddict import OrderedDict
@@ -519,7 +519,6 @@ __all__ = [
     "MultimeasureRest",
     "Multiplication",
     "Multiplier",
-    "Mutation",
     "NamedInterval",
     "NamedIntervalClass",
     "NamedInversionEquivalentIntervalClass",

@@ -779,7 +779,7 @@ class FerneyhoughDemo:
         selector = abjad.select().leaves()
         last_leaf = selector(outer_tuplet)[-1]
         right_logical_tie = abjad.inspect(last_leaf).logical_tie()
-        abjad.mutate(right_logical_tie).logical_tie_to_tuplet(inner_tuplet_proportions)
+        abjad.mutate.logical_tie_to_tuplet(right_logical_tie, inner_tuplet_proportions)
         return outer_tuplet
 
     def make_row_of_nested_tuplets(

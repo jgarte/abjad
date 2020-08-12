@@ -1,7 +1,7 @@
 import abjad
 
 
-def test_Mutation__fuse_leaves_by_immediate_parent_01():
+def test_mutate__fuse_leaves_by_immediate_parent_01():
     """
     Fuse leaves in logical tie with same immediate parent.
     """
@@ -11,7 +11,7 @@ def test_Mutation__fuse_leaves_by_immediate_parent_01():
     abjad.tie(leaves)
 
     logical_tie = abjad.inspect(leaves[1]).logical_tie()
-    result = abjad.Mutation._fuse_leaves_by_immediate_parent(logical_tie)
+    result = abjad.mutate._fuse_leaves_by_immediate_parent(logical_tie)
 
     assert abjad.lilypond(staff) == abjad.String.normalize(
         r"""
@@ -32,7 +32,7 @@ def test_Mutation__fuse_leaves_by_immediate_parent_01():
     assert abjad.wellformed(staff)
 
 
-def test_Mutation__fuse_leaves_by_immediate_parent_02():
+def test_mutate__fuse_leaves_by_immediate_parent_02():
     """
     Fuse leaves in logical tie with same immediate parent.
     """
@@ -56,7 +56,7 @@ def test_Mutation__fuse_leaves_by_immediate_parent_02():
     ), print(abjad.lilypond(staff))
 
     logical_tie = abjad.inspect(staff[1]).logical_tie()
-    result = abjad.Mutation._fuse_leaves_by_immediate_parent(logical_tie)
+    result = abjad.mutate._fuse_leaves_by_immediate_parent(logical_tie)
 
     assert abjad.lilypond(staff) == abjad.String.normalize(
         r"""
@@ -71,13 +71,13 @@ def test_Mutation__fuse_leaves_by_immediate_parent_02():
     assert len(result) == 1
 
 
-def test_Mutation__fuse_leaves_by_immediate_parent_03():
+def test_mutate__fuse_leaves_by_immediate_parent_03():
     """
     Fuse leaves in logical tie with same immediate parent.
     """
 
     note = abjad.Note("c'4")
     logical_tie = abjad.inspect(note).logical_tie()
-    result = abjad.Mutation._fuse_leaves_by_immediate_parent(logical_tie)
+    result = abjad.mutate._fuse_leaves_by_immediate_parent(logical_tie)
     assert len(result) == 1
     assert abjad.wellformed(note)

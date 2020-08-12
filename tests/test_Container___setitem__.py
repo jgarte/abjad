@@ -380,7 +380,7 @@ def test_Container___setitem___08():
     ), print(abjad.lilypond(voice_1))
 
     voice_2 = abjad.Voice(notes[3:])
-    abjad.mutate(voice_2[1:3]).wrap(abjad.Container())
+    abjad.mutate.wrap(voice_2[1:3], abjad.Container())
     leaves = abjad.select(voice_2).leaves()
     leaves = abjad.select(voice_2[1]).leaves()
     abjad.slur(leaves)
@@ -857,9 +857,9 @@ def test_Container___setitem___20():
 
     staff = abjad.Staff("c'8 d'8 [ e'8 ] f'8")
     inner_container = abjad.Container()
-    abjad.mutate(staff[1:3]).wrap(inner_container)
+    abjad.mutate.wrap(staff[1:3], inner_container)
     outer_container = abjad.Container()
-    abjad.mutate(inner_container).wrap(outer_container)
+    abjad.mutate.wrap(inner_container, outer_container)
 
     assert abjad.lilypond(staff) == abjad.String.normalize(
         r"""
@@ -909,9 +909,9 @@ def test_Container___setitem___20():
     # ALTERNATIVE: use del(container)
     staff = abjad.Staff("c'8 d'8 [ e'8 ] f'8")
     inner_container = abjad.Container()
-    abjad.mutate(staff[1:3]).wrap(inner_container)
+    abjad.mutate.wrap(staff[1:3], inner_container)
     outer_container = abjad.Container()
-    abjad.mutate(inner_container).wrap(outer_container)
+    abjad.mutate.wrap(inner_container, outer_container)
 
     assert abjad.lilypond(staff) == abjad.String.normalize(
         r"""

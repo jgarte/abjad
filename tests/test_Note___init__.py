@@ -75,7 +75,7 @@ def test_Note___init___07():
     """
 
     chord = abjad.Chord([2, 3, 4], (1, 4))
-    chords = abjad.mutate(chord).copy(3)
+    chords = abjad.mutate.copy(chord, 3)
     tuplet = abjad.Tuplet((2, 3), chords)
     note = abjad.Note(tuplet[0])
 
@@ -94,7 +94,7 @@ def test_Note___init___08():
     """
 
     chord = abjad.Chord([2, 3, 4], (1, 8))
-    chords = abjad.mutate(chord).copy(3)
+    chords = abjad.mutate.copy(chord, 3)
     staff = abjad.Staff(chords)
     abjad.beam(staff[:])
     note = abjad.Note(staff[0])

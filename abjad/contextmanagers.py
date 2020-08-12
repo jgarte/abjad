@@ -173,7 +173,7 @@ class ForbidUpdate(ContextManager):
         ...         pitch_2 = pitch_1 + abjad.NamedInterval('M3')
         ...         pitches = [pitch_1, pitch_2]
         ...         chord = abjad.Chord(pitches, note.written_duration)
-        ...         abjad.mutate(note).replace(chord)
+        ...         abjad.mutate.replace(note, chord)
         ...
 
         >>> abjad.wellformed(staff)

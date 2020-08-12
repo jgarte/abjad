@@ -193,7 +193,7 @@ class Wrapper:
             >>> abjad.inspect(leaf).annotation('bow_direction')
             Down
 
-            >>> new_staff = abjad.mutate(old_staff).copy()
+            >>> new_staff = abjad.mutate.copy(old_staff)
             >>> abjad.f(new_staff)
             \new Staff {
                 c'4
@@ -231,7 +231,7 @@ class Wrapper:
                 tag=abjad.Tag('RED:M1'),
                 )
 
-            >>> new_staff = abjad.mutate(old_staff).copy()
+            >>> new_staff = abjad.mutate.copy(old_staff)
             >>> abjad.f(new_staff)
             \new Staff {
                 \clef "alto" %! RED:M1
@@ -280,7 +280,7 @@ class Wrapper:
                 tag=abjad.Tag('RED:M1'),
                 )
 
-            >>> new_staff = abjad.mutate(old_staff).copy()
+            >>> new_staff = abjad.mutate.copy(old_staff)
             >>> abjad.f(new_staff)
             \new Staff {
                 %@% \clef "alto" %! RED:M1
