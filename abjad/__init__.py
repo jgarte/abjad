@@ -1,6 +1,16 @@
 from quicktions import Fraction
 
-from . import cli, demos, deprecated, illustrators, iterpitches, lyconst, lyenv, makers
+from . import (
+    cli,
+    demos,
+    deprecated,
+    illustrators,
+    iterpitches,
+    lyconst,
+    lyenv,
+    makers,
+    persist,
+)
 from ._version import __version__, __version_info__
 from .attach import Wrapper, annotate, attach, detach
 from .bundle import LilyPondFormatBundle, SlotContributions
@@ -155,7 +165,7 @@ from .instruments import (
     Violin,
     Xylophone,
 )
-from .iox import IOManager, PersistenceManager, TestManager, graph, persist, play, show
+from .iox import IOManager, TestManager, graph, play, show
 from .iterate import Iteration, iterate
 from .label import ColorMap, Label, label
 from .lilypond import lilypond
@@ -546,7 +556,6 @@ __all__ = [
     "PatternTuple",
     "PatternTyping",
     "Percussion",
-    "PersistenceManager",
     "PersistentIndicatorError",
     "Piano",
     "Piccolo",
