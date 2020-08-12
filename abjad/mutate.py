@@ -167,6 +167,7 @@ def _split_container_at_index(CONTAINER, i):
 
     Resizes resizable containers.
 
+
     Returns split parts.
     """
     # partition my components
