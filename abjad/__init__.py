@@ -165,7 +165,7 @@ from .instruments import (
     Violin,
     Xylophone,
 )
-from .iox import IOManager, TestManager, graph, play, show
+from .iox import IOManager, graph, play, show
 from .iterate import Iteration, iterate
 from .label import ColorMap, Label, label
 from .lilypond import lilypond
@@ -648,7 +648,6 @@ __all__ = [
     "TenorSaxophone",
     "TenorTrombone",
     "TenorVoice",
-    "TestManager",
     "Tie",
     "TimeSignature",
     "Timer",
