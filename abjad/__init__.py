@@ -5,6 +5,7 @@ from . import (
     demos,
     deprecated,
     illustrators,
+    iox,
     iterpitches,
     lyconst,
     lyenv,
@@ -165,7 +166,7 @@ from .instruments import (
     Violin,
     Xylophone,
 )
-from .iox import IOManager, graph, play, show
+from .iox import graph, play, show
 from .iterate import Iteration, iterate
 from .label import ColorMap, Label, label
 from .lilypond import lilypond
@@ -454,7 +455,6 @@ __all__ = [
     "Harp",
     "Harpsichord",
     "HorizontalAlignment",
-    "IOManager",
     "ImpreciseMetronomeMarkError",
     "IndexedTweakManager",
     "IndexedTweakManagers",
@@ -705,6 +705,7 @@ __all__ = [
     "index_first",
     "index_last",
     "inspect",
+    "iox",
     "iterate",
     "iterate_leaf_pairs",
     "iterate_pitch_pairs",
