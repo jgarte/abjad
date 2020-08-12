@@ -169,7 +169,7 @@ from .lilypondfile import (
     LilyPondVersionToken,
     PackageGitCommitToken,
 )
-from .lymodel import (
+from .lyproxy import (
     LilyPondContext,
     LilyPondEngraver,
     LilyPondGrob,

@@ -11,7 +11,7 @@ from . import enums, exceptions, mathx, typings
 from .bundle import LilyPondFormatBundle
 from .duration import Duration, Multiplier, NonreducedFraction
 from .lyconst import drums
-from .lymodel import LilyPondContext
+from .lyproxy import LilyPondContext
 from .markups import Markup
 from .new import new
 from .overrides import TweakInterface, override, setting, tweak
