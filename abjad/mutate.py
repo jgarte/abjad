@@ -572,7 +572,7 @@ def eject_contents(argument):
 
         New container is well formed:
 
-        >>> abjad.wellformed(staff)
+        >>> abjad.wf.wellformed(staff)
         True
 
         Old container is empty:
@@ -1109,7 +1109,7 @@ def replace(argument, recipients, wrappers=False):
         (Note("f'4"), None)
         (Note("g'4"), None)
 
-        >>> abjad.wellformed(staff)
+        >>> abjad.wf.wellformed(staff)
         True
 
     ..  container:: example
@@ -1162,7 +1162,7 @@ def replace(argument, recipients, wrappers=False):
         (Note("f'4"), Clef('alto'))
         (Note("g'4"), Clef('alto'))
 
-        >>> abjad.wellformed(staff)
+        >>> abjad.wf.wellformed(staff)
         True
 
     ..  container:: example

@@ -993,7 +993,7 @@ class Container(Component):
                     }
                 }
 
-            >>> abjad.wellformed(voice)
+            >>> abjad.wf.wellformed(voice)
             True
 
             First tuplet must have start slur removed:
@@ -1012,7 +1012,7 @@ class Container(Component):
                     e'4
                 }
 
-            >>> abjad.wellformed(tuplet_1)
+            >>> abjad.wf.wellformed(tuplet_1)
             True
 
         Returns none.

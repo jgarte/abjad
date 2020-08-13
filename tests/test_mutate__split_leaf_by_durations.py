@@ -40,7 +40,7 @@ def test_mutate__split_leaf_by_durations_01():
         """
     ), print(abjad.lilypond(staff))
 
-    assert abjad.wellformed(staff)
+    assert abjad.wf.wellformed(staff)
 
 
 def test_mutate__split_leaf_by_durations_02():
@@ -77,7 +77,7 @@ def test_mutate__split_leaf_by_durations_02():
         """
     ), print(abjad.lilypond(staff))
 
-    assert abjad.wellformed(staff)
+    assert abjad.wf.wellformed(staff)
 
 
 def test_mutate__split_leaf_by_durations_03():
@@ -114,7 +114,7 @@ def test_mutate__split_leaf_by_durations_05():
     abjad.mutate._split_leaf_by_durations(staff[0], [abjad.Duration(1, 8)])
 
     assert len(staff) == 2
-    assert abjad.wellformed(staff)
+    assert abjad.wf.wellformed(staff)
 
 
 def test_mutate__split_leaf_by_durations_06():
@@ -143,7 +143,7 @@ def test_mutate__split_leaf_by_durations_06():
         """
     ), print(abjad.lilypond(staff))
 
-    assert abjad.wellformed(staff)
+    assert abjad.wf.wellformed(staff)
 
 
 def test_mutate__split_leaf_by_durations_07():
@@ -175,7 +175,7 @@ def test_mutate__split_leaf_by_durations_07():
 
     assert abjad.inspect(new_leaves[0]).after_grace_container() is None
     assert len(abjad.inspect(new_leaves[1]).after_grace_container()) == 1
-    abjad.wellformed(staff)
+    abjad.wf.wellformed(staff)
 
 
 def test_mutate__split_leaf_by_durations_08():
@@ -207,7 +207,7 @@ def test_mutate__split_leaf_by_durations_08():
         """
     ), print(abjad.lilypond(staff))
 
-    abjad.wellformed(staff)
+    abjad.wf.wellformed(staff)
 
 
 def test_mutate__split_leaf_by_durations_09():
@@ -236,7 +236,7 @@ def test_mutate__split_leaf_by_durations_09():
         """
     ), print(abjad.lilypond(staff))
 
-    abjad.wellformed(staff)
+    abjad.wf.wellformed(staff)
 
 
 def test_mutate__split_leaf_by_durations_10():
@@ -301,4 +301,4 @@ def test_mutate__split_leaf_by_durations_10():
         """
     ), print(abjad.lilypond(staff))
 
-    assert abjad.wellformed(staff)
+    assert abjad.wf.wellformed(staff)

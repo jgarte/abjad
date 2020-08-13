@@ -62,7 +62,7 @@ def test_mutate_replace_01():
         """
     ), print(abjad.lilypond(staff))
 
-    assert abjad.wellformed(staff)
+    assert abjad.wf.wellformed(staff)
 
 
 def test_mutate_replace_02():
@@ -123,7 +123,7 @@ def test_mutate_replace_02():
         """
     ), print(abjad.lilypond(staff))
 
-    assert abjad.wellformed(staff)
+    assert abjad.wf.wellformed(staff)
 
 
 def test_mutate_replace_03():
@@ -182,7 +182,7 @@ def test_mutate_replace_03():
         """
     ), print(abjad.lilypond(staff))
 
-    assert abjad.wellformed(staff)
+    assert abjad.wf.wellformed(staff)
 
 
 def test_mutate_replace_04():
@@ -239,7 +239,7 @@ def test_mutate_replace_04():
         """
     ), print(abjad.lilypond(staff))
 
-    assert abjad.wellformed(staff)
+    assert abjad.wf.wellformed(staff)
 
 
 def test_mutate_replace_05():
@@ -294,7 +294,7 @@ def test_mutate_replace_05():
         """
     ), print(abjad.lilypond(staff))
 
-    assert abjad.wellformed(staff)
+    assert abjad.wf.wellformed(staff)
 
 
 def test_mutate_replace_06():
@@ -347,4 +347,4 @@ def test_mutate_replace_06():
     ), print(abjad.lilypond(staff))
 
     assert not voice
-    assert abjad.wellformed(staff)
+    assert abjad.wf.wellformed(staff)

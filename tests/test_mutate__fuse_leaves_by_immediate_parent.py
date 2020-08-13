@@ -29,7 +29,7 @@ def test_mutate__fuse_leaves_by_immediate_parent_01():
     ), print(abjad.lilypond(staff))
 
     assert len(result) == 2
-    assert abjad.wellformed(staff)
+    assert abjad.wf.wellformed(staff)
 
 
 def test_mutate__fuse_leaves_by_immediate_parent_02():
@@ -67,7 +67,7 @@ def test_mutate__fuse_leaves_by_immediate_parent_02():
         """
     ), print(abjad.lilypond(staff))
 
-    assert abjad.wellformed(staff)
+    assert abjad.wf.wellformed(staff)
     assert len(result) == 1
 
 
@@ -80,4 +80,4 @@ def test_mutate__fuse_leaves_by_immediate_parent_03():
     logical_tie = abjad.inspect(note).logical_tie()
     result = abjad.mutate._fuse_leaves_by_immediate_parent(logical_tie)
     assert len(result) == 1
-    assert abjad.wellformed(note)
+    assert abjad.wf.wellformed(note)

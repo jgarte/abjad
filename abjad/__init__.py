@@ -12,6 +12,7 @@ from . import (
     makers,
     mutate,
     persist,
+    wf,
 )
 from ._version import __version__, __version_info__
 from .attach import Wrapper, annotate, attach, detach
@@ -364,7 +365,6 @@ from .verticalmoment import (
     iterate_pitch_pairs,
     iterate_vertical_moments,
 )
-from .wellformedness import Wellformedness, wellformed
 
 index = Pattern.index
 index_all = Pattern.index_all
@@ -675,7 +675,6 @@ __all__ = [
     "Viola",
     "Violin",
     "Voice",
-    "Wellformedness",
     "WellformednessError",
     "WoodwindFingering",
     "Wrapper",
@@ -741,6 +740,6 @@ __all__ = [
     "timespan",
     "trill_spanner",
     "tweak",
-    "wellformed",
+    "wf",
     "yield_all_modules",
 ]

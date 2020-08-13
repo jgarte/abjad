@@ -65,7 +65,7 @@ def test_mutate__split_container_by_duration_01():
         """
     ), print(abjad.lilypond(staff))
 
-    assert abjad.wellformed(staff)
+    assert abjad.wf.wellformed(staff)
 
 
 def test_mutate__split_container_by_duration_02():
@@ -137,4 +137,4 @@ def test_mutate__split_container_by_duration_02():
         """
     ), print(abjad.lilypond(staff))
 
-    assert abjad.wellformed(staff)
+    assert abjad.wf.wellformed(staff)

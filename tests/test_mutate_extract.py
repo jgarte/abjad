@@ -45,8 +45,8 @@ def test_mutate_extract_01():
         """
     ), print(abjad.lilypond(voice))
 
-    assert abjad.wellformed(note)
-    assert abjad.wellformed(voice)
+    assert abjad.wf.wellformed(note)
+    assert abjad.wf.wellformed(voice)
 
 
 def test_mutate_extract_02():
@@ -92,9 +92,9 @@ def test_mutate_extract_02():
     ), print(abjad.lilypond(voice))
 
     for note in notes:
-        assert abjad.wellformed(note)
+        assert abjad.wf.wellformed(note)
 
-    assert abjad.wellformed(voice)
+    assert abjad.wf.wellformed(voice)
 
 
 def test_mutate_extract_03():
@@ -146,7 +146,7 @@ def test_mutate_extract_03():
     ), print(abjad.lilypond(staff))
 
     assert not container
-    assert abjad.wellformed(staff)
+    assert abjad.wf.wellformed(staff)
 
 
 def test_mutate_extract_04():
@@ -219,4 +219,4 @@ def test_mutate_extract_04():
     for container in containers:
         assert not container
 
-    assert abjad.wellformed(voice)
+    assert abjad.wf.wellformed(voice)

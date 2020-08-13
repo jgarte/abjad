@@ -42,7 +42,7 @@ def test_mutate__set_leaf_duration_01():
         """
     ), print(abjad.lilypond(voice))
 
-    assert abjad.wellformed(voice)
+    assert abjad.wf.wellformed(voice)
 
 
 def test_mutate__set_leaf_duration_02():
@@ -90,7 +90,7 @@ def test_mutate__set_leaf_duration_02():
         """
     ), print(abjad.lilypond(voice))
 
-    assert abjad.wellformed(voice)
+    assert abjad.wf.wellformed(voice)
 
 
 def test_mutate__set_leaf_duration_03():
@@ -132,7 +132,7 @@ def test_mutate__set_leaf_duration_03():
         """
     ), print(abjad.lilypond(voice))
 
-    assert abjad.wellformed(voice)
+    assert abjad.wf.wellformed(voice)
 
 
 def test_mutate__set_leaf_duration_04():
@@ -180,7 +180,7 @@ def test_mutate__set_leaf_duration_04():
         """
     ), print(abjad.lilypond(voice))
 
-    assert abjad.wellformed(voice)
+    assert abjad.wf.wellformed(voice)
 
 
 def test_mutate__set_leaf_duration_05():
@@ -225,7 +225,7 @@ def test_mutate__set_leaf_duration_05():
         """
     ), print(abjad.lilypond(voice))
 
-    assert abjad.wellformed(voice)
+    assert abjad.wf.wellformed(voice)
 
 
 def test_mutate__set_leaf_duration_06():
@@ -241,7 +241,7 @@ def test_mutate__set_leaf_duration_06():
 
     abjad.mutate._set_leaf_duration(note, abjad.Duration(1, 32))
 
-    assert abjad.wellformed(note)
+    assert abjad.wf.wellformed(note)
     assert abjad.lilypond(note) == "c'8 * 1/4"
 
 
@@ -258,7 +258,7 @@ def test_mutate__set_leaf_duration_07():
 
     abjad.mutate._set_leaf_duration(note, abjad.Duration(3, 32))
 
-    assert abjad.wellformed(note)
+    assert abjad.wf.wellformed(note)
     assert abjad.lilypond(note) == "c'8 * 3/4"
 
 
@@ -275,7 +275,7 @@ def test_mutate__set_leaf_duration_08():
 
     abjad.mutate._set_leaf_duration(note, abjad.Duration(5, 32))
 
-    assert abjad.wellformed(note)
+    assert abjad.wf.wellformed(note)
     assert abjad.lilypond(note) == "c'8 * 5/4"
 
 
@@ -292,7 +292,7 @@ def test_mutate__set_leaf_duration_09():
 
     abjad.mutate._set_leaf_duration(note, abjad.Duration(1, 24))
 
-    assert abjad.wellformed(note)
+    assert abjad.wf.wellformed(note)
     assert abjad.lilypond(note) == "c'8 * 1/3"
 
 
@@ -309,7 +309,7 @@ def test_mutate__set_leaf_duration_10():
 
     abjad.mutate._set_leaf_duration(note, abjad.Duration(5, 24))
 
-    assert abjad.wellformed(note)
+    assert abjad.wf.wellformed(note)
     assert abjad.lilypond(note) == "c'8 * 5/3"
 
 
@@ -352,4 +352,4 @@ def test_mutate__set_leaf_duration_11():
         """
     ), print(abjad.lilypond(voice))
 
-    assert abjad.wellformed(voice)
+    assert abjad.wf.wellformed(voice)

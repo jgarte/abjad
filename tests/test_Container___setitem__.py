@@ -37,7 +37,7 @@ def test_Container___setitem___01():
         """
     )
 
-    assert abjad.wellformed(voice)
+    assert abjad.wf.wellformed(voice)
 
 
 def test_Container___setitem___02():
@@ -80,7 +80,7 @@ def test_Container___setitem___02():
         """
     )
 
-    assert abjad.wellformed(voice)
+    assert abjad.wf.wellformed(voice)
 
 
 def test_Container___setitem___03():
@@ -124,7 +124,7 @@ def test_Container___setitem___03():
         """
     )
 
-    assert abjad.wellformed(voice)
+    assert abjad.wf.wellformed(voice)
 
 
 def test_Container___setitem___04():
@@ -174,7 +174,7 @@ def test_Container___setitem___04():
         """
     ), print(abjad.lilypond(voice))
 
-    assert abjad.wellformed(voice)
+    assert abjad.wf.wellformed(voice)
 
 
 def test_Container___setitem___05():
@@ -218,7 +218,7 @@ def test_Container___setitem___05():
         """
     ), print(abjad.lilypond(voice))
 
-    assert abjad.wellformed(voice)
+    assert abjad.wf.wellformed(voice)
 
 
 def test_Container___setitem___06():
@@ -268,7 +268,7 @@ def test_Container___setitem___06():
         """
     ), print(abjad.lilypond(voice))
 
-    assert abjad.wellformed(voice)
+    assert abjad.wf.wellformed(voice)
 
 
 def test_Container___setitem___07():
@@ -332,7 +332,7 @@ def test_Container___setitem___07():
         """
     ), print(abjad.lilypond(voice_1))
 
-    assert abjad.wellformed(voice_1)
+    assert abjad.wf.wellformed(voice_1)
 
     assert abjad.lilypond(voice_2) == abjad.String.normalize(
         r"""
@@ -346,7 +346,7 @@ def test_Container___setitem___07():
         """
     ), print(abjad.lilypond(voice_2))
 
-    assert abjad.wellformed(voice_2)
+    assert abjad.wf.wellformed(voice_2)
 
 
 def test_Container___setitem___08():
@@ -421,7 +421,7 @@ def test_Container___setitem___08():
         """
     ), print(abjad.lilypond(voice_1))
 
-    assert abjad.wellformed(voice_1)
+    assert abjad.wf.wellformed(voice_1)
 
     assert abjad.lilypond(voice_2) == abjad.String.normalize(
         r"""
@@ -433,7 +433,7 @@ def test_Container___setitem___08():
         """
     ), print(abjad.lilypond(voice_2))
 
-    assert abjad.wellformed(voice_2)
+    assert abjad.wf.wellformed(voice_2)
 
 
 def test_Container___setitem___09():
@@ -455,7 +455,7 @@ def test_Container___setitem___09():
         """
     ), print(abjad.lilypond(staff))
 
-    assert abjad.wellformed(staff)
+    assert abjad.wf.wellformed(staff)
 
 
 def test_Container___setitem___10():
@@ -481,7 +481,7 @@ def test_Container___setitem___10():
         """
     ), print(abjad.lilypond(staff))
 
-    assert abjad.wellformed(staff)
+    assert abjad.wf.wellformed(staff)
 
 
 def test_Container___setitem___11():
@@ -535,7 +535,7 @@ def test_Container___setitem___11():
         """
     ), print(abjad.lilypond(staff))
 
-    assert abjad.wellformed(staff)
+    assert abjad.wf.wellformed(staff)
 
 
 def test_Container___setitem___12():
@@ -559,7 +559,7 @@ def test_Container___setitem___12():
         """
     ), print(abjad.lilypond(staff))
 
-    assert abjad.wellformed(staff)
+    assert abjad.wf.wellformed(staff)
 
 
 def test_Container___setitem___13():
@@ -585,7 +585,7 @@ def test_Container___setitem___13():
         """
     ), print(abjad.lilypond(staff))
 
-    assert abjad.wellformed(staff)
+    assert abjad.wf.wellformed(staff)
 
 
 def test_Container___setitem___14():
@@ -630,7 +630,7 @@ def test_Container___setitem___14():
         """
     ), print(abjad.lilypond(staff))
 
-    assert abjad.wellformed(staff)
+    assert abjad.wf.wellformed(staff)
     assert len(container) == 0
 
 
@@ -679,7 +679,7 @@ def test_Container___setitem___15():
         """
     ), print(abjad.lilypond(staff))
 
-    assert abjad.wellformed(staff)
+    assert abjad.wf.wellformed(staff)
 
 
 def test_Container___setitem___16():
@@ -782,7 +782,7 @@ def test_Container___setitem___17():
         """
     ), print(abjad.lilypond(staff))
 
-    assert abjad.wellformed(staff)
+    assert abjad.wf.wellformed(staff)
 
 
 def test_Container___setitem___18():
@@ -823,7 +823,7 @@ def test_Container___setitem___18():
         """
     ), print(abjad.lilypond(voice))
 
-    assert abjad.wellformed(voice)
+    assert abjad.wf.wellformed(voice)
 
 
 def test_Container___setitem___19():
@@ -847,7 +847,7 @@ def test_Container___setitem___19():
         """
     ), print(abjad.lilypond(voice))
 
-    assert abjad.wellformed(voice)
+    assert abjad.wf.wellformed(voice)
 
 
 def test_Container___setitem___20():

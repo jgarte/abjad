@@ -65,8 +65,8 @@ def test_mutate_copy_01():
         """,
         print(abjad.lilypond(new)),
     )
-    assert abjad.wellformed(staff)
-    assert abjad.wellformed(new)
+    assert abjad.wf.wellformed(staff)
+    assert abjad.wf.wellformed(new)
 
 
 def test_mutate_copy_02():
@@ -134,8 +134,8 @@ def test_mutate_copy_02():
         """
     ), print(abjad.lilypond(new))
 
-    assert abjad.wellformed(staff)
-    assert abjad.wellformed(new)
+    assert abjad.wf.wellformed(staff)
+    assert abjad.wf.wellformed(new)
 
 
 def test_mutate_copy_03():
@@ -205,8 +205,8 @@ def test_mutate_copy_03():
         """
     ), print(abjad.lilypond(new))
 
-    assert abjad.wellformed(staff)
-    assert abjad.wellformed(new)
+    assert abjad.wf.wellformed(staff)
+    assert abjad.wf.wellformed(new)
 
 
 def test_mutate_copy_04():
@@ -294,7 +294,7 @@ def test_mutate_copy_04():
         """
     ), print(abjad.lilypond(new_staff))
 
-    assert abjad.wellformed(new_staff)
+    assert abjad.wf.wellformed(new_staff)
 
 
 def test_mutate_copy_05():
@@ -374,8 +374,8 @@ def test_mutate_copy_05():
         """
     ), print(abjad.lilypond(new_staff))
 
-    assert abjad.wellformed(staff)
-    assert abjad.wellformed(new_staff)
+    assert abjad.wf.wellformed(staff)
+    assert abjad.wf.wellformed(new_staff)
 
 
 def test_mutate_copy_06():
@@ -449,8 +449,8 @@ def test_mutate_copy_06():
         """
     ), print(abjad.lilypond(new_staff))
 
-    assert abjad.wellformed(staff)
-    assert abjad.wellformed(new_staff)
+    assert abjad.wf.wellformed(staff)
+    assert abjad.wf.wellformed(new_staff)
 
 
 def test_mutate_copy_07():
@@ -525,8 +525,8 @@ def test_mutate_copy_07():
         """
     ), print(abjad.lilypond(new_staff))
 
-    assert abjad.wellformed(staff)
-    assert abjad.wellformed(new_staff)
+    assert abjad.wf.wellformed(staff)
+    assert abjad.wf.wellformed(new_staff)
 
 
 def test_mutate_copy_08():
@@ -581,4 +581,4 @@ def test_mutate_copy_08():
         }
         """
     )
-    assert abjad.wellformed(staff)
+    assert abjad.wf.wellformed(staff)
