@@ -5103,7 +5103,7 @@ class Selection(collections.abc.Sequence):
 
         ..  container:: example
 
-            Excludes leaves with ``abjad.const.HIDDEN`` indicator:
+            Excludes leaves with ``"HIDDEN"`` indicator:
 
             ..  container:: example
 
@@ -5111,12 +5111,12 @@ class Selection(collections.abc.Sequence):
                 ...     \times 2/3 { r8 d' e' } f' r
                 ...     r f' \times 2/3 { e' d' r8 }
                 ...     """)
-                >>> abjad.attach(abjad.const.HIDDEN, staff[-1][-2])
-                >>> abjad.attach(abjad.const.HIDDEN, staff[-1][-1])
+                >>> abjad.attach("HIDDEN", staff[-1][-2])
+                >>> abjad.attach("HIDDEN", staff[-1][-1])
                 >>> abjad.setting(staff).auto_beaming = False
                 >>> abjad.show(staff) # doctest: +SKIP
 
-                >>> result = abjad.select(staff).leaves(exclude=abjad.const.HIDDEN)
+                >>> result = abjad.select(staff).leaves(exclude="HIDDEN")
 
                 >>> for item in result:
                 ...     item
@@ -5132,7 +5132,7 @@ class Selection(collections.abc.Sequence):
 
             ..  container:: example expression
 
-                >>> selector = abjad.select().leaves(exclude=abjad.const.HIDDEN)
+                >>> selector = abjad.select().leaves(exclude="HIDDEN")
                 >>> result = selector(staff)
 
                 >>> selector.print(result)

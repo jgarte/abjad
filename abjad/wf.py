@@ -1,6 +1,6 @@
 import typing
 
-from . import _inspect, const
+from . import _inspect
 from .duration import Duration
 from .indicators.Clef import Clef
 from .indicators.StartBeam import StartBeam
@@ -15,7 +15,6 @@ from .iterpitches import sounding_pitches_are_in_range
 from .parentage import Parentage
 from .score import Container, Context
 from .sequence import Sequence
-from .storage import StorageFormatManager
 from .tag import Tag
 
 ### PRIVATE FUNCTIONS ###
@@ -363,7 +362,7 @@ def check_out_of_range_pitches(argument) -> typing.Tuple[typing.List, int]:
         >>> staff = abjad.Staff("c'8 r8 <d fs>8 r8")
         >>> violin = abjad.Violin()
         >>> abjad.attach(violin, staff[0])
-        >>> abjad.attach(abjad.const.ALLOW_OUT_OF_RANGE, staff[2])
+        >>> abjad.attach("ALLOW_OUT_OF_RANGE", staff[2])
         >>> abjad.show(staff) # doctest: +SKIP
 
         ..  docs::
@@ -393,9 +392,9 @@ def check_out_of_range_pitches(argument) -> typing.Tuple[typing.List, int]:
     violators, total = [], set()
     for leaf in Iteration(argument).leaves(pitched=True):
         total.add(leaf)
-        if leaf._has_indicator(const.ALLOW_OUT_OF_RANGE):
+        if leaf._has_indicator("ALLOW_OUT_OF_RANGE"):
             continue
-        if leaf._has_indicator(const.HIDDEN):
+        if leaf._has_indicator("HIDDEN"):
             continue
         if "unpitched" in argument._get_indicators(str):
             continue
