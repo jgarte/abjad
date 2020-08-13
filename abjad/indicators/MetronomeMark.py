@@ -5,10 +5,9 @@ import typing
 
 import quicktions
 
-from .. import exceptions, mathx, typings
+from .. import enumeratex, exceptions, mathx, typings
 from ..bundle import LilyPondFormatBundle
 from ..duration import Duration, Multiplier, NonreducedFraction
-from ..enumeratex import Enumerator
 from ..markups import Markup
 from ..new import new
 from ..ratio import Ratio
@@ -1159,8 +1158,7 @@ class MetronomeMark:
         allowable_numerators = range(1, maximum_numerator + 1)
         allowable_denominators = range(1, maximum_denominator + 1)
         numbers = [allowable_numerators, allowable_denominators]
-        enumerator = Enumerator(numbers)
-        pairs = enumerator.yield_outer_product()
+        pairs = enumeratex.yield_outer_product(numbers)
         multipliers = [Multiplier(_) for _ in pairs]
         multipliers = [
             _

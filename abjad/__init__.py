@@ -4,6 +4,7 @@ from . import (
     cli,
     demos,
     deprecated,
+    enumeratex,
     illustrators,
     iox,
     iterpitches,
@@ -36,7 +37,6 @@ from .contextmanagers import (
 )
 from .cyclictuple import CyclicTuple
 from .duration import Duration, Multiplier, NonreducedFraction, Offset
-from .enumeratex import Enumerator
 from .enums import (
     Both,
     Center,
@@ -437,7 +437,6 @@ __all__ = [
     "DurationTyping",
     "Dynamic",
     "EnglishHorn",
-    "Enumerator",
     "Exact",
     "Expression",
     "Fermata",
@@ -691,6 +690,7 @@ __all__ = [
     "demos",
     "deprecated",
     "detach",
+    "enumeratex",
     "f",
     "glissando",
     "graph",
