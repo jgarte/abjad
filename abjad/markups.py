@@ -8,6 +8,7 @@ import typing
 import quicktions
 
 from . import enums, mathx
+from . import tag as _tag
 from .bundle import LilyPondFormatBundle
 from .lyconst import colors
 from .lyenv import music_glyphs
@@ -16,7 +17,6 @@ from .overrides import TweakInterface
 from .scheme import Scheme, SchemeColor, SchemePair
 from .storage import FormatSpecification, StorageFormatManager
 from .stringx import String
-from .tag import Tag
 from .typedcollections import TypedList
 
 
@@ -3038,7 +3038,7 @@ class MarkupCommand:
         indent = LilyPondFormatBundle.indent
         parts = [rf"\{self.name}"]
         parts.extend(recurse(self.arguments))
-        parts = Tag.tag(parts, self.tag, deactivate=self.deactivate)
+        parts = _tag.tag(parts, self.tag, deactivate=self.deactivate)
         return parts
 
     def _get_format_specification(self):
@@ -3172,7 +3172,7 @@ class MarkupCommand:
     @tag.setter
     def tag(self, argument):
         if argument is not None:
-            tag = Tag(argument)
+            tag = _tag.Tag(argument)
         else:
             tag = None
         self._tag = tag

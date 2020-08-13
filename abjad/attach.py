@@ -3,10 +3,10 @@ import importlib
 import typing
 
 from . import _inspect, exceptions
+from . import tag as _tag
 from .duration import Multiplier, Offset
 from .score import AfterGraceContainer, BeforeGraceContainer, Component, Container, Leaf
 from .storage import FormatSpecification, StorageFormatManager, storage
-from .tag import Tag
 
 
 class Wrapper:
@@ -140,7 +140,7 @@ class Wrapper:
         deactivate: bool = None,
         indicator: typing.Any = None,
         synthetic_offset: int = None,
-        tag: typing.Union[str, Tag] = None,
+        tag: typing.Union[str, _tag.Tag] = None,
     ) -> None:
         assert not isinstance(indicator, type(self)), repr(indicator)
         if annotation is not None:
@@ -163,9 +163,9 @@ class Wrapper:
             synthetic_offset = Offset(synthetic_offset)
         self._synthetic_offset = synthetic_offset
         if tag is not None:
-            assert isinstance(tag, (str, Tag))
-        tag = Tag(tag)
-        self._tag: Tag = tag
+            assert isinstance(tag, (str, _tag.Tag))
+        tag = _tag.Tag(tag)
+        self._tag: _tag.Tag = tag
         if component is not None:
             self._bind_component(component)
 
@@ -418,7 +418,9 @@ class Wrapper:
         if isinstance(lilypond_format, str):
             lilypond_format = [lilypond_format]
         assert isinstance(lilypond_format, (tuple, list))
-        lilypond_format = Tag.tag(lilypond_format, self.tag, deactivate=self.deactivate)
+        lilypond_format = _tag.tag(
+            lilypond_format, self.tag, deactivate=self.deactivate
+        )
         result.extend(lilypond_format)
         if self._get_effective_context() is not None:
             return result
@@ -645,18 +647,18 @@ class Wrapper:
         return self._synthetic_offset
 
     @property
-    def tag(self) -> Tag:
+    def tag(self) -> _tag.Tag:
         """
         Gets and sets tag.
         """
-        assert isinstance(self._tag, Tag), repr(self._tag)
+        assert isinstance(self._tag, _tag.Tag), repr(self._tag)
         return self._tag
 
     @tag.setter
     def tag(self, argument):
-        if not isinstance(argument, (str, Tag)):
+        if not isinstance(argument, (str, _tag.Tag)):
             raise Exception(f"string or tag: {argument!r}.")
-        tag = Tag(argument)
+        tag = _tag.Tag(argument)
         self._tag = tag
 
 
@@ -696,7 +698,7 @@ def annotate(component, annotation, indicator) -> None:
         99
 
     """
-    if isinstance(annotation, Tag):
+    if isinstance(annotation, _tag.Tag):
         message = "use the tag=None keyword instead of annotate():\n"
         message += f"   {repr(annotation)}"
         raise Exception(message)
@@ -913,12 +915,12 @@ def attach(  # noqa: 302
 
     Otherwise returns none.
     """
-    if isinstance(attachable, Tag):
+    if isinstance(attachable, _tag.Tag):
         message = "use the tag=None keyword instead of attach():\n"
         message += f"   {repr(attachable)}"
         raise Exception(message)
 
-    if tag is not None and not isinstance(tag, Tag):
+    if tag is not None and not isinstance(tag, _tag.Tag):
         raise Exception(f"must be be tag: {repr(tag)}")
 
     if isinstance(attachable, Multiplier):
@@ -958,7 +960,7 @@ def attach(  # noqa: 302
 
     if isinstance(target, Container):
         acceptable = False
-        if isinstance(attachable, (dict, str, Tag, Wrapper)):
+        if isinstance(attachable, (dict, str, _tag.Tag, Wrapper)):
             acceptable = True
         if getattr(attachable, "_can_attach_to_containers", False):
             acceptable = True

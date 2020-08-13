@@ -1,9 +1,9 @@
 from . import enums
+from . import tag as _tag
 from .bundle import LilyPondFormatBundle
 from .new import new
 from .overrides import override, setting
 from .storage import StorageFormatManager, storage
-from .tag import Tag
 
 
 class LilyPondFormatManager:
@@ -171,7 +171,7 @@ class LilyPondFormatManager:
                 else:
                     markup = wrapper.indicator
                 format_pieces = markup._get_format_pieces()
-                format_pieces = Tag.tag(
+                format_pieces = _tag.tag(
                     format_pieces, wrapper.tag, deactivate=wrapper.deactivate
                 )
                 bundle.after.markup.extend(format_pieces)
