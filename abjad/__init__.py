@@ -6,6 +6,7 @@ from . import (
     deprecated,
     enumeratex,
     illustrators,
+    inspectx,
     iox,
     iterpitches,
     lyconst,
@@ -115,7 +116,7 @@ from .indicators.StringContactPoint import StringContactPoint
 from .indicators.Tie import Tie
 from .indicators.TimeSignature import TimeSignature
 from .indicators.WoodwindFingering import WoodwindFingering
-from .inspectx import Descendants, Inspection, Lineage, inspect
+from .inspectx import Descendants, Lineage
 from .instruments import (
     Accordion,
     AltoFlute,
@@ -459,7 +460,6 @@ __all__ = [
     "IndexedTweakManagers",
     "Inequality",
     "Infinity",
-    "Inspection",
     "Instrument",
     "IntegerPair",
     "IntegerSequence",
@@ -702,7 +702,7 @@ __all__ = [
     "index_all",
     "index_first",
     "index_last",
-    "inspect",
+    "inspectx",
     "iox",
     "iterate",
     "iterate_leaf_pairs",

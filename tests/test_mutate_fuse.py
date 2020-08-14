@@ -89,7 +89,7 @@ def test_mutate_fuse_05():
         """
     ), print(abjad.lilypond(staff))
 
-    assert abjad.inspect(staff).duration() == abjad.Duration(3, 8)
+    assert abjad.inspectx.duration(staff) == abjad.Duration(3, 8)
 
     abjad.mutate.fuse(staff[:])
 
@@ -102,7 +102,7 @@ def test_mutate_fuse_05():
         """
     )
 
-    assert abjad.inspect(staff).duration() == abjad.Duration(3, 8)
+    assert abjad.inspectx.duration(staff) == abjad.Duration(3, 8)
     assert abjad.wf.wellformed(staff)
 
 

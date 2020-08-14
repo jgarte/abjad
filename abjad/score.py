@@ -4920,12 +4920,12 @@ class TremoloContainer(Container):
 
         Duration of container equal to contents duration multiplied by count:
 
-        >>> abjad.inspect(staff[0]).duration()
+        >>> abjad.inspectx.duration(staff[0])
         Duration(1, 4)
 
         Duration of each leaf equal to written duration multiplied by count:
 
-        >>> abjad.inspect(staff[0][0]).duration()
+        >>> abjad.inspectx.duration(staff[0][0])
         Duration(1, 8)
 
     """
@@ -5481,7 +5481,7 @@ class Tuplet(Container):
             Ignored when tuplet number text is overridden explicitly:
 
             >>> tuplet = abjad.Tuplet((2, 3), "c'8 d'8 e'8")
-            >>> duration = abjad.inspect(tuplet).duration()
+            >>> duration = abjad.inspectx.duration(tuplet)
             >>> note = abjad.Note.from_pitch_and_duration(0, duration)
             >>> markup = abjad.illustrators.selection_to_score_markup([note])
             >>> abjad.override(tuplet).tuplet_number.text = markup
@@ -6810,7 +6810,7 @@ class Voice(Context):
             }
 
         >>> for leaf in abjad.iterate(outer_red_voice).leaves():
-        ...     dynamic = abjad.inspect(leaf).effective(abjad.Dynamic)
+        ...     dynamic = abjad.inspectx.effective(leaf, abjad.Dynamic)
         ...     print(leaf, dynamic)
         ...
         e''8 Dynamic('f')
@@ -6882,7 +6882,7 @@ class Voice(Context):
             }
 
         >>> for leaf in abjad.iterate(outer_red_voice).leaves():
-        ...     dynamic = abjad.inspect(leaf).effective(abjad.Dynamic)
+        ...     dynamic = abjad.inspectx.effective(leaf, abjad.Dynamic)
         ...     print(leaf, dynamic)
         ...
         e''8 None
@@ -6954,7 +6954,7 @@ class Voice(Context):
             }
 
         >>> for leaf in abjad.iterate(outer_red_voice).leaves():
-        ...     dynamic = abjad.inspect(leaf).effective(abjad.Dynamic)
+        ...     dynamic = abjad.inspectx.effective(leaf, abjad.Dynamic)
         ...     print(leaf, dynamic)
         ...
         e''8 None
@@ -7029,7 +7029,7 @@ class Voice(Context):
             }
 
         >>> for leaf in abjad.iterate(outer_red_voice).leaves():
-        ...     dynamic = abjad.inspect(leaf).effective(abjad.Dynamic)
+        ...     dynamic = abjad.inspectx.effective(leaf, abjad.Dynamic)
         ...     print(leaf, dynamic)
         ...
         e''8 None

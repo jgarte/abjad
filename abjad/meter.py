@@ -1396,7 +1396,8 @@ class Meter:
             Without constraining the ``maximum_dot_count``:
 
             >>> measure = staff[0]
-            >>> time_signature = abjad.inspect(measure[0]).indicator(
+            >>> time_signature = abjad.inspectx.indicator(
+            ...     measure[0],
             ...     abjad.TimeSignature
             ...     )
             >>> abjad.Meter.rewrite_meter(measure[:], time_signature)
@@ -1427,7 +1428,8 @@ class Meter:
             >>> staff = abjad.Staff()
             >>> staff.append(container)
             >>> measure = staff[0]
-            >>> time_signature = abjad.inspect(measure[0]).indicator(
+            >>> time_signature = abjad.inspectx.indicator(
+            ...     measure[0],
             ...     abjad.TimeSignature
             ...     )
             >>> abjad.Meter.rewrite_meter(
@@ -1464,7 +1466,8 @@ class Meter:
             >>> staff = abjad.Staff()
             >>> staff.append(container)
             >>> measure = staff[0]
-            >>> time_signature = abjad.inspect(measure[0]).indicator(
+            >>> time_signature = abjad.inspectx.indicator(
+            ...     measure[0],
             ...     abjad.TimeSignature
             ...     )
             >>> abjad.Meter.rewrite_meter(
@@ -1503,7 +1506,8 @@ class Meter:
             >>> staff = abjad.Staff()
             >>> staff.append(container)
             >>> measure = staff[0]
-            >>> time_signature = abjad.inspect(measure[0]).indicator(
+            >>> time_signature = abjad.inspectx.indicator(
+            ...     measure[0],
             ...     abjad.TimeSignature
             ...     )
             >>> abjad.Meter.rewrite_meter(
@@ -1588,7 +1592,8 @@ class Meter:
                 }
 
             >>> measure = staff[0]
-            >>> time_signature = abjad.inspect(measure[0]).indicator(
+            >>> time_signature = abjad.inspectx.indicator(
+            ...     measure[0],
             ...     abjad.TimeSignature
             ...     )
             >>> abjad.Meter.rewrite_meter(measure[:], time_signature)
@@ -1619,7 +1624,8 @@ class Meter:
             >>> staff = abjad.Staff()
             >>> staff.append(container)
             >>> measure = staff[0]
-            >>> time_signature = abjad.inspect(measure[0]).indicator(
+            >>> time_signature = abjad.inspectx.indicator(
+            ...     measure[0],
             ...     abjad.TimeSignature
             ...     )
             >>> abjad.Meter.rewrite_meter(
@@ -1655,7 +1661,8 @@ class Meter:
             >>> staff = abjad.Staff()
             >>> staff.append(container)
             >>> measure = staff[0]
-            >>> time_signature = abjad.inspect(measure[0]).indicator(
+            >>> time_signature = abjad.inspectx.indicator(
+            ...     measure[0],
             ...     abjad.TimeSignature
             ...     )
             >>> abjad.Meter.rewrite_meter(
@@ -1803,8 +1810,9 @@ class Meter:
 
             >>> for staff in score:
             ...     for container in staff:
-            ...         leaf = abjad.inspect(container).leaf(0)
-            ...         time_signature = abjad.inspect(leaf).indicator(
+            ...         leaf = abjad.inspectx.leaf(container, 0)
+            ...         time_signature = abjad.inspectx.indicator(
+            ...             leaf,
             ...             abjad.TimeSignature
             ...             )
             ...         abjad.Meter.rewrite_meter(container[:], time_signature)
@@ -1904,8 +1912,9 @@ class Meter:
 
             >>> for staff in score:
             ...     for container in staff:
-            ...         leaf = abjad.inspect(container).leaf(0)
-            ...         time_signature = abjad.inspect(leaf).indicator(
+            ...         leaf = abjad.inspectx.leaf(container, 0)
+            ...         time_signature = abjad.inspectx.indicator(
+            ...             leaf,
             ...             abjad.TimeSignature
             ...             )
             ...         abjad.Meter.rewrite_meter(
@@ -2062,7 +2071,8 @@ class Meter:
             of the container's contents:
 
             >>> measure = staff[0]
-            >>> time_signature = abjad.inspect(measure[0]).indicator(
+            >>> time_signature = abjad.inspectx.indicator(
+            ...     measure[0],
             ...     abjad.TimeSignature
             ...     )
             >>> abjad.Meter.rewrite_meter(

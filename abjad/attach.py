@@ -18,7 +18,7 @@ class Wrapper:
         >>> component = abjad.Note("c'4")
         >>> articulation = abjad.Articulation('accent', direction=abjad.Up)
         >>> abjad.attach(articulation, component)
-        >>> wrapper = abjad.inspect(component).wrapper()
+        >>> wrapper = abjad.inspectx.wrapper(component)
 
         >>> abjad.f(wrapper)
         abjad.Wrapper(
@@ -190,7 +190,7 @@ class Wrapper:
             }
 
             >>> leaf = old_staff[0]
-            >>> abjad.inspect(leaf).annotation('bow_direction')
+            >>> abjad.inspectx.annotation(leaf, 'bow_direction')
             Down
 
             >>> new_staff = abjad.mutate.copy(old_staff)
@@ -203,7 +203,7 @@ class Wrapper:
             }
 
             >>> leaf = new_staff[0]
-            >>> abjad.inspect(leaf).annotation("bow_direction")
+            >>> abjad.inspectx.annotation(leaf, "bow_direction")
             Down
 
         ..  container:: example
@@ -223,7 +223,7 @@ class Wrapper:
             }
 
             >>> leaf = old_staff[0]
-            >>> wrapper = abjad.inspect(leaf).wrapper()
+            >>> wrapper = abjad.inspectx.wrapper(leaf)
             >>> abjad.f(wrapper)
             abjad.Wrapper(
                 context='Staff',
@@ -242,7 +242,7 @@ class Wrapper:
             }
 
             >>> leaf = new_staff[0]
-            >>> wrapper = abjad.inspect(leaf).wrapper()
+            >>> wrapper = abjad.inspectx.wrapper(leaf)
             >>> abjad.f(wrapper)
             abjad.Wrapper(
                 context='Staff',
@@ -271,7 +271,7 @@ class Wrapper:
             }
 
             >>> leaf = old_staff[0]
-            >>> wrapper = abjad.inspect(leaf).wrapper()
+            >>> wrapper = abjad.inspectx.wrapper(leaf)
             >>> abjad.f(wrapper)
             abjad.Wrapper(
                 context='Staff',
@@ -291,7 +291,7 @@ class Wrapper:
             }
 
             >>> leaf = new_staff[0]
-            >>> wrapper = abjad.inspect(leaf).wrapper()
+            >>> wrapper = abjad.inspectx.wrapper(leaf)
             >>> abjad.f(wrapper)
             abjad.Wrapper(
                 context='Staff',
@@ -521,7 +521,7 @@ class Wrapper:
             >>> note = abjad.Note("c'4")
             >>> articulation = abjad.Articulation('accent', direction=abjad.Up)
             >>> abjad.attach(articulation, note)
-            >>> wrapper = abjad.inspect(note).wrapper()
+            >>> wrapper = abjad.inspectx.wrapper(note)
             >>> wrapper.annotation is None
             True
 
@@ -530,7 +530,7 @@ class Wrapper:
             >>> note = abjad.Note("c'4")
             >>> articulation = abjad.Articulation('accent', direction=abjad.Up)
             >>> abjad.annotate(note, 'foo', articulation)
-            >>> abjad.inspect(note).annotation('foo')
+            >>> abjad.inspectx.annotation(note, 'foo')
             Articulation('accent', Up)
 
         """
@@ -606,13 +606,13 @@ class Wrapper:
             Start offset and leaked start offset are the same for
             start-text-span:
 
-            >>> wrapper = abjad.inspect(voice[0]).wrapper(abjad.StartTextSpan)
+            >>> wrapper = abjad.inspectx.wrapper(voice[0], abjad.StartTextSpan)
             >>> wrapper.start_offset, wrapper.leaked_start_offset
             (Offset((0, 1)), Offset((0, 1)))
 
             Start offset and leaked start offset differ for stop-text-span:
 
-            >>> wrapper = abjad.inspect(voice[0]).wrapper(abjad.StopTextSpan)
+            >>> wrapper = abjad.inspectx.wrapper(voice[0], abjad.StopTextSpan)
             >>> wrapper.start_offset, wrapper.leaked_start_offset
             (Offset((0, 1)), Offset((1, 2)))
 
@@ -688,13 +688,13 @@ def annotate(component, annotation, indicator) -> None:
                 f'4
             }
 
-        >>> abjad.inspect(staff[0]).annotation('bow_direction')
+        >>> abjad.inspectx.annotation(staff[0], 'bow_direction')
         Down
 
-        >>> abjad.inspect(staff[0]).annotation('bow_fraction') is None
+        >>> abjad.inspectx.annotation(staff[0], 'bow_fraction') is None
         True
 
-        >>> abjad.inspect(staff[0]).annotation('bow_fraction', 99)
+        >>> abjad.inspectx.annotation(staff[0], 'bow_fraction', 99)
         99
 
     """
@@ -790,7 +790,7 @@ def attach(  # noqa: 302
             }
 
         >>> for leaf in abjad.select(staff).leaves():
-        ...     leaf, abjad.inspect(leaf).effective(abjad.Clef)
+        ...     leaf, abjad.inspectx.effective(leaf, abjad.Clef)
         ...
         (Note("c'4"), Clef('alto'))
         (Note("d'4"), Clef('alto'))
@@ -849,7 +849,7 @@ def attach(  # noqa: 302
         are present:
 
         >>> for note in staff:
-        ...     clef = abjad.inspect(staff[0]).effective(abjad.Clef)
+        ...     clef = abjad.inspectx.effective(staff[0], abjad.Clef)
         ...     note, clef
         ...
         (Note("c'4"), Clef('treble'))
@@ -882,7 +882,7 @@ def attach(  # noqa: 302
             }
 
         >>> for note in staff:
-        ...     clef = abjad.inspect(staff[0]).effective(abjad.Clef)
+        ...     clef = abjad.inspectx.effective(staff[0], abjad.Clef)
         ...     note, clef
         ...
         (Note("c'4"), Clef('alto'))
@@ -1181,7 +1181,7 @@ def detach(argument, target=None, by_id=False):
                 f'4
             }
 
-        >>> wrapper = abjad.inspect(staff[0]).wrappers()[0]
+        >>> wrapper = abjad.inspectx.wrappers(staff[0])[0]
         >>> abjad.detach(wrapper, wrapper.component)
         (Wrapper(context='Staff', indicator=Clef('alto'), tag=Tag()),)
 

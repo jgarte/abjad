@@ -55,7 +55,7 @@ def test_mutate__split_leaf_by_durations_02():
     """
 
     staff = abjad.Staff(r"\times 2/3 { c'8 [ d'8 e'8 ] }")
-    leaf = abjad.inspect(staff).leaf(0)
+    leaf = abjad.inspectx.leaf(staff, 0)
     abjad.mutate._split_leaf_by_durations(leaf, [abjad.Duration(1, 20)])
 
     assert abjad.lilypond(staff) == abjad.String.normalize(
@@ -173,8 +173,8 @@ def test_mutate__split_leaf_by_durations_07():
         """
     ), print(abjad.lilypond(staff))
 
-    assert abjad.inspect(new_leaves[0]).after_grace_container() is None
-    assert len(abjad.inspect(new_leaves[1]).after_grace_container()) == 1
+    assert abjad.inspectx.after_grace_container(new_leaves[0]) is None
+    assert len(abjad.inspectx.after_grace_container(new_leaves[1])) == 1
     abjad.wf.wellformed(staff)
 
 

@@ -10,7 +10,7 @@ def test_mutate__fuse_leaves_by_immediate_parent_01():
     leaves = abjad.select(staff).leaves()
     abjad.tie(leaves)
 
-    logical_tie = abjad.inspect(leaves[1]).logical_tie()
+    logical_tie = abjad.inspectx.logical_tie(leaves[1])
     result = abjad.mutate._fuse_leaves_by_immediate_parent(logical_tie)
 
     assert abjad.lilypond(staff) == abjad.String.normalize(
@@ -55,7 +55,7 @@ def test_mutate__fuse_leaves_by_immediate_parent_02():
         """
     ), print(abjad.lilypond(staff))
 
-    logical_tie = abjad.inspect(staff[1]).logical_tie()
+    logical_tie = abjad.inspectx.logical_tie(staff[1])
     result = abjad.mutate._fuse_leaves_by_immediate_parent(logical_tie)
 
     assert abjad.lilypond(staff) == abjad.String.normalize(
@@ -77,7 +77,7 @@ def test_mutate__fuse_leaves_by_immediate_parent_03():
     """
 
     note = abjad.Note("c'4")
-    logical_tie = abjad.inspect(note).logical_tie()
+    logical_tie = abjad.inspectx.logical_tie(note)
     result = abjad.mutate._fuse_leaves_by_immediate_parent(logical_tie)
     assert len(result) == 1
     assert abjad.wf.wellformed(note)
