@@ -5,8 +5,8 @@ from . import (
     demos,
     deprecated,
     enumeratex,
+    get,
     illustrators,
-    inspectx,
     iox,
     iterpitches,
     lyconst,
@@ -65,6 +65,7 @@ from .exceptions import (
 )
 from .expression import Expression, Signature
 from .formatx import LilyPondFormatManager, f
+from .get import Descendants, Lineage
 from .illustrators import illustrate
 from .indicators.Arpeggio import Arpeggio
 from .indicators.Articulation import Articulation
@@ -116,7 +117,6 @@ from .indicators.StringContactPoint import StringContactPoint
 from .indicators.Tie import Tie
 from .indicators.TimeSignature import TimeSignature
 from .indicators.WoodwindFingering import WoodwindFingering
-from .inspectx import Descendants, Lineage
 from .instruments import (
     Accordion,
     AltoFlute,
@@ -702,7 +702,7 @@ __all__ = [
     "index_all",
     "index_first",
     "index_last",
-    "inspectx",
+    "get",
     "iox",
     "iterate",
     "iterate_leaf_pairs",

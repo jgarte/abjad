@@ -281,15 +281,15 @@ def make_mozart_score():
         score["LH_Voice"].append(bass)
     # abjad.attach indicators
     time_signature = abjad.TimeSignature((3, 8))
-    leaf = abjad.inspectx.leaf(score["RH_Staff"], 0)
+    leaf = abjad.get.leaf(score["RH_Staff"], 0)
     abjad.attach(time_signature, leaf)
     bar_line = abjad.BarLine("|.")
-    leaf = abjad.inspectx.leaf(score["RH_Staff"], -1)
+    leaf = abjad.get.leaf(score["RH_Staff"], -1)
     abjad.attach(bar_line, leaf)
     # remove the default piano instrument and add a custom one:
     abjad.detach(abjad.Instrument, score["Piano_Staff"])
     klavier = abjad.Piano(name="Katzenklavier", short_name="kk.")
-    leaf = abjad.inspectx.leaf(score["Piano_Staff"], 0)
+    leaf = abjad.get.leaf(score["Piano_Staff"], 0)
     abjad.attach(klavier, leaf)
     return score
 

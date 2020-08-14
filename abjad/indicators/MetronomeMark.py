@@ -902,7 +902,7 @@ class MetronomeMark:
 
             >>> for leaf in abjad.iterate(staff).leaves():
             ...     prototype = abjad.MetronomeMark
-            ...     leaf, abjad.inspectx.effective(leaf, prototype)
+            ...     leaf, abjad.get.effective(leaf, prototype)
             ...
             (Note("c'4"), MetronomeMark(reference_duration=Duration(1, 4), units_per_minute=72))
             (Note("d'4"), MetronomeMark(reference_duration=Duration(1, 4), units_per_minute=72))

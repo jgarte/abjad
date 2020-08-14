@@ -1,7 +1,7 @@
 import copy as python_copy
 import itertools
 
-from . import enums, exceptions, inspectx
+from . import enums, exceptions, get
 from .attach import attach, detach
 from .duration import Duration
 from .indicators.RepeatTie import RepeatTie
@@ -78,10 +78,7 @@ def _fuse_tuplets(SELECTION):
     assert isinstance(first, Tuplet)
     new_tuplet = Tuplet(first_multiplier, [])
     wrapped = False
-    if (
-        inspectx.parentage(SELECTION[0]).root
-        is not inspectx.parentage(SELECTION[-1]).root
-    ):
+    if get.parentage(SELECTION[0]).root is not get.parentage(SELECTION[-1]).root:
         dummy_container = Container(SELECTION)
         wrapped = True
     swap(SELECTION, new_tuplet)
@@ -100,7 +97,7 @@ def _get_leaves_grouped_by_immediate_parents(SELECTION):
 
 
 def _move_indicators(donor_component, recipient_component):
-    for wrapper in inspectx.wrappers(donor_component):
+    for wrapper in get.wrappers(donor_component):
         detach(wrapper, donor_component)
         attach(wrapper, recipient_component)
 
@@ -128,7 +125,7 @@ def _set_leaf_duration(leaf, new_duration):
     all_leaves = [leaf] + following_leaves
     for leaf_, new_leaf in zip(all_leaves, new_leaves):
         leaf_.written_duration = new_leaf.written_duration
-    logical_tie = inspectx.logical_tie(leaf)
+    logical_tie = get.logical_tie(leaf)
     logical_tie_leaves = list(logical_tie.leaves)
     for leaf_ in logical_tie:
         detach(Tie, leaf_)
@@ -210,13 +207,13 @@ def _split_container_by_duration(CONTAINER, duration):
         # TODO: disallow and raise Exception
         return [], CONTAINER
     # get split point score offset
-    timespan = inspectx.timespan(CONTAINER)
+    timespan = get.timespan(CONTAINER)
     global_split_point = timespan.start_offset + duration
     # get any duration-crossing descendents
     cross_offset = timespan.start_offset + duration
     duration_crossing_descendants = []
-    for descendant in inspectx.descendants(CONTAINER):
-        timespan = inspectx.timespan(descendant)
+    for descendant in get.descendants(CONTAINER):
+        timespan = get.timespan(descendant)
         start_offset = timespan.start_offset
         stop_offset = timespan.stop_offset
         if start_offset < cross_offset < stop_offset:
@@ -229,7 +226,7 @@ def _split_container_by_duration(CONTAINER, duration):
         assert isinstance(bottom, Leaf)
         original_bottom_parent = bottom._parent
         did_split_leaf = True
-        timespan = inspectx.timespan(bottom)
+        timespan = get.timespan(bottom)
         split_point_in_bottom = global_split_point - timespan.start_offset
         new_leaves = _split_leaf_by_durations(bottom, [split_point_in_bottom],)
         if new_leaves[0]._parent is not original_bottom_parent:
@@ -240,7 +237,7 @@ def _split_container_by_duration(CONTAINER, duration):
                 new_leaves_tuplet_wrapper, split_point_in_bottom,
             )
         for leaf in new_leaves:
-            timespan = inspectx.timespan(leaf)
+            timespan = get.timespan(leaf)
             if timespan.stop_offset == global_split_point:
                 leaf_left_of_split = leaf
             if timespan.start_offset == global_split_point:
@@ -253,10 +250,10 @@ def _split_container_by_duration(CONTAINER, duration):
     else:
         duration_crossing_containers = duration_crossing_descendants[:]
         for leaf in Iteration(bottom).leaves():
-            timespan = inspectx.timespan(leaf)
+            timespan = get.timespan(leaf)
             if timespan.start_offset == global_split_point:
                 leaf_right_of_split = leaf
-                leaf_left_of_split = inspectx.leaf(leaf, -1)
+                leaf_left_of_split = get.leaf(leaf, -1)
                 break
         else:
             raise Exception("can not split empty container {bottom!r}.")
@@ -281,8 +278,8 @@ def _split_container_by_duration(CONTAINER, duration):
     if did_split_leaf:
         if isinstance(leaf_left_of_split, Note):
             if (
-                inspectx.parentage(leaf_left_of_split).root
-                is inspectx.parentage(leaf_right_of_split).root
+                get.parentage(leaf_left_of_split).root
+                is get.parentage(leaf_right_of_split).root
             ):
                 leaves_around_split = (
                     leaf_left_of_split,
@@ -308,7 +305,7 @@ def _split_simultaneous_by_duration(CONTAINER, duration):
     right_container = CONTAINER.__copy__()
     left_container.extend(left_components)
     right_container.extend(right_components)
-    if inspectx.parentage(CONTAINER).parent is not None:
+    if get.parentage(CONTAINER).parent is not None:
         containers = Selection([left_container, right_container])
         replace(CONTAINER, containers)
     # return list-wrapped halves of container
@@ -318,7 +315,7 @@ def _split_simultaneous_by_duration(CONTAINER, duration):
 def _split_leaf_by_durations(LEAF, durations, cyclic=False):
     durations = [Duration(_) for _ in durations]
     durations = Sequence(durations)
-    leaf_duration = inspectx.duration(LEAF)
+    leaf_duration = get.duration(LEAF)
     if cyclic:
         durations = durations.repeat_to_weight(leaf_duration)
     if sum(durations) < leaf_duration:
@@ -338,7 +335,7 @@ def _split_leaf_by_durations(LEAF, durations, cyclic=False):
     if after_grace_container is not None:
         detach(after_grace_container, LEAF)
     # do other things
-    leaf_prolation = inspectx.parentage(LEAF).prolation
+    leaf_prolation = get.parentage(LEAF).prolation
     for duration in durations:
         new_leaf = python_copy.copy(LEAF)
         preprolated_duration = duration / leaf_prolation
@@ -354,12 +351,12 @@ def _split_leaf_by_durations(LEAF, durations, cyclic=False):
     for leaf in result_leaves:
         detach(object, leaf)
     # replace leaf with flattened result
-    if inspectx.parentage(LEAF).parent is not None:
+    if get.parentage(LEAF).parent is not None:
         replace(LEAF, result_components)
     # move indicators
     first_result_leaf = result_leaves[0]
     last_result_leaf = result_leaves[-1]
-    for indicator in inspectx.indicators(LEAF):
+    for indicator in get.indicators(LEAF):
         detach(indicator, LEAF)
         direction = getattr(indicator, "_time_orientation", enums.Left)
         if direction is enums.Left:
@@ -861,7 +858,7 @@ def fuse(argument):
                 d'32
             }
 
-        >>> abjad.inspectx.has_indicator(staff[0], abjad.Tie)
+        >>> abjad.get.has_indicator(staff[0], abjad.Tie)
         False
 
     Returns selection.
@@ -1081,7 +1078,7 @@ def replace(argument, recipients, wrappers=False):
             }
 
         >>> for leaf in staff:
-        ...     leaf, abjad.inspectx.effective(leaf, abjad.Clef)
+        ...     leaf, abjad.get.effective(leaf, abjad.Clef)
         ...
         (Note("c'2"), Clef('alto'))
         (Note("f'4"), Clef('alto'))
@@ -1102,7 +1099,7 @@ def replace(argument, recipients, wrappers=False):
             }
 
         >>> for leaf in staff:
-        ...     leaf, abjad.inspectx.effective(leaf, abjad.Clef)
+        ...     leaf, abjad.get.effective(leaf, abjad.Clef)
         ...
         (Chord("<d' e'>2"), None)
         (Note("f'4"), None)
@@ -1133,7 +1130,7 @@ def replace(argument, recipients, wrappers=False):
             }
 
         >>> for leaf in staff:
-        ...     leaf, abjad.inspectx.effective(leaf, abjad.Clef)
+        ...     leaf, abjad.get.effective(leaf, abjad.Clef)
         ...
         (Note("c'2"), Clef('alto'))
         (Note("f'4"), Clef('alto'))
@@ -1155,7 +1152,7 @@ def replace(argument, recipients, wrappers=False):
             }
 
         >>> for leaf in staff:
-        ...     leaf, abjad.inspectx.effective(leaf, abjad.Clef)
+        ...     leaf, abjad.get.effective(leaf, abjad.Clef)
         ...
         (Chord("<d' e'>2"), Clef('alto'))
         (Note("f'4"), Clef('alto'))
@@ -1202,7 +1199,7 @@ def replace(argument, recipients, wrappers=False):
         if 1 < len(recipients) or not isinstance(recipients[0], Leaf):
             raise Exception(f"set wrappers only with single leaf: {recipients!r}.")
         donor = donors[0]
-        wrappers = inspectx.wrappers(donor)
+        wrappers = get.wrappers(donor)
         recipient = recipients[0]
     parent, start, stop = donors._get_parent_and_start_stop_indices()
     assert parent is not None, repr(donors)
@@ -1331,7 +1328,7 @@ def scale(argument, multiplier) -> None:
         >>> tuplet = abjad.Tuplet((4, 5), "c'8 d'8 e'8 f'8 g'8")
         >>> staff.append(tuplet)
         >>> time_signature = abjad.TimeSignature((4, 8))
-        >>> leaf = abjad.inspectx.leaf(staff, 0)
+        >>> leaf = abjad.get.leaf(staff, 0)
         >>> abjad.attach(time_signature, leaf)
         >>> abjad.show(staff) # doctest: +SKIP
 
@@ -1784,7 +1781,7 @@ def split(argument, durations, cyclic=False):
         components = Selection(components)
     durations = [Duration(_) for _ in durations]
     assert len(durations), repr(durations)
-    total_component_duration = inspectx.duration(components)
+    total_component_duration = get.duration(components)
     total_split_duration = sum(durations)
     if cyclic:
         durations = Sequence(durations)
@@ -1820,7 +1817,7 @@ def split(argument, durations, cyclic=False):
             break
         current_component = remaining_components.pop(0)
         # find where current component endpoint will position us
-        duration_ = inspectx.duration(current_component)
+        duration_ = get.duration(current_component)
         candidate_shard_duration = current_shard_duration + duration_
         # if current component would fill current shard exactly
         if candidate_shard_duration == next_split_point:
@@ -1835,7 +1832,7 @@ def split(argument, durations, cyclic=False):
             local_split_duration -= current_shard_duration
             if isinstance(current_component, Leaf):
                 leaf_split_durations = [local_split_duration]
-                duration_ = inspectx.duration(current_component)
+                duration_ = get.duration(current_component)
                 current_duration = duration_
                 additional_required_duration = current_duration
                 additional_required_duration -= local_split_duration
@@ -1868,7 +1865,7 @@ def split(argument, durations, cyclic=False):
         # if current component would not fill current shard
         elif candidate_shard_duration < next_split_point:
             shard.append(current_component)
-            duration_ = inspectx.duration(current_component)
+            duration_ = get.duration(current_component)
             current_shard_duration += duration_
             advance_to_next_offset = False
         else:
@@ -2221,7 +2218,7 @@ def wrap(argument, container):
 
         >>> prototype = abjad.TimeSignature
         >>> for component in abjad.iterate(staff).components():
-        ...     time_signature = abjad.inspectx.effective(component, prototype)
+        ...     time_signature = abjad.get.effective(component, prototype)
         ...     print(component, time_signature)
         ...
         <Staff{1}> 3/8

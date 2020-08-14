@@ -328,7 +328,7 @@ class LeafMaker:
         >>> leaves = maker(pitches, durations)
         >>> staff = abjad.Staff(leaves)
         >>> time_signature = abjad.TimeSignature((5, 14))
-        >>> leaf = abjad.inspectx.leaf(staff, 0)
+        >>> leaf = abjad.get.leaf(staff, 0)
         >>> abjad.attach(time_signature, leaf)
         >>> abjad.show(staff) # doctest: +SKIP
 

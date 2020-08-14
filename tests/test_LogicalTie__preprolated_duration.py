@@ -5,7 +5,7 @@ def test_LogicalTie__preprolated_duration_01():
 
     staff = abjad.Staff("c' ~ c'16")
 
-    assert abjad.inspectx.logical_tie(
+    assert abjad.get.logical_tie(
         staff[0]
     )._get_preprolated_duration() == abjad.Duration(5, 16)
 
@@ -14,6 +14,6 @@ def test_LogicalTie__preprolated_duration_02():
 
     staff = abjad.Staff("c'")
 
-    assert abjad.inspectx.logical_tie(
+    assert abjad.get.logical_tie(
         staff[0]
     )._get_preprolated_duration() == abjad.Duration(1, 4)

@@ -1,7 +1,7 @@
 import abjad
 
 
-def test_inspectx_effective_staff_01():
+def test_get_staff_01():
     """
     Staff changes work on the first note of a staff.
     """
@@ -40,17 +40,17 @@ def test_inspectx_effective_staff_01():
     )
 
     assert abjad.wf.wellformed(staff_group)
-    assert abjad.inspectx.effective_staff(staff_group[0][0]) is staff_group[1]
-    assert abjad.inspectx.effective_staff(staff_group[0][1]) is staff_group[1]
-    assert abjad.inspectx.effective_staff(staff_group[0][2]) is staff_group[1]
-    assert abjad.inspectx.effective_staff(staff_group[0][3]) is staff_group[1]
-    assert abjad.inspectx.effective_staff(staff_group[1][0]) is staff_group[1]
-    assert abjad.inspectx.effective_staff(staff_group[1][1]) is staff_group[1]
-    assert abjad.inspectx.effective_staff(staff_group[1][2]) is staff_group[1]
-    assert abjad.inspectx.effective_staff(staff_group[1][3]) is staff_group[1]
+    assert abjad.get.effective_staff(staff_group[0][0]) is staff_group[1]
+    assert abjad.get.effective_staff(staff_group[0][1]) is staff_group[1]
+    assert abjad.get.effective_staff(staff_group[0][2]) is staff_group[1]
+    assert abjad.get.effective_staff(staff_group[0][3]) is staff_group[1]
+    assert abjad.get.effective_staff(staff_group[1][0]) is staff_group[1]
+    assert abjad.get.effective_staff(staff_group[1][1]) is staff_group[1]
+    assert abjad.get.effective_staff(staff_group[1][2]) is staff_group[1]
+    assert abjad.get.effective_staff(staff_group[1][3]) is staff_group[1]
 
 
-def test_inspectx_effective_staff_02():
+def test_get_staff_02():
     """
     Staff changes work on middle notes of a staff.
     """
@@ -92,17 +92,17 @@ def test_inspectx_effective_staff_02():
     )
 
     assert abjad.wf.wellformed(staff_group)
-    assert abjad.inspectx.effective_staff(staff_group[0][0]) is staff_group[1]
-    assert abjad.inspectx.effective_staff(staff_group[0][1]) is staff_group[1]
-    assert abjad.inspectx.effective_staff(staff_group[0][2]) is staff_group[0]
-    assert abjad.inspectx.effective_staff(staff_group[0][3]) is staff_group[0]
-    assert abjad.inspectx.effective_staff(staff_group[1][0]) is staff_group[1]
-    assert abjad.inspectx.effective_staff(staff_group[1][1]) is staff_group[1]
-    assert abjad.inspectx.effective_staff(staff_group[1][2]) is staff_group[1]
-    assert abjad.inspectx.effective_staff(staff_group[1][3]) is staff_group[1]
+    assert abjad.get.effective_staff(staff_group[0][0]) is staff_group[1]
+    assert abjad.get.effective_staff(staff_group[0][1]) is staff_group[1]
+    assert abjad.get.effective_staff(staff_group[0][2]) is staff_group[0]
+    assert abjad.get.effective_staff(staff_group[0][3]) is staff_group[0]
+    assert abjad.get.effective_staff(staff_group[1][0]) is staff_group[1]
+    assert abjad.get.effective_staff(staff_group[1][1]) is staff_group[1]
+    assert abjad.get.effective_staff(staff_group[1][2]) is staff_group[1]
+    assert abjad.get.effective_staff(staff_group[1][3]) is staff_group[1]
 
 
-def test_inspectx_effective_staff_03():
+def test_get_staff_03():
     """
     Staff changes work on the last note of a staff.
     """
@@ -143,7 +143,7 @@ def test_inspectx_effective_staff_03():
     assert abjad.wf.wellformed(staff_group)
 
 
-def test_inspectx_effective_staff_04():
+def test_get_staff_04():
     """
     Redudant staff changes are allowed.
     """
@@ -185,11 +185,11 @@ def test_inspectx_effective_staff_04():
     )
 
     assert abjad.wf.wellformed(staff_group)
-    assert abjad.inspectx.effective_staff(staff_group[0][0]) is staff_group[1]
-    assert abjad.inspectx.effective_staff(staff_group[0][1]) is staff_group[1]
-    assert abjad.inspectx.effective_staff(staff_group[0][2]) is staff_group[1]
-    assert abjad.inspectx.effective_staff(staff_group[0][3]) is staff_group[1]
-    assert abjad.inspectx.effective_staff(staff_group[1][0]) is staff_group[1]
-    assert abjad.inspectx.effective_staff(staff_group[1][1]) is staff_group[1]
-    assert abjad.inspectx.effective_staff(staff_group[1][2]) is staff_group[1]
-    assert abjad.inspectx.effective_staff(staff_group[1][3]) is staff_group[1]
+    assert abjad.get.effective_staff(staff_group[0][0]) is staff_group[1]
+    assert abjad.get.effective_staff(staff_group[0][1]) is staff_group[1]
+    assert abjad.get.effective_staff(staff_group[0][2]) is staff_group[1]
+    assert abjad.get.effective_staff(staff_group[0][3]) is staff_group[1]
+    assert abjad.get.effective_staff(staff_group[1][0]) is staff_group[1]
+    assert abjad.get.effective_staff(staff_group[1][1]) is staff_group[1]
+    assert abjad.get.effective_staff(staff_group[1][2]) is staff_group[1]
+    assert abjad.get.effective_staff(staff_group[1][3]) is staff_group[1]

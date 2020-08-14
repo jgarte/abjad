@@ -7,8 +7,8 @@ def test_Parentage_root_01():
     staff = abjad.Staff([tuplet])
     leaves = abjad.select(staff).leaves()
 
-    assert abjad.inspectx.parentage(staff).root is staff
-    assert abjad.inspectx.parentage(tuplet).root is staff
-    assert abjad.inspectx.parentage(leaves[0]).root is staff
-    assert abjad.inspectx.parentage(leaves[1]).root is staff
-    assert abjad.inspectx.parentage(leaves[2]).root is staff
+    assert abjad.get.parentage(staff).root is staff
+    assert abjad.get.parentage(tuplet).root is staff
+    assert abjad.get.parentage(leaves[0]).root is staff
+    assert abjad.get.parentage(leaves[1]).root is staff
+    assert abjad.get.parentage(leaves[2]).root is staff

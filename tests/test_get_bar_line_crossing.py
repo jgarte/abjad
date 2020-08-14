@@ -1,7 +1,7 @@
 import abjad
 
 
-def test_inspectx_bar_line_crossing_01():
+def test_get_bar_line_crossing_01():
     """
     Works with partial.
     """
@@ -24,19 +24,19 @@ def test_inspectx_bar_line_crossing_01():
         """
     )
 
-    assert not abjad.inspectx.bar_line_crossing(staff[0])
-    assert not abjad.inspectx.bar_line_crossing(staff[1])
-    assert abjad.inspectx.bar_line_crossing(staff[2])
-    assert not abjad.inspectx.bar_line_crossing(staff[3])
+    assert not abjad.get.bar_line_crossing(staff[0])
+    assert not abjad.get.bar_line_crossing(staff[1])
+    assert abjad.get.bar_line_crossing(staff[2])
+    assert not abjad.get.bar_line_crossing(staff[3])
 
 
-def test_inspectx_bar_line_crossing_02():
+def test_get_bar_line_crossing_02():
     """
     Works when no explicit time signature is abjad.attached.
     """
 
     staff = abjad.Staff("c'2 d'1 e'2")
 
-    assert not abjad.inspectx.bar_line_crossing(staff[0])
-    assert abjad.inspectx.bar_line_crossing(staff[1])
-    assert not abjad.inspectx.bar_line_crossing(staff[2])
+    assert not abjad.get.bar_line_crossing(staff[0])
+    assert abjad.get.bar_line_crossing(staff[1])
+    assert not abjad.get.bar_line_crossing(staff[2])

@@ -88,7 +88,7 @@ def after_grace_container(argument):
             }
 
         >>> for component in abjad.select(staff).components():
-        ...     container = abjad.inspectx.after_grace_container(component)
+        ...     container = abjad.get.after_grace_container(component)
         ...     print(f"{repr(component):30} {repr(container)}")
         <Staff{1}>                     None
         <Voice-"Music_Voice"{4}>       None
@@ -136,21 +136,21 @@ def annotation(
             }
 
         >>> string = 'default_instrument'
-        >>> abjad.inspectx.annotation(staff[0], string)
+        >>> abjad.get.annotation(staff[0], string)
         Cello()
 
-        >>> abjad.inspectx.annotation(staff[1], string) is None
+        >>> abjad.get.annotation(staff[1], string) is None
         True
 
-        >>> abjad.inspectx.annotation(staff[2], string) is None
+        >>> abjad.get.annotation(staff[2], string) is None
         True
 
-        >>> abjad.inspectx.annotation(staff[3], string) is None
+        >>> abjad.get.annotation(staff[3], string) is None
         True
 
         Returns default when no annotation is found:
 
-        >>> abjad.inspectx.annotation(staff[3], string, abjad.Violin())
+        >>> abjad.get.annotation(staff[3], string, abjad.Violin())
         Violin()
 
     ..  container:: example
@@ -158,16 +158,16 @@ def annotation(
         REGRESSION: annotation is not picked up as effective indicator:
 
         >>> prototype = abjad.Instrument
-        >>> abjad.inspectx.effective(staff[0], prototype) is None
+        >>> abjad.get.effective(staff[0], prototype) is None
         True
 
-        >>> abjad.inspectx.effective(staff[1], prototype) is None
+        >>> abjad.get.effective(staff[1], prototype) is None
         True
 
-        >>> abjad.inspectx.effective(staff[2], prototype) is None
+        >>> abjad.get.effective(staff[2], prototype) is None
         True
 
-        >>> abjad.inspectx.effective(staff[3], prototype) is None
+        >>> abjad.get.effective(staff[3], prototype) is None
         True
 
     """
@@ -198,7 +198,7 @@ def annotation_wrappers(argument):
                 f'4
             }
 
-        >>> for wrapper in abjad.inspectx.annotation_wrappers(staff[0]):
+        >>> for wrapper in abjad.get.annotation_wrappers(staff[0]):
         ...     abjad.f(wrapper)
         ...
         abjad.Wrapper(
@@ -264,7 +264,7 @@ def bar_line_crossing(argument) -> bool:
             }
 
         >>> for note in staff:
-        ...     result = abjad.inspectx.bar_line_crossing(note)
+        ...     result = abjad.get.bar_line_crossing(note)
         ...     print(note, result)
         ...
         c'4 False
@@ -360,7 +360,7 @@ def before_grace_container(argument):
             }
 
         >>> for component in abjad.select(staff).components():
-        ...     container = abjad.inspectx.before_grace_container(component)
+        ...     container = abjad.get.before_grace_container(component)
         ...     print(f"{repr(component):30} {repr(container)}")
         <Staff{1}>                     None
         <Voice-"Music_Voice"{4}>       None
@@ -453,7 +453,7 @@ def contents(argument) -> typing.Optional["Selection"]:
             }
 
         >>> for component in abjad.select(staff).components():
-        ...     contents = abjad.inspectx.contents(component)
+        ...     contents = abjad.get.contents(component)
         ...     print(f"{repr(component)}:")
         ...     for component_ in contents:
         ...         print(f"    {repr(component_)}")
@@ -535,7 +535,7 @@ def contents(argument) -> typing.Optional["Selection"]:
             }
 
         >>> for component in abjad.select(staff).components():
-        ...     contents = abjad.inspectx.contents(component)
+        ...     contents = abjad.get.contents(component)
         ...     print(f"{repr(component)}:")
         ...     for component_ in contents:
         ...         print(f"    {repr(component_)}")
@@ -644,7 +644,7 @@ def descendants(argument) -> typing.Union["Descendants", "Selection"]:
             }
 
         >>> for component in abjad.select(staff).components():
-        ...     descendants = abjad.inspectx.descendants(component)
+        ...     descendants = abjad.get.descendants(component)
         ...     print(f"{repr(component)}:")
         ...     for component_ in descendants:
         ...         print(f"    {repr(component_)}")
@@ -811,7 +811,7 @@ def duration(argument, in_seconds: bool = None) -> Duration:
             }
 
         >>> for component in abjad.select(staff).components():
-        ...     duration = abjad.inspectx.duration(component)
+        ...     duration = abjad.get.duration(component)
         ...     print(f"{repr(component):30} {repr(duration)}")
         <Staff{1}>                     Duration(1, 1)
         <Voice-"Music_Voice"{4}>       Duration(1, 1)
@@ -860,7 +860,7 @@ def duration(argument, in_seconds: bool = None) -> Duration:
             }
 
         >>> for component in abjad.select(staff).components():
-        ...     duration = abjad.inspectx.duration(component)
+        ...     duration = abjad.get.duration(component)
         ...     print(f"{repr(component):30} {repr(duration)}")
         <Staff{4}>                     Duration(1, 1)
         TremoloContainer("c'16 e'16")  Duration(1, 4)
@@ -891,7 +891,7 @@ def duration(argument, in_seconds: bool = None) -> Duration:
             }
 
         >>> selection = staff[:3]
-        >>> abjad.inspectx.duration(selection)
+        >>> abjad.get.duration(selection)
         Duration(3, 4)
 
     """
@@ -977,7 +977,7 @@ def effective(
             }
 
         >>> for component in abjad.select(staff).components():
-        ...     clef = abjad.inspectx.effective(component, abjad.Clef)
+        ...     clef = abjad.get.effective(component, abjad.Clef)
         ...     print(f"{repr(component):30} {repr(clef)}")
         <Staff{1}>                     None
         <Voice-"Music_Voice"{4}>       None
@@ -1028,7 +1028,7 @@ def effective(
             }
 
         >>> for component in abjad.select(staff).components():
-        ...     clef = abjad.inspectx.effective(component, abjad.Clef)
+        ...     clef = abjad.get.effective(component, abjad.Clef)
         ...     print(f"{repr(component):30} {repr(clef)}")
         <Staff{4}>                     None
         TremoloContainer("c'16 e'16")  None
@@ -1060,7 +1060,7 @@ def effective(
             }
 
         >>> for component in abjad.iterate(staff).components():
-        ...     string = abjad.inspectx.effective(component, str)
+        ...     string = abjad.get.effective(component, str)
         ...     print(component, repr(string))
         ...
         Staff("c'8 d'8 e'8 f'8") None
@@ -1092,7 +1092,7 @@ def effective(
             }
 
         >>> for n in (-1, 0, 1):
-        ...     color = abjad.inspectx.effective(staff[0], str, n=n)
+        ...     color = abjad.get.effective(staff[0], str, n=n)
         ...     print(n, repr(color))
         ...
         -1 None
@@ -1100,7 +1100,7 @@ def effective(
         1 'blue'
 
         >>> for n in (-1, 0, 1):
-        ...     color = abjad.inspectx.effective(staff[1], str, n=n)
+        ...     color = abjad.get.effective(staff[1], str, n=n)
         ...     print(n, repr(color))
         ...
         -1 None
@@ -1108,7 +1108,7 @@ def effective(
         1 'blue'
 
         >>> for n in (-1, 0, 1):
-        ...     color = abjad.inspectx.effective(staff[2], str, n=n)
+        ...     color = abjad.get.effective(staff[2], str, n=n)
         ...     print(n, repr(color))
         ...
         -1 'red'
@@ -1116,7 +1116,7 @@ def effective(
         1 'yellow'
 
         >>> for n in (-1, 0, 1):
-        ...     color = abjad.inspectx.effective(staff[3], str, n=n)
+        ...     color = abjad.get.effective(staff[3], str, n=n)
         ...     print(n, repr(color))
         ...
         -1 'red'
@@ -1124,7 +1124,7 @@ def effective(
         1 'yellow'
 
         >>> for n in (-1, 0, 1):
-        ...     color = abjad.inspectx.effective(staff[4], str, n=n)
+        ...     color = abjad.get.effective(staff[4], str, n=n)
         ...     print(n, repr(color))
         ...
         -1 'blue'
@@ -1158,7 +1158,7 @@ def effective(
             }
 
         >>> for leaf in staff:
-        ...     clef = abjad.inspectx.effective(leaf, abjad.Clef)
+        ...     clef = abjad.get.effective(leaf, abjad.Clef)
         ...     (leaf, clef)
         ...
         (Note("c'4"), Clef('alto'))
@@ -1166,13 +1166,13 @@ def effective(
         (Note("e'4"), Clef('alto'))
         (Note("f'4"), Clef('alto'))
 
-        >>> abjad.inspectx.effective(staff[0], abjad.Clef)
+        >>> abjad.get.effective(staff[0], abjad.Clef)
         Clef('alto')
 
-        >>> abjad.inspectx.effective(staff[0], abjad.Clef, n=-1)
+        >>> abjad.get.effective(staff[0], abjad.Clef, n=-1)
         Clef('treble', hide=True)
 
-        >>> abjad.inspectx.effective(staff[0], abjad.Clef, n=-2) is None
+        >>> abjad.get.effective(staff[0], abjad.Clef, n=-2) is None
         True
 
         Note that ``hide=True`` is set on the offset clef to prevent
@@ -1207,7 +1207,7 @@ def effective(
             }
 
         >>> for leaf in staff:
-        ...     clef = abjad.inspectx.effective(leaf, abjad.Clef)
+        ...     clef = abjad.get.effective(leaf, abjad.Clef)
         ...     (leaf, clef)
         ...
         (Note("c'4"), Clef('treble'))
@@ -1215,13 +1215,13 @@ def effective(
         (Note("e'4"), Clef('treble'))
         (Note("f'4"), Clef('treble'))
 
-        >>> abjad.inspectx.effective(staff[-1], abjad.Clef)
+        >>> abjad.get.effective(staff[-1], abjad.Clef)
         Clef('treble')
 
-        >>> abjad.inspectx.effective(staff[-1], abjad.Clef, n=1)
+        >>> abjad.get.effective(staff[-1], abjad.Clef, n=1)
         Clef('alto', hide=True)
 
-        >>> abjad.inspectx.effective(staff[-1], abjad.Clef, n=2) is None
+        >>> abjad.get.effective(staff[-1], abjad.Clef, n=2) is None
         True
 
     ..  container:: example
@@ -1247,7 +1247,7 @@ def effective(
 
         >>> prototype = abjad.TimeSignature
         >>> for component in abjad.iterate(staff).components():
-        ...     time_signature = abjad.inspectx.effective(component, prototype)
+        ...     time_signature = abjad.get.effective(component, prototype)
         ...     print(component, time_signature)
         ...
         Staff("c'4 d'4 e'4 f'4") 3/8
@@ -1285,7 +1285,7 @@ def effective(
             }
 
         >>> for note in abjad.select(staff).notes():
-        ...     note, abjad.inspectx.effective(note, abjad.StartTextSpan)
+        ...     note, abjad.get.effective(note, abjad.StartTextSpan)
         ...
         (Note("c'4"), StartTextSpan(command='\\startTextSpan', concat_hspace_left=0.5))
         (Note("d'4"), StartTextSpan(command='\\startTextSpan', concat_hspace_left=0.5))
@@ -1293,7 +1293,7 @@ def effective(
         (Note("f'4"), StartTextSpan(command='\\startTextSpan', concat_hspace_left=0.5))
 
         >>> for note in abjad.select(staff).notes():
-        ...     note, abjad.inspectx.effective(note, abjad.StopTextSpan)
+        ...     note, abjad.get.effective(note, abjad.StopTextSpan)
         ...
         (Note("c'4"), None)
         (Note("d'4"), None)
@@ -1302,7 +1302,7 @@ def effective(
 
         >>> attributes = {'parameter': 'TEXT_SPANNER'}
         >>> for note in abjad.select(staff).notes():
-        ...     indicator = abjad.inspectx.effective(
+        ...     indicator = abjad.get.effective(
         ...         note,
         ...         object,
         ...         attributes=attributes,
@@ -1340,8 +1340,8 @@ def effective(
             }
 
         >>> for leaf in abjad.select(voice).leaves():
-        ...     start_beam = abjad.inspectx.effective(leaf, abjad.StartBeam)
-        ...     stop_beam = abjad.inspectx.effective(leaf, abjad.StopBeam)
+        ...     start_beam = abjad.get.effective(leaf, abjad.StartBeam)
+        ...     stop_beam = abjad.get.effective(leaf, abjad.StopBeam)
         ...     leaf, start_beam, stop_beam
         (Note("c'8"), StartBeam(), None)
         (Note("d'8"), StartBeam(), None)
@@ -1377,7 +1377,7 @@ def effective(
             >>
 
         >>> for leaf in abjad.select(score).leaves():
-        ...     bar_line = abjad.inspectx.effective(leaf, abjad.BarLine)
+        ...     bar_line = abjad.get.effective(leaf, abjad.BarLine)
         ...     leaf, bar_line
         (Note("c'2"), None)
         (Note("d'2"), BarLine('||', format_slot='after'))
@@ -1466,7 +1466,7 @@ def effective_staff(argument) -> typing.Optional["Staff"]:
             }
 
         >>> for component in abjad.select(staff).components():
-        ...     staff = abjad.inspectx.effective_staff(component)
+        ...     staff = abjad.get.effective_staff(component)
         ...     print(f"{repr(component):30} {repr(staff)}")
         <Staff{1}>                     <Staff{1}>
         <Voice-"Music_Voice"{4}>       <Staff{1}>
@@ -1579,7 +1579,7 @@ def effective_wrapper(
             }
 
         >>> for component in abjad.select(staff).components():
-        ...     wrapper = abjad.inspectx.effective_wrapper(component, abjad.Clef)
+        ...     wrapper = abjad.get.effective_wrapper(component, abjad.Clef)
         ...     print(f"{repr(component):}")
         ...     print(f"    {repr(wrapper)}")
         <Staff{1}>
@@ -1695,7 +1695,7 @@ def grace(argument) -> bool:
             }
 
         >>> for component in abjad.select(staff).components():
-        ...     result = abjad.inspectx.grace(component)
+        ...     result = abjad.get.grace(component)
         ...     print(f"{repr(component):30} {repr(result)}")
         <Staff{1}>                     False
         <Voice-"Music_Voice"{4}>       False
@@ -1793,7 +1793,7 @@ def has_effective_indicator(
             }
 
         >>> for component in abjad.select(staff).components():
-        ...     function = abjad.inspectx.has_effective_indicator
+        ...     function = abjad.get.has_effective_indicator
         ...     result = function(component, abjad.Clef)
         ...     print(f"{repr(component):30} {repr(result)}")
         <Staff{1}>                     False
@@ -1845,7 +1845,7 @@ def has_effective_indicator(
             }
 
         >>> for component in abjad.select(staff).components():
-        ...     function = abjad.inspectx.has_effective_indicator
+        ...     function = abjad.get.has_effective_indicator
         ...     result = function(component, abjad.Clef)
         ...     print(f"{repr(component):30} {repr(result)}")
         <Staff{4}>                     False
@@ -1943,7 +1943,7 @@ def has_indicator(
             }
 
         >>> for component in abjad.select(staff).components():
-        ...     result = abjad.inspectx.has_indicator(component, abjad.Clef)
+        ...     result = abjad.get.has_indicator(component, abjad.Clef)
         ...     print(f"{repr(component):30} {repr(result)}")
         <Staff{1}>                     False
         <Voice-"Music_Voice"{4}>       False
@@ -1994,7 +1994,7 @@ def has_indicator(
             }
 
         >>> for component in abjad.select(staff).components():
-        ...     result = abjad.inspectx.has_indicator(component, abjad.Clef)
+        ...     result = abjad.get.has_indicator(component, abjad.Clef)
         ...     print(f"{repr(component):30} {repr(result)}")
         <Staff{4}>                     False
         TremoloContainer("c'16 e'16")  False
@@ -2029,20 +2029,20 @@ def has_indicator(
             }
 
         >>> attributes = {'name': 'alto'}
-        >>> abjad.inspectx.has_indicator(voice[0], abjad.Clef)
+        >>> abjad.get.has_indicator(voice[0], abjad.Clef)
         True
 
-        >>> abjad.inspectx.has_indicator(
+        >>> abjad.get.has_indicator(
         ...     voice[0],
         ...     abjad.Clef,
         ...     attributes=attributes,
         ...     )
         False
 
-        >>> abjad.inspectx.has_indicator(voice[2], abjad.Clef)
+        >>> abjad.get.has_indicator(voice[2], abjad.Clef)
         True
 
-        >>> abjad.inspectx.has_indicator(
+        >>> abjad.get.has_indicator(
         ...     voice[2],
         ...     abjad.Clef,
         ...     attributes=attributes,
@@ -2137,7 +2137,7 @@ def indicator(
             }
 
         >>> for component in abjad.select(staff).components():
-        ...     result = abjad.inspectx.indicator(component, abjad.Clef)
+        ...     result = abjad.get.indicator(component, abjad.Clef)
         ...     print(f"{repr(component):30} {repr(result)}")
         <Staff{1}>                     None
         <Voice-"Music_Voice"{4}>       None
@@ -2188,7 +2188,7 @@ def indicator(
             }
 
         >>> for component in abjad.select(staff).components():
-        ...     result = abjad.inspectx.indicator(component, abjad.Clef)
+        ...     result = abjad.get.indicator(component, abjad.Clef)
         ...     print(f"{repr(component):30} {repr(result)}")
         <Staff{4}>                     None
         TremoloContainer("c'16 e'16")  None
@@ -2297,7 +2297,7 @@ def indicators(
             }
 
         >>> for component in abjad.select(staff).components():
-        ...     result = abjad.inspectx.indicators(component)
+        ...     result = abjad.get.indicators(component)
         ...     print(f"{repr(component):30} {repr(result)}")
         <Staff{1}>                     []
         <Voice-"Music_Voice"{4}>       []
@@ -2357,7 +2357,7 @@ def indicators(
             }
 
         >>> for component in abjad.select(staff).components():
-        ...     result = abjad.inspectx.indicators(component)
+        ...     result = abjad.get.indicators(component)
         ...     print(f"{repr(component):30} {repr(result)}")
         <Staff{4}>                     []
         TremoloContainer("c'16 e'16")  []
@@ -2423,13 +2423,13 @@ def leaf(argument, n: int = 0) -> typing.Optional["Leaf"]:
 
         >>> leaf = staff[0][1]
 
-        >>> abjad.inspectx.leaf(leaf, -1)
+        >>> abjad.get.leaf(leaf, -1)
         Note("c'8")
 
-        >>> abjad.inspectx.leaf(leaf, 0)
+        >>> abjad.get.leaf(leaf, 0)
         Note("d'8")
 
-        >>> abjad.inspectx.leaf(leaf, 1)
+        >>> abjad.get.leaf(leaf, 1)
         Note("e'8")
 
     ..  container:: example
@@ -2438,13 +2438,13 @@ def leaf(argument, n: int = 0) -> typing.Optional["Leaf"]:
 
         >>> voice = staff[0]
 
-        >>> abjad.inspectx.leaf(voice, -1)
+        >>> abjad.get.leaf(voice, -1)
         Note("f'8")
 
-        >>> abjad.inspectx.leaf(voice, 0)
+        >>> abjad.get.leaf(voice, 0)
         Note("c'8")
 
-        >>> abjad.inspectx.leaf(voice, 1)
+        >>> abjad.get.leaf(voice, 1)
         Note("d'8")
 
     ..  container:: example
@@ -2514,8 +2514,8 @@ def leaf(argument, n: int = 0) -> typing.Optional["Leaf"]:
             }
 
         >>> for current_leaf in abjad.select(staff).leaves():
-        ...     previous_leaf = abjad.inspectx.leaf(current_leaf, -1)
-        ...     next_leaf = abjad.inspectx.leaf(current_leaf, 1)
+        ...     previous_leaf = abjad.get.leaf(current_leaf, -1)
+        ...     next_leaf = abjad.get.leaf(current_leaf, 1)
         ...     print(f"previous leaf: {repr(previous_leaf)}")
         ...     print(f"current leaf:  {repr(current_leaf)}")
         ...     print(f"next leaf:     {repr(next_leaf)}")
@@ -2590,8 +2590,8 @@ def leaf(argument, n: int = 0) -> typing.Optional["Leaf"]:
             }
 
         >>> for current_leaf in abjad.select(staff).leaves():
-        ...     previous_leaf = abjad.inspectx.leaf(current_leaf, -1)
-        ...     next_leaf = abjad.inspectx.leaf(current_leaf, 1)
+        ...     previous_leaf = abjad.get.leaf(current_leaf, -1)
+        ...     next_leaf = abjad.get.leaf(current_leaf, 1)
         ...     print(f"previous leaf: {repr(previous_leaf)}")
         ...     print(f"current leaf:  {repr(current_leaf)}")
         ...     print(f"next leaf:     {repr(next_leaf)}")
@@ -2694,7 +2694,7 @@ def lineage(argument) -> "Lineage":
             }
 
         >>> for component in abjad.select(staff).components():
-        ...     lineage = abjad.inspectx.lineage(component)
+        ...     lineage = abjad.get.lineage(component)
         ...     print(f"{repr(component)}:")
         ...     for component_ in lineage:
         ...         print(f"    {repr(component_)}")
@@ -2898,7 +2898,7 @@ def logical_tie(argument) -> "LogicalTie":
             }
 
         >>> for leaf in abjad.select(staff).leaves():
-        ...     lt = abjad.inspectx.logical_tie(leaf)
+        ...     lt = abjad.get.logical_tie(leaf)
         ...     print(f"{repr(leaf):30} {repr(lt)}")
         Note("c'4")                    LogicalTie([Note("c'4")])
         Note("cs'16")                  LogicalTie([Note("cs'16")])
@@ -2940,7 +2940,7 @@ def logical_tie(argument) -> "LogicalTie":
             }
 
         >>> for leaf in abjad.select(staff).leaves():
-        ...     lt = abjad.inspectx.logical_tie(leaf)
+        ...     lt = abjad.get.logical_tie(leaf)
         ...     print(f"{repr(leaf):30} {repr(lt)}")
         Note("c'16")                   LogicalTie([Note("c'16")])
         Note("e'16")                   LogicalTie([Note("e'16")])
@@ -3038,7 +3038,7 @@ def measure_number(argument) -> int:
             }
 
         >>> for component in abjad.select(staff).components():
-        ...     measure_number = abjad.inspectx.measure_number(component)
+        ...     measure_number = abjad.get.measure_number(component)
         ...     print(f"{repr(component):30} {measure_number}")
         <Staff{1}>                     1
         <Voice-"Music_Voice"{4}>       1
@@ -3083,7 +3083,7 @@ def measure_number(argument) -> int:
             }
 
         >>> for component in abjad.select(voice).components():
-        ...     measure_number = abjad.inspectx.measure_number(component)
+        ...     measure_number = abjad.get.measure_number(component)
         ...     print(f"{repr(component):30} {measure_number}")
         Voice("c'4 d'4 e'4 f'4")       1
         BeforeGraceContainer('b16')          0
@@ -3122,7 +3122,7 @@ def measure_number(argument) -> int:
             }
 
         >>> for component in abjad.select(staff).components():
-        ...     measure_number = abjad.inspectx.measure_number(component)
+        ...     measure_number = abjad.get.measure_number(component)
         ...     print(f"{repr(component):30} {measure_number}")
         <Staff{4}>                     1
         TremoloContainer("c'16 e'16")  1
@@ -3209,7 +3209,7 @@ def parentage(argument) -> "Parentage":
             }
 
         >>> for component in abjad.select(staff).components():
-        ...     parentage = abjad.inspectx.parentage(component)
+        ...     parentage = abjad.get.parentage(component)
         ...     print(f"{repr(component)}:")
         ...     for component_ in parentage[:]:
         ...         print(f"    {repr(component_)}")
@@ -3322,7 +3322,7 @@ def parentage(argument) -> "Parentage":
             }
 
         >>> for component in abjad.select(staff).components():
-        ...     parentage = abjad.inspectx.parentage(component)
+        ...     parentage = abjad.get.parentage(component)
         ...     print(f"{repr(component)}:")
         ...     print(f"    {repr(parentage[:])}")
         <Staff{4}>:
@@ -3421,7 +3421,7 @@ def pitches(argument) -> typing.Optional[PitchSet]:
             }
 
         >>> for component in abjad.select(staff).components():
-        ...     pitches = abjad.inspectx.pitches(component)
+        ...     pitches = abjad.get.pitches(component)
         ...     print(f"{repr(component):30} {repr(pitches)}")
         <Staff{1}>                     PitchSet(["c'", "cs'", "d'", "e'", "f'", "fs'", "g'", "gs'", "a'", "as'"])
         <Voice-"Music_Voice"{4}>       PitchSet(["c'", "cs'", "d'", "e'", "f'", "fs'", "g'", "gs'", "a'", "as'"])
@@ -3475,7 +3475,7 @@ def report_modifications(argument) -> str:
                 \revert NoteHead.style
             }
 
-        >>> report = abjad.inspectx.report_modifications(container)
+        >>> report = abjad.get.report_modifications(container)
         >>> print(report)
         {
             \override NoteHead.color = #red
@@ -3508,7 +3508,7 @@ def report_modifications(argument) -> str:
                 f'8
             }
 
-        >>> report = abjad.inspectx.report_modifications(container[0])
+        >>> report = abjad.get.report_modifications(container[0])
         >>> print(report)
         slot "absolute before":
         slot "before":
@@ -3568,7 +3568,7 @@ def sounding_pitch(argument) -> NamedPitch:
             }
 
         >>> for note in abjad.select(staff).notes():
-        ...     pitch = abjad.inspectx.sounding_pitch(note)
+        ...     pitch = abjad.get.sounding_pitch(note)
         ...     print(f"{repr(note):10} {repr(pitch)}")
         Note("d'8") NamedPitch("d''")
         Note("e'8") NamedPitch("e''")
@@ -3603,7 +3603,7 @@ def sounding_pitches(argument) -> PitchSet:
             }
 
         >>> for chord in abjad.select(staff).chords():
-        ...     pitches = abjad.inspectx.sounding_pitches(chord)
+        ...     pitches = abjad.get.sounding_pitches(chord)
         ...     print(f"{repr(chord):20} {repr(pitches)}")
         Chord("<c' e'>4")    PitchSet(["c'''", "e'''"])
         Chord("<d' fs'>4")   PitchSet(["d'''", "fs'''"])
@@ -3637,7 +3637,7 @@ def sustained(argument) -> bool:
                 c'4
             }
 
-        >>> abjad.inspectx.sustained(tuplet)
+        >>> abjad.get.sustained(tuplet)
         True
 
     """
@@ -3725,7 +3725,7 @@ def timespan(argument, in_seconds: bool = False) -> Timespan:
             }
 
         >>> for component in abjad.select(staff).components():
-        ...     timespan = abjad.inspectx.timespan(component)
+        ...     timespan = abjad.get.timespan(component)
         ...     print(f"{repr(component):30} {repr(timespan)}")
         <Staff{1}>                     Timespan(Offset((0, 1)), Offset((1, 1)))
         <Voice-"Music_Voice"{4}>       Timespan(Offset((0, 1)), Offset((1, 1)))
@@ -3774,7 +3774,7 @@ def timespan(argument, in_seconds: bool = False) -> Timespan:
             }
 
         >>> for component in abjad.select(staff).components():
-        ...     timespan = abjad.inspectx.timespan(component)
+        ...     timespan = abjad.get.timespan(component)
         ...     print(f"{repr(component):30} {repr(timespan)}")
         <Staff{4}>                     Timespan(Offset((0, 1)), Offset((1, 1)))
         TremoloContainer("c'16 e'16")  Timespan(Offset((0, 1)), Offset((1, 4)))
@@ -3804,7 +3804,7 @@ def timespan(argument, in_seconds: bool = False) -> Timespan:
                 f'4
             }
 
-        >>> abjad.inspectx.timespan(staff[:3])
+        >>> abjad.get.timespan(staff[:3])
         Timespan(Offset((0, 1)), Offset((3, 4)))
 
     """
@@ -3896,7 +3896,7 @@ def wrapper(
         REGRESSION. Works with grace notes (and containers):
 
         >>> for component in abjad.select(staff).components():
-        ...     wrapper = abjad.inspectx.wrapper(component, abjad.Staccato)
+        ...     wrapper = abjad.get.wrapper(component, abjad.Staccato)
         ...     print(f"{repr(component):30} {repr(wrapper)}")
         <Staff{1}>                     None
         <Voice-"Music_Voice"{4}>       None
@@ -4009,7 +4009,7 @@ def wrappers(
             }
 
         >>> for component in abjad.select(staff).components():
-        ...     result = abjad.inspectx.wrappers(component, abjad.Staccato)
+        ...     result = abjad.get.wrappers(component, abjad.Staccato)
         ...     print(f"{repr(component):30} {repr(result)}")
         <Staff{1}>                     []
         <Voice-"Music_Voice"{4}>       []
@@ -4078,7 +4078,7 @@ class Descendants(collections.abc.Sequence):
                 }
             >>
 
-        >>> for component in abjad.inspectx.descendants(score):
+        >>> for component in abjad.get.descendants(score):
         ...     component
         ...
         <Score<<2>>>
@@ -4090,7 +4090,7 @@ class Descendants(collections.abc.Sequence):
         Note('b,4')
 
         >>> bass_voice = score["Bass_Voice"]
-        >>> for component in abjad.inspectx.descendants(bass_voice):
+        >>> for component in abjad.get.descendants(bass_voice):
         ...     component
         ...
         Voice('b,4', name='Bass_Voice')
@@ -4187,7 +4187,7 @@ class Descendants(collections.abc.Sequence):
                 }
 
             >>> for component in abjad.select(staff).components():
-            ...     parentage = abjad.inspectx.descendants(component)
+            ...     parentage = abjad.get.descendants(component)
             ...     count = parentage.count(abjad.Tuplet)
             ...     print(f"{repr(component):55} {repr(count)}")
             <Staff{2}>                                              3
@@ -4251,7 +4251,7 @@ class Lineage(collections.abc.Sequence):
                 }
             >>
 
-        >>> for component in abjad.inspectx.lineage(score):
+        >>> for component in abjad.get.lineage(score):
         ...     component
         ...
         <Score<<2>>>
@@ -4263,7 +4263,7 @@ class Lineage(collections.abc.Sequence):
         Note('b,4')
 
         >>> bass_voice = score['Bass_Voice']
-        >>> for component in abjad.inspectx.lineage(bass_voice):
+        >>> for component in abjad.get.lineage(bass_voice):
         ...     component
         ...
         <Score<<2>>>
