@@ -562,7 +562,7 @@ class Expression:
             name = previous_callback.next_name
         markup = name
         if isinstance(markup, str):
-            markup = markups.Markup(markup).bold()
+            markup = markups.Markup(rf'\bold "{markup}"')
         if not self.callbacks:
             return markup
         callback = self.callbacks[0]
@@ -579,7 +579,7 @@ class Expression:
             if previous_callback and previous_callback.next_name:
                 markup = previous_callback.next_name
                 if isinstance(markup, str):
-                    markup = markups.Markup(markup).bold()
+                    markup = markups.Markup(rf'\bold "{markup}"')
             current_precedence = callback.precedence or 0
             parenthesize_argument = False
             if (
@@ -864,7 +864,7 @@ class Expression:
         markup_list = markups.MarkupList()
         markup_list.append(markup)
         string = Expression._make_subscript_string(argument, markup=True)
-        subscript_markup = markups.Markup(string).sub()
+        subscript_markup = markups.Markup(rf'\sub "{string}"')
         markup_list.append(subscript_markup)
         markup = markup_list.concat()
         return markup
@@ -890,7 +890,7 @@ class Expression:
     @staticmethod
     def _make_establish_equivalence_markup(lhs, rhs):
         markup_list = markups.MarkupList()
-        lhs = markups.Markup(lhs).bold()
+        lhs = markups.Markup(rf'\bold "{lhs}"')
         markup_list.append(lhs)
         markup_list.append("=")
         assert isinstance(rhs, markups.Markup)
@@ -1073,12 +1073,10 @@ class Expression:
     ):
         markup_list = markups.MarkupList([method_name, markup])
         if superscript is not None:
-            superscript = markups.Markup(str(superscript))
-            superscript = superscript.super()
+            superscript = markups.Markup(rf'\super "{superscript}"')
             markup_list.insert(1, superscript)
         if subscript is not None:
-            subscript = markups.Markup(str(subscript))
-            subscript = subscript.sub()
+            subscript = markups.Markup(rf'\sub "{subscript}"')
             markup_list.insert(1, subscript)
         markup = markup_list.concat()
         return markup

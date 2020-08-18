@@ -2110,7 +2110,7 @@ class Label:
                 duration = duration.with_denominator(denominator)
             pair = duration.pair
             numerator, denominator = pair
-            label = Markup.fraction(numerator, denominator, direction=direction)
+            label = Markup(rf"\fraction {numerator} {denominator}", direction=direction)
             self._attach(label, logical_tie.head)
 
     def with_indices(self, direction=enums.Up, prototype=None):

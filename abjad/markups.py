@@ -44,8 +44,7 @@ class Markup:
 
         Initializes from other markup:
 
-        >>> markup = abjad.Markup("Allegro assai", direction=abjad.Up)
-        >>> markup = markup.italic()
+        >>> markup = abjad.Markup(r'\italic "Allegro assai"', direction=abjad.Up)
         >>> markup = abjad.Markup(markup, direction=abjad.Down)
         >>> abjad.f(markup)
         _ \markup {
@@ -101,7 +100,7 @@ class Markup:
         Markup can be tagged:
 
         >>> staff = abjad.Staff("c'4 d' e' f'")
-        >>> markup = abjad.Markup("Allegro", direction=abjad.Up).italic()
+        >>> markup = abjad.Markup(r"\italic Allegro", direction=abjad.Up)
         >>> abjad.attach(markup, staff[0], tag=abjad.Tag("RED:M1"))
         >>> abjad.show(staff) # doctest: +SKIP
 
@@ -123,7 +122,7 @@ class Markup:
         Markup can be deactively tagged:
 
         >>> staff = abjad.Staff("c'4 d' e' f'")
-        >>> markup = abjad.Markup("Allegro", direction=abjad.Up).italic()
+        >>> markup = abjad.Markup(r"\italic Allegro", direction=abjad.Up)
         >>> abjad.attach(
         ...     markup,
         ...     staff[0],
@@ -151,8 +150,8 @@ class Markup:
         the second italic markup is attached:
 
         >>> staff = abjad.Staff("c'4 d' e' f'")
-        >>> markup_1 = abjad.Markup("Allegro", direction=abjad.Up).italic()
-        >>> markup_2 = abjad.Markup("non troppo", direction=abjad.Up).italic()
+        >>> markup_1 = abjad.Markup(r"\italic Allegro", direction=abjad.Up)
+        >>> markup_2 = abjad.Markup(r'\italic "non troppo"', direction=abjad.Up)
         >>> abjad.attach(markup_1, staff[0])
         >>> abjad.attach(markup_2, staff[0])
         >>> abjad.show(staff) # doctest: +SKIP
@@ -274,7 +273,7 @@ class Markup:
 
             Adds markup command to markup:
 
-            >>> markup = abjad.Markup("Allegro") + abjad.Markup.hspace(0.75)
+            >>> markup = abjad.Markup(r"Allegro \hspace #0.75")
             >>> markup = markup + abjad.Markup("assai")
             >>> abjad.f(markup)
             \markup {
@@ -474,7 +473,7 @@ class Markup:
 
             Adds markup to markup command:
 
-            >>> markup = abjad.Markup("Allegro") + abjad.Markup.hspace(0.75)
+            >>> markup = abjad.Markup(r"Allegro \hspace #0.75")
             >>> markup = markup + abjad.Markup("assai")
             >>> abjad.f(markup)
             \markup {
@@ -756,8 +755,7 @@ class Markup:
 
         ..  container:: example
 
-            >>> markup = abjad.Markup("Allegro assai", direction=abjad.Up)
-            >>> markup = markup.bold()
+            >>> markup = abjad.Markup(r'\bold "Allegro assai"', direction=abjad.Up)
             >>> abjad.tweak(markup).color = "blue"
             >>> staff = abjad.Staff("c'4 d' e' f'")
             >>> abjad.attach(markup, staff[0])
@@ -3612,7 +3610,7 @@ class MarkupList(TypedList):
             ..  container:: example
 
                 >>> markup_one = abjad.Markup("Allegro assai")
-                >>> markup_two = abjad.Markup.draw_line(13, 0)
+                >>> markup_two = abjad.Markup(r"\draw-line #'(13 . 0)")
                 >>> markup_list = [markup_one, markup_two]
                 >>> markup_list = abjad.MarkupList(markup_list)
                 >>> markup = markup_list.combine(direction=abjad.Up)
@@ -3645,7 +3643,7 @@ class MarkupList(TypedList):
             ..  container:: example
 
                 >>> downbow = abjad.Markup.musicglyph("scripts.downbow")
-                >>> hspace = abjad.Markup.hspace(1)
+                >>> hspace = abjad.Markup(r'\hspace #1')
                 >>> upbow = abjad.Markup.musicglyph("scripts.upbow")
                 >>> markups = [downbow, hspace, upbow]
                 >>> markup_list = abjad.MarkupList(markups)

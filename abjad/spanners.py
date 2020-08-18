@@ -118,7 +118,7 @@ def beam(
         if not _is_beamable(leaf, beam_rests=beam_rests):
             continue
         leaves.append(leaf)
-    # print(leaves, 'LLL')
+    # print(leaves, "LLL")
     runs = []
     run = []
     run.extend(leaves[:1])
@@ -136,14 +136,14 @@ def beam(
         runs.append(selection)
     runs_ = Selection(runs)
     assert isinstance(runs_, Selection), repr(runs_)
-    # print(runs, 'RRR', len(runs))
+    # print(runs, "RRR", len(runs))
     # print()
     if not beam_lone_notes:
         result = runs_.nontrivial()
         assert isinstance(result, Selection), repr(result)
         runs_ = result
     for run in runs_:
-        # print(run, 'RRR')
+        # print(run, "RRR")
         if all(isinstance(_, silent_prototype) for _ in run):
             continue
         start_leaf = run[0]
@@ -298,15 +298,15 @@ def bow_contact_spanner(
         >>> staff.extend(r"c'4. c'8 \times 2/3 { c'4 c'4 c'4 }")
 
         >>> leaves = abjad.select(staff).leaves()
-        >>> abjad.attach(abjad.BowMotionTechnique('jete'), leaves[0])
+        >>> abjad.attach(abjad.BowMotionTechnique("jete"), leaves[0])
         >>> abjad.attach(abjad.BowContactPoint((1, 4)), leaves[0])
         >>> abjad.attach(abjad.BowContactPoint((3, 4)), leaves[1])
         >>> abjad.attach(abjad.BowContactPoint((1, 2)), leaves[2])
-        >>> abjad.attach(abjad.BowMotionTechnique('circular'), leaves[3])
+        >>> abjad.attach(abjad.BowMotionTechnique("circular"), leaves[3])
         >>> abjad.attach(abjad.BowContactPoint((1, 1)), leaves[3])
         >>> abjad.attach(abjad.BowContactPoint((0, 1)), leaves[4])
 
-        >>> abjad.attach(abjad.Clef('percussion'), leaves[0])
+        >>> abjad.attach(abjad.Clef("percussion"), leaves[0])
         >>> abjad.override(staff).bar_line.transparent = True
         >>> abjad.override(staff).dots.staff_position = -8
         >>> abjad.override(staff).flag.Y_offset = -8.5
@@ -417,15 +417,15 @@ def bow_contact_spanner(
         >>> staff.extend(r"c'4. c'8 \times 2/3 { c'4 c'4 c'4 }")
 
         >>> leaves = abjad.select(staff).leaves()
-        >>> abjad.attach(abjad.BowMotionTechnique('jete'), leaves[0])
+        >>> abjad.attach(abjad.BowMotionTechnique("jete"), leaves[0])
         >>> abjad.attach(abjad.BowContactPoint((1, 4)), leaves[0])
         >>> abjad.attach(abjad.BowContactPoint((3, 4)), leaves[1])
         >>> abjad.attach(abjad.BowContactPoint((1, 2)), leaves[2])
-        >>> abjad.attach(abjad.BowMotionTechnique('circular'), leaves[3])
+        >>> abjad.attach(abjad.BowMotionTechnique("circular"), leaves[3])
         >>> abjad.attach(abjad.BowContactPoint((1, 1)), leaves[3])
         >>> abjad.attach(abjad.BowContactPoint((0, 1)), leaves[4])
 
-        >>> abjad.attach(abjad.Clef('percussion'), leaves[0])
+        >>> abjad.attach(abjad.Clef("percussion"), leaves[0])
         >>> abjad.override(staff).bar_line.transparent = True
         >>> abjad.override(staff).dots.staff_position = -8
         >>> abjad.override(staff).flag.Y_offset = -8.5
@@ -536,7 +536,7 @@ def bow_contact_spanner(
         >>> abjad.attach(abjad.BowContactPoint((1, 2)), leaves[2])
         >>> abjad.attach(abjad.BowContactPoint(None), leaves[3])
 
-        >>> abjad.attach(abjad.Clef('percussion'), staff[0])
+        >>> abjad.attach(abjad.Clef("percussion"), staff[0])
         >>> abjad.override(staff).bar_line.transparent = True
         >>> abjad.override(staff).dots.staff_position = -8
         >>> abjad.override(staff).flag.Y_offset = -8.5
@@ -1174,7 +1174,7 @@ def glissando(
         >>> staff = abjad.Staff("c'8 d'8 e'8 f'8")
         >>> abjad.glissando(
         ...     staff[:],
-        ...     abjad.tweak('trill').style,
+        ...     abjad.tweak("trill").style,
         ...     )
         >>> abjad.show(staff) # doctest: +SKIP
 
@@ -1277,8 +1277,8 @@ def glissando(
         >>> staff = abjad.Staff("d'4 d' d' d'")
         >>> abjad.glissando(
         ...     staff[:],
-        ...     (abjad.tweak('red').color, 0),
-        ...     (abjad.tweak('red').color, -1),
+        ...     (abjad.tweak("red").color, 0),
+        ...     (abjad.tweak("red").color, -1),
         ...     allow_repeats=True,
         ...     zero_padding=True,
         ...     )
@@ -1526,7 +1526,7 @@ def hairpin(
         With three-part string descriptor:
 
         >>> staff = abjad.Staff("c'4 d' e' f'")
-        >>> abjad.hairpin('p < f', staff[:])
+        >>> abjad.hairpin("p < f", staff[:])
         >>> abjad.override(staff[0]).dynamic_line_spanner.staff_padding = 4
         >>> abjad.show(staff) # doctest: +SKIP
 
@@ -1550,7 +1550,7 @@ def hairpin(
         With two-part string descriptor:
 
         >>> staff = abjad.Staff("c'4 d' e' f'")
-        >>> abjad.hairpin('< !', staff[:])
+        >>> abjad.hairpin("< !", staff[:])
         >>> abjad.override(staff[0]).dynamic_line_spanner.staff_padding = 4
         >>> abjad.show(staff) # doctest: +SKIP
 
@@ -1573,9 +1573,9 @@ def hairpin(
         With dynamic objects:
 
         >>> staff = abjad.Staff("c'4 d' e' f'")
-        >>> start_dynamic = abjad.Dynamic('niente', command=r'\!')
-        >>> start_hairpin = abjad.StartHairpin('o<|')
-        >>> abjad.tweak(start_hairpin).color = 'blue'
+        >>> start_dynamic = abjad.Dynamic("niente", command=r"\!")
+        >>> start_hairpin = abjad.StartHairpin("o<|")
+        >>> abjad.tweak(start_hairpin).color = "blue"
         >>> stop_dynamic = abjad.Dynamic('"f"')
         >>> abjad.hairpin([start_dynamic, start_hairpin, stop_dynamic], staff[:])
         >>> abjad.override(staff[0]).dynamic_line_spanner.staff_padding = 4
@@ -1904,9 +1904,9 @@ def text_spanner(
 
         >>> staff = abjad.Staff("c'4 d' e' f'")
         >>> start_text_span = abjad.StartTextSpan(
-        ...     left_text=abjad.Markup('pont.').upright(),
-        ...     right_text=abjad.Markup('tasto').upright(),
-        ...     style='solid-line-with-arrow',
+        ...     left_text=abjad.Markup(r"\upright pont."),
+        ...     right_text=abjad.Markup(r"\upright tasto"),
+        ...     style="solid-line-with-arrow",
         ...     )
         >>> abjad.text_spanner(staff[:], start_text_span=start_text_span)
         >>> abjad.override(staff[0]).text_spanner.staff_padding = 4
@@ -1946,14 +1946,14 @@ def text_spanner(
 
         >>> staff = abjad.Staff("c'4 d' e' f' r")
         >>> start_text_span = abjad.StartTextSpan(
-        ...     left_text=abjad.Markup('pont.').upright(),
-        ...     style='dashed-line-with-arrow',
+        ...     left_text=abjad.Markup(r"\upright pont."),
+        ...     style="dashed-line-with-arrow",
         ...     )
         >>> abjad.text_spanner(staff[:3], start_text_span=start_text_span)
         >>> start_text_span = abjad.StartTextSpan(
-        ...     left_text=abjad.Markup('tasto').upright(),
-        ...     right_text=abjad.Markup('pont.').upright(),
-        ...     style='dashed-line-with-arrow',
+        ...     left_text=abjad.Markup(r"\upright tasto"),
+        ...     right_text=abjad.Markup(r"\upright pont."),
+        ...     style="dashed-line-with-arrow",
         ...     )
         >>> abjad.text_spanner(staff[-3:], start_text_span=start_text_span)
         >>> abjad.override(staff).text_spanner.staff_padding = 4
@@ -2005,13 +2005,13 @@ def text_spanner(
 
         >>> staff = abjad.Staff("c'4 d' e' f' r")
         >>> start_text_span = abjad.StartTextSpan(
-        ...     left_text=abjad.Markup('pont.').upright(),
-        ...     style='dashed-line-with-arrow',
+        ...     left_text=abjad.Markup(r"\upright pont."),
+        ...     style="dashed-line-with-arrow",
         ...     )
         >>> abjad.text_spanner(staff[:3], start_text_span=start_text_span)
         >>> start_text_span = abjad.StartTextSpan(
-        ...     left_text=abjad.Markup('tasto').upright(),
-        ...     style='solid-line-with-hook',
+        ...     left_text=abjad.Markup(r"\upright tasto"),
+        ...     style="solid-line-with-hook",
         ...     )
         >>> abjad.text_spanner(staff[-3:], start_text_span=start_text_span)
         >>> abjad.override(staff).text_spanner.staff_padding = 4

@@ -3422,13 +3422,16 @@ class TimespanList(TypedList):
                 value, timespans = item
                 timespans.sort()
                 if 0 < i:
-                    vspace_markup = Markup.vspace(0.5)
+                    # vspace_markup = Markup.vspace(0.5)
+                    vspace_markup = Markup(r"\vspace #0.5")
                     markups.append(vspace_markup)
-                value_markup = Markup(f"{value}:")
-                value_markup = Markup.line([value_markup])
-                value_markup = value_markup.sans().fontsize(-1)
+                # value_markup = Markup(rf"\line {{ {value}: }}")
+                # value_markup = Markup.line([value_markup])
+                # value_markup = value_markup.sans().fontsize(-1)
+                value_markup = Markup(rf'\fontsize #-1 \sans \line {{ "{value}:" }}')
                 markups.append(value_markup)
-                vspace_markup = Markup.vspace(0.5)
+                # vspace_markup = Markup.vspace(0.5)
+                vspace_markup = Markup(r"\vspace #0.5")
                 markups.append(vspace_markup)
                 timespan_markup = self._make_timespan_list_markup(
                     timespans, postscript_x_offset, postscript_scale, sortkey=sortkey,
@@ -3625,11 +3628,11 @@ class TimespanList(TypedList):
         for offset in sorted(offset_mapping):
             offset = Multiplier(offset)
             numerator, denominator = offset.numerator, offset.denominator
-            fraction = Markup.fraction(numerator, denominator)
-            fraction = fraction.center_align().fontsize(-3).sans()
             x_translation = float(offset) * postscript_scale
             x_translation -= postscript_x_offset
-            fraction = fraction.translate((x_translation, 1))
+            string = rf"\translate #'({x_translation} . 1) \sans \fontsize #-3"
+            string += rf" \center-align \fraction {numerator} {denominator}"
+            fraction = Markup(string)
             fraction_markups.append(fraction)
         fraction_markup = Markup.overlay(fraction_markups)
         markup = Markup.column([fraction_markup, lines_markup])

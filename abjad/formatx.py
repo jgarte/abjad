@@ -303,8 +303,7 @@ def f(argument, strict=None):
     ..  container:: example
 
         >>> staff = abjad.Staff("c'4 d' e' f'")
-        >>> markup = abjad.Markup('Allegro', direction=abjad.Up)
-        >>> markup = markup.with_color('blue')
+        >>> markup = abjad.Markup(r'\with-color #blue Allegro', direction=abjad.Up)
         >>> abjad.attach(markup, staff[0])
         >>> for leaf in staff:
         ...     abjad.attach(abjad.Articulation('.'), leaf)

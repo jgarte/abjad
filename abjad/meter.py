@@ -2751,18 +2751,17 @@ class MeterList(TypedList):
         fraction_markups = []
         for meter, offset in zip(self, offsets):
             numerator, denominator = meter.numerator, meter.denominator
-            fraction = markups.Markup.fraction(numerator, denominator)
-            fraction = fraction.center_align().fontsize(-3).sans()
             x_translation = float(offset) * postscript_scale
             x_translation -= postscript_x_offset
-            fraction = fraction.translate((x_translation, 1))
+            string = rf"\translate #'({x_translation} . 1) \sans \fontsize #-3"
+            string += rf" \center-align \fraction {numerator} {denominator}"
+            fraction = markups.Markup(string)
             fraction_markups.append(fraction)
         fraction_markup = fraction_markups[0]
         for markup in fraction_markups[1:]:
             markup_list = markups.MarkupList([fraction_markup, markup])
             fraction_markup = markup_list.combine()
         markup = markups.Markup.column([fraction_markup, lines_markup])
-        # return illustrate(markup)
         lilypond_file = LilyPondFile.new()
         markup = new(markup, direction=None)
         lilypond_file.items.append(markup)
