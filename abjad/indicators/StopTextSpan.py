@@ -115,15 +115,8 @@ class StopTextSpan:
                 {
                     c'4
                     - \abjad-dashed-line-with-arrow
-                    - \tweak bound-details.left.text \markup {
-                        \concat
-                            {
-                                \upright
-                                    pont.
-                                \hspace
-                                    #0.5
-                            }
-                        }
+                    - \tweak bound-details.left.text \markup \concat { \upright
+                        pont. \hspace #0.5 }
                     - \tweak bound-details.right.text \markup {
                         \upright
                             tasto
@@ -157,15 +150,8 @@ class StopTextSpan:
                 {
                     c'4
                     - \abjad-dashed-line-with-arrow
-                    - \tweak bound-details.left.text \markup {
-                        \concat
-                            {
-                                \upright
-                                    pont.
-                                \hspace
-                                    #0.5
-                            }
-                        }
+                    - \tweak bound-details.left.text \markup \concat { \upright
+                        pont. \hspace #0.5 }
                     - \tweak bound-details.right.text \markup {
                         \upright
                             tasto

@@ -32,15 +32,8 @@ class StartTextSpan:
             {
                 c'4
                 - \abjad-solid-line-with-arrow
-                - \tweak bound-details.left.text \markup {
-                    \concat
-                        {
-                            \upright
-                                pont.
-                            \hspace
-                                #0.5
-                        }
-                    }
+                - \tweak bound-details.left.text \markup \concat { \upright
+                    pont. \hspace #0.5 }
                 - \tweak bound-details.right.text \markup {
                     \upright
                         tasto
@@ -184,11 +177,12 @@ class StartTextSpan:
     def _get_left_text_directive(self):
         if isinstance(self.left_text, str):
             return self.left_text
-        concat_hspace_left_markup = markups.Markup(
-            fr"\hspace #{self.concat_hspace_left}"
+        assert len(self.left_text.contents) == 1, repr(self.left_text)
+        left_text_string = self.left_text.contents[0]
+        hspace_string = fr"\hspace #{self.concat_hspace_left}"
+        markup = markups.Markup(
+            rf"\markup \concat {{ {left_text_string} {hspace_string} }}", literal=True,
         )
-        markup_list = [self.left_text, concat_hspace_left_markup]
-        markup = markups.Markup.concat(markup_list)
         override = LilyPondOverride(
             grob_name="TextSpanner",
             property_path=("bound-details", "left", "text"),
@@ -235,9 +229,11 @@ class StartTextSpan:
             return self.right_text
         if self.concat_hspace_right is not None:
             number = self.concat_hspace_right
-            concat_hspace_right_markup = markups.Markup.hspace(number)
-            markup_list = [concat_hspace_right_markup, self.right_text]
-            markup = markups.Markup.concat(markup_list)
+            assert len(self.right_text.contents) == 1
+            right_text = self.right_text.contents[0]
+            markup = markups.Markup(
+                rf"\markup \concat {{ {right_text} \hspace #{number} }}", literal=True,
+            )
         else:
             markup = self.right_text
         override = LilyPondOverride(
@@ -300,15 +296,8 @@ class StartTextSpan:
                     - \tweak transparent ##t
                     ^ \markup { SPACER }
                     - \abjad-dashed-line-with-arrow
-                    - \tweak bound-details.left.text \markup {
-                        \concat
-                            {
-                                \upright
-                                    pont.
-                                \hspace
-                                    #0.5
-                            }
-                        }
+                    - \tweak bound-details.left.text \markup \concat { \upright
+                        pont. \hspace #0.5 }
                     - \tweak bound-details.right.text \markup {
                         \upright
                             tasto
@@ -317,15 +306,8 @@ class StartTextSpan:
                     - \tweak staff-padding #2.5
                     \startTextSpan
                     - \abjad-dashed-line-with-arrow
-                    - \tweak bound-details.left.text \markup {
-                        \concat
-                            {
-                                \upright
-                                    A
-                                \hspace
-                                    #0.5
-                            }
-                        }
+                    - \tweak bound-details.left.text \markup \concat { \upright
+                        A \hspace #0.5 }
                     - \tweak bound-details.right.text \markup {
                         \upright
                             B
@@ -527,15 +509,8 @@ class StartTextSpan:
                 {
                     c'4
                     - \abjad-dashed-line-with-arrow
-                    - \tweak bound-details.left.text \markup {
-                        \concat
-                            {
-                                \upright
-                                    pont.
-                                \hspace
-                                    #0.5
-                            }
-                        }
+                    - \tweak bound-details.left.text \markup \concat { \upright
+                        pont. \hspace #0.5 }
                     - \tweak bound-details.right.text \markup {
                         \upright
                             tasto
@@ -568,15 +543,8 @@ class StartTextSpan:
                 {
                     c'4
                     - \abjad-dashed-line-with-hook
-                    - \tweak bound-details.left.text \markup {
-                        \concat
-                            {
-                                \upright
-                                    pont.
-                                \hspace
-                                    #0.5
-                            }
-                        }
+                    - \tweak bound-details.left.text \markup \concat { \upright
+                        pont. \hspace #0.5 }
                     - \tweak staff-padding #2.5
                     \startTextSpan
                     d'4
@@ -606,15 +574,8 @@ class StartTextSpan:
                 {
                     c'4
                     - \abjad-invisible-line
-                    - \tweak bound-details.left.text \markup {
-                        \concat
-                            {
-                                \upright
-                                    pont.
-                                \hspace
-                                    #0.5
-                            }
-                        }
+                    - \tweak bound-details.left.text \markup \concat { \upright
+                        pont. \hspace #0.5 }
                     - \tweak bound-details.right.text \markup {
                         \upright
                             tasto
@@ -648,15 +609,8 @@ class StartTextSpan:
                 {
                     c'4
                     - \abjad-solid-line-with-arrow
-                    - \tweak bound-details.left.text \markup {
-                        \concat
-                            {
-                                \upright
-                                    pont.
-                                \hspace
-                                    #0.5
-                            }
-                        }
+                    - \tweak bound-details.left.text \markup \concat { \upright
+                        pont. \hspace #0.5 }
                     - \tweak bound-details.right.text \markup {
                         \upright
                             tasto
@@ -689,15 +643,8 @@ class StartTextSpan:
                 {
                     c'4
                     - \abjad-solid-line-with-hook
-                    - \tweak bound-details.left.text \markup {
-                        \concat
-                            {
-                                \upright
-                                    pont.
-                                \hspace
-                                    #0.5
-                            }
-                        }
+                    - \tweak bound-details.left.text \markup \concat { \upright
+                        pont. \hspace #0.5 }
                     - \tweak staff-padding #2.5
                     \startTextSpan
                     d'4
