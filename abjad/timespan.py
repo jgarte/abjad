@@ -3574,10 +3574,10 @@ class TimespanList(TypedList):
         x_extent = float(timespans.stop_offset)
         x_extent *= postscript_scale
         x_extent += postscript_x_offset
-        x_extent = (0, x_extent)
-        y_extent = (0, height + 1.5)
-        lines_markup = Markup(rf'\postscript #"{ps}"')
-        lines_markup = lines_markup.pad_to_box(x_extent, y_extent)
+        y_extent = height + 1.5
+        string = rf"\pad-to-box #'(0 . {x_extent}) #'(0 . {y_extent})"
+        string += rf' \postscript #"{ps}"'
+        lines_markup = Markup(string)
         fraction_markups = []
         for offset in sorted(offset_mapping):
             offset = Multiplier(offset)
@@ -3593,8 +3593,6 @@ class TimespanList(TypedList):
         fraction_ = fraction_markup.contents[0]
         assert len(lines_markup.contents) == 1, repr(lines_markup)
         string = rf"\column {{ {fraction_} {lines_markup.contents[0]} }}"
-        # markup = Markup(string, literal=True)
-        # return markup
         return string
 
     ### PUBLIC PROPERTIES ###
