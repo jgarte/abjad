@@ -11,7 +11,7 @@ import quicktions
 from . import enums, mathx
 from .cyclictuple import CyclicTuple
 from .expression import Expression, Signature
-from .markups import MarkupList
+from .markups import Markup
 from .ratio import Ratio
 from .storage import FormatSpecification, StorageFormatManager
 
@@ -685,12 +685,9 @@ class Sequence(collections.abc.Sequence):
 
     @staticmethod
     def _make_map_markup(markup, operand):
-        markup_list = MarkupList()
         operand_markup = operand.get_markup(name="X")
-        markup_list.append(operand_markup)
-        markup_list.append("/@")
-        markup_list.append(markup)
-        markup = markup_list.line()
+        string = rf"\line {{ {operand_markup.contents[0]} /@ {markup.contents[0]} }}"
+        markup = Markup(string)
         return markup
 
     @staticmethod
