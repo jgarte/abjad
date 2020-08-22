@@ -3186,192 +3186,161 @@ class TimespanList(TypedList):
                 ...     )
                 >>> markup = lilypond_file.items[-1]
                 >>> abjad.f(markup)
-                \markup {
-                    \left-column
-                        {
-                            \fontsize
-                                #-1
-                                \sans
-                                    \line
-                                        {
-                                            "voice 1:"
-                                        }
-                            \vspace
-                                #0.5
-                            #"
-                            \markup \column { \overlay
-                                {
-                                    \translate
-                                        #'(1.0 . 1)
-                                        \sans
-                                            \fontsize
-                                                #-3
-                                                \center-align
-                                                    \fraction
-                                                        0
-                                                        1
-                                    \translate
-                                        #'(151.0 . 1)
-                                        \sans
-                                            \fontsize
-                                                #-3
-                                                \center-align
-                                                    \fraction
-                                                        1
-                                                        4
-                                } \pad-to-box
-                                #'(0 . 149.0)
-                                #'(0 . 2.5)
-                                \postscript
-                                    #"
-                                    0.2 setlinewidth
-                                    1 0.5 moveto
-                                    151 0.5 lineto
-                                    stroke
-                                    1 1.25 moveto
-                                    1 -0.25 lineto
-                                    stroke
-                                    151 1.25 moveto
-                                    151 -0.25 lineto
-                                    stroke
-                                    0.1 setlinewidth
-                                    [ 0.1 0.2 ] 0 setdash
-                                    1 2.5 moveto
-                                    1 1 lineto
-                                    stroke
-                                    151 2.5 moveto
-                                    151 1 lineto
-                                    stroke
-                                    0 0 moveto
-                                    0.99 setgray
-                                    0 0.01 rlineto
-                                    stroke
-                                    " }
-                            "
-                            \vspace
-                                #0.5
-                            \fontsize
-                                #-1
-                                \sans
-                                    \line
-                                        {
-                                            "voice 2:"
-                                        }
-                            \vspace
-                                #0.5
-                            #"
-                            \markup \column { \overlay
-                                {
-                                    \translate
-                                        #'(1.0 . 1)
-                                        \sans
-                                            \fontsize
-                                                #-3
-                                                \center-align
-                                                    \fraction
-                                                        0
-                                                        1
-                                    \translate
-                                        #'(151.0 . 1)
-                                        \sans
-                                            \fontsize
-                                                #-3
-                                                \center-align
-                                                    \fraction
-                                                        1
-                                                        4
-                                } \pad-to-box
-                                #'(0 . 149.0)
-                                #'(0 . 2.5)
-                                \postscript
-                                    #"
-                                    0.2 setlinewidth
-                                    1 0.5 moveto
-                                    151 0.5 lineto
-                                    stroke
-                                    1 1.25 moveto
-                                    1 -0.25 lineto
-                                    stroke
-                                    151 1.25 moveto
-                                    151 -0.25 lineto
-                                    stroke
-                                    0.1 setlinewidth
-                                    [ 0.1 0.2 ] 0 setdash
-                                    1 2.5 moveto
-                                    1 1 lineto
-                                    stroke
-                                    151 2.5 moveto
-                                    151 1 lineto
-                                    stroke
-                                    0 0 moveto
-                                    0.99 setgray
-                                    0 0.01 rlineto
-                                    stroke
-                                    " }
-                            "
-                            \vspace
-                                #0.5
-                            \fontsize
-                                #-1
-                                \sans
-                                    \line
-                                        {
-                                            "voice 10:"
-                                        }
-                            \vspace
-                                #0.5
-                            #"
-                            \markup \column { \overlay
-                                {
-                                    \translate
-                                        #'(1.0 . 1)
-                                        \sans
-                                            \fontsize
-                                                #-3
-                                                \center-align
-                                                    \fraction
-                                                        0
-                                                        1
-                                    \translate
-                                        #'(151.0 . 1)
-                                        \sans
-                                            \fontsize
-                                                #-3
-                                                \center-align
-                                                    \fraction
-                                                        1
-                                                        4
-                                } \pad-to-box
-                                #'(0 . 149.0)
-                                #'(0 . 2.5)
-                                \postscript
-                                    #"
-                                    0.2 setlinewidth
-                                    1 0.5 moveto
-                                    151 0.5 lineto
-                                    stroke
-                                    1 1.25 moveto
-                                    1 -0.25 lineto
-                                    stroke
-                                    151 1.25 moveto
-                                    151 -0.25 lineto
-                                    stroke
-                                    0.1 setlinewidth
-                                    [ 0.1 0.2 ] 0 setdash
-                                    1 2.5 moveto
-                                    1 1 lineto
-                                    stroke
-                                    151 2.5 moveto
-                                    151 1 lineto
-                                    stroke
-                                    0 0 moveto
-                                    0.99 setgray
-                                    0 0.01 rlineto
-                                    stroke
-                                    " }
-                            "
-                        }
-                    }
+                \markup
+                \left-column {
+                \fontsize #-1 \sans \line { "voice 1:" }
+                \vspace #0.5
+                \column { \overlay
+                    {
+                        \translate
+                            #'(1.0 . 1)
+                            \sans
+                                \fontsize
+                                    #-3
+                                    \center-align
+                                        \fraction
+                                            0
+                                            1
+                        \translate
+                            #'(151.0 . 1)
+                            \sans
+                                \fontsize
+                                    #-3
+                                    \center-align
+                                        \fraction
+                                            1
+                                            4
+                    } \pad-to-box
+                    #'(0 . 149.0)
+                    #'(0 . 2.5)
+                    \postscript
+                        #"
+                        0.2 setlinewidth
+                        1 0.5 moveto
+                        151 0.5 lineto
+                        stroke
+                        1 1.25 moveto
+                        1 -0.25 lineto
+                        stroke
+                        151 1.25 moveto
+                        151 -0.25 lineto
+                        stroke
+                        0.1 setlinewidth
+                        [ 0.1 0.2 ] 0 setdash
+                        1 2.5 moveto
+                        1 1 lineto
+                        stroke
+                        151 2.5 moveto
+                        151 1 lineto
+                        stroke
+                        0 0 moveto
+                        0.99 setgray
+                        0 0.01 rlineto
+                        stroke
+                        " }
+                \vspace #0.5
+                \fontsize #-1 \sans \line { "voice 2:" }
+                \vspace #0.5
+                \column { \overlay
+                    {
+                        \translate
+                            #'(1.0 . 1)
+                            \sans
+                                \fontsize
+                                    #-3
+                                    \center-align
+                                        \fraction
+                                            0
+                                            1
+                        \translate
+                            #'(151.0 . 1)
+                            \sans
+                                \fontsize
+                                    #-3
+                                    \center-align
+                                        \fraction
+                                            1
+                                            4
+                    } \pad-to-box
+                    #'(0 . 149.0)
+                    #'(0 . 2.5)
+                    \postscript
+                        #"
+                        0.2 setlinewidth
+                        1 0.5 moveto
+                        151 0.5 lineto
+                        stroke
+                        1 1.25 moveto
+                        1 -0.25 lineto
+                        stroke
+                        151 1.25 moveto
+                        151 -0.25 lineto
+                        stroke
+                        0.1 setlinewidth
+                        [ 0.1 0.2 ] 0 setdash
+                        1 2.5 moveto
+                        1 1 lineto
+                        stroke
+                        151 2.5 moveto
+                        151 1 lineto
+                        stroke
+                        0 0 moveto
+                        0.99 setgray
+                        0 0.01 rlineto
+                        stroke
+                        " }
+                \vspace #0.5
+                \fontsize #-1 \sans \line { "voice 10:" }
+                \vspace #0.5
+                \column { \overlay
+                    {
+                        \translate
+                            #'(1.0 . 1)
+                            \sans
+                                \fontsize
+                                    #-3
+                                    \center-align
+                                        \fraction
+                                            0
+                                            1
+                        \translate
+                            #'(151.0 . 1)
+                            \sans
+                                \fontsize
+                                    #-3
+                                    \center-align
+                                        \fraction
+                                            1
+                                            4
+                    } \pad-to-box
+                    #'(0 . 149.0)
+                    #'(0 . 2.5)
+                    \postscript
+                        #"
+                        0.2 setlinewidth
+                        1 0.5 moveto
+                        151 0.5 lineto
+                        stroke
+                        1 1.25 moveto
+                        1 -0.25 lineto
+                        stroke
+                        151 1.25 moveto
+                        151 -0.25 lineto
+                        stroke
+                        0.1 setlinewidth
+                        [ 0.1 0.2 ] 0 setdash
+                        1 2.5 moveto
+                        1 1 lineto
+                        stroke
+                        151 2.5 moveto
+                        151 1 lineto
+                        stroke
+                        0 0 moveto
+                        0.99 setgray
+                        0 0.01 rlineto
+                        stroke
+                        " }
+                }
 
         Returns markup.
         """
@@ -3405,24 +3374,24 @@ class TimespanList(TypedList):
                 if value not in timespan_lists:
                     timespan_lists[value] = type(self)()
                 timespan_lists[value].append(timespan)
-            markups = []
+            strings = []
             generator = sorted(timespan_lists.items(), key=sort_callable)
             for i, item in enumerate(generator):
                 value, timespans = item
                 timespans.sort()
                 if 0 < i:
-                    vspace_markup = Markup(r"\vspace #0.5")
-                    markups.append(vspace_markup)
-                value_markup = Markup(rf'\fontsize #-1 \sans \line {{ "{value}:" }}')
-                markups.append(value_markup)
-                vspace_markup = Markup(r"\vspace #0.5")
-                markups.append(vspace_markup)
+                    string = r"\vspace #0.5"
+                    strings.append(string)
+                string = rf'\fontsize #-1 \sans \line {{ "{value}:" }}'
+                strings.append(string)
+                string = r"\vspace #0.5"
+                strings.append(string)
                 string = self._make_timespan_list_markup(
                     timespans, postscript_x_offset, postscript_scale, sortkey=sortkey,
                 )
-                timespan_markup = Markup(rf"\markup {string}", literal=True)
-                markups.append(timespan_markup)
-            markup = Markup.left_column(markups)
+                strings.append(string)
+            string = "\n".join(strings)
+            markup = Markup(f"\\markup\n\\left-column {{\n{string}\n}}", literal=True)
         return markup
 
     def __invert__(self) -> "TimespanList":
