@@ -2746,9 +2746,10 @@ class MeterList(TypedList):
                 ps = ps.rlineto(0, weight)
                 ps = ps.stroke()
             rational_x_offset += meter.duration
-        ps = markups.Markup.postscript(ps)
-        markup_list = markups.MarkupList([timespan_markup, ps])
+        ps_markup = markups.Markup(r'\postscript #"{ps}"')
+        markup_list = markups.MarkupList([timespan_markup, ps_markup])
         lines_markup = markup_list.combine()
+        assert isinstance(lines_markup, markups.Markup)
         fraction_markups = []
         for meter, offset in zip(self, offsets):
             numerator, denominator = meter.numerator, meter.denominator
@@ -2762,7 +2763,7 @@ class MeterList(TypedList):
         for markup in fraction_markups[1:]:
             markup_list = markups.MarkupList([fraction_markup, markup])
             fraction_markup = markup_list.combine()
-        markup = markups.Markup.column([fraction_markup, lines_markup])
+        markup = markups.Markup(r"\column {{ {fraction_markup} {lines_markup} }}")
         lilypond_file = LilyPondFile.new()
         markup = new(markup, direction=None)
         lilypond_file.items.append(markup)
