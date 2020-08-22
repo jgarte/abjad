@@ -3052,72 +3052,13 @@ class TimespanList(TypedList):
                 >>> markup = lilypond_file.items[-1]
                 >>> abjad.f(markup)
                 \markup \column {
-                \overlay
-                    {
-                        \translate
-                            #'(1.0 . 1)
-                            \sans
-                                \fontsize
-                                    #-3
-                                    \center-align
-                                        \fraction
-                                            -2
-                                            1
-                        \translate
-                            #'(17.666666666666668 . 1)
-                            \sans
-                                \fontsize
-                                    #-3
-                                    \center-align
-                                        \fraction
-                                            0
-                                            1
-                        \translate
-                            #'(59.33333333333334 . 1)
-                            \sans
-                                \fontsize
-                                    #-3
-                                    \center-align
-                                        \fraction
-                                            5
-                                            1
-                        \translate
-                            #'(67.66666666666667 . 1)
-                            \sans
-                                \fontsize
-                                    #-3
-                                    \center-align
-                                        \fraction
-                                            6
-                                            1
-                        \translate
-                            #'(101.00000000000001 . 1)
-                            \sans
-                                \fontsize
-                                    #-3
-                                    \center-align
-                                        \fraction
-                                            10
-                                            1
-                        \translate
-                            #'(117.66666666666667 . 1)
-                            \sans
-                                \fontsize
-                                    #-3
-                                    \center-align
-                                        \fraction
-                                            12
-                                            1
-                        \translate
-                            #'(151.0 . 1)
-                            \sans
-                                \fontsize
-                                    #-3
-                                    \center-align
-                                        \fraction
-                                            16
-                                            1
-                    }
+                \overlay { \translate #'(1.0 . 1) \sans \fontsize #-3 \center-align \fraction -2 1
+                \translate #'(17.666666666666668 . 1) \sans \fontsize #-3 \center-align \fraction 0 1
+                \translate #'(59.33333333333334 . 1) \sans \fontsize #-3 \center-align \fraction 5 1
+                \translate #'(67.66666666666667 . 1) \sans \fontsize #-3 \center-align \fraction 6 1
+                \translate #'(101.00000000000001 . 1) \sans \fontsize #-3 \center-align \fraction 10 1
+                \translate #'(117.66666666666667 . 1) \sans \fontsize #-3 \center-align \fraction 12 1
+                \translate #'(151.0 . 1) \sans \fontsize #-3 \center-align \fraction 16 1 }
                 \pad-to-box #'(0 . 82.33333333333333) #'(0 . 8.5)
                 \postscript #"
                 0.2 setlinewidth
@@ -3236,27 +3177,8 @@ class TimespanList(TypedList):
                 \fontsize #-1 \sans \line { "voice 1:" }
                 \vspace #0.5
                 \column {
-                \overlay
-                    {
-                        \translate
-                            #'(1.0 . 1)
-                            \sans
-                                \fontsize
-                                    #-3
-                                    \center-align
-                                        \fraction
-                                            0
-                                            1
-                        \translate
-                            #'(151.0 . 1)
-                            \sans
-                                \fontsize
-                                    #-3
-                                    \center-align
-                                        \fraction
-                                            1
-                                            4
-                    }
+                \overlay { \translate #'(1.0 . 1) \sans \fontsize #-3 \center-align \fraction 0 1
+                \translate #'(151.0 . 1) \sans \fontsize #-3 \center-align \fraction 1 4 }
                 \pad-to-box #'(0 . 149.0) #'(0 . 2.5)
                 \postscript #"
                 0.2 setlinewidth
@@ -3286,27 +3208,8 @@ class TimespanList(TypedList):
                 \fontsize #-1 \sans \line { "voice 2:" }
                 \vspace #0.5
                 \column {
-                \overlay
-                    {
-                        \translate
-                            #'(1.0 . 1)
-                            \sans
-                                \fontsize
-                                    #-3
-                                    \center-align
-                                        \fraction
-                                            0
-                                            1
-                        \translate
-                            #'(151.0 . 1)
-                            \sans
-                                \fontsize
-                                    #-3
-                                    \center-align
-                                        \fraction
-                                            1
-                                            4
-                    }
+                \overlay { \translate #'(1.0 . 1) \sans \fontsize #-3 \center-align \fraction 0 1
+                \translate #'(151.0 . 1) \sans \fontsize #-3 \center-align \fraction 1 4 }
                 \pad-to-box #'(0 . 149.0) #'(0 . 2.5)
                 \postscript #"
                 0.2 setlinewidth
@@ -3336,27 +3239,8 @@ class TimespanList(TypedList):
                 \fontsize #-1 \sans \line { "voice 10:" }
                 \vspace #0.5
                 \column {
-                \overlay
-                    {
-                        \translate
-                            #'(1.0 . 1)
-                            \sans
-                                \fontsize
-                                    #-3
-                                    \center-align
-                                        \fraction
-                                            0
-                                            1
-                        \translate
-                            #'(151.0 . 1)
-                            \sans
-                                \fontsize
-                                    #-3
-                                    \center-align
-                                        \fraction
-                                            1
-                                            4
-                    }
+                \overlay { \translate #'(1.0 . 1) \sans \fontsize #-3 \center-align \fraction 0 1
+                \translate #'(151.0 . 1) \sans \fontsize #-3 \center-align \fraction 1 4 }
                 \pad-to-box #'(0 . 149.0) #'(0 . 2.5)
                 \postscript #"
                 0.2 setlinewidth
@@ -3619,7 +3503,7 @@ class TimespanList(TypedList):
         y_extent = height + 1.5
         lines_string = rf"\pad-to-box #'(0 . {x_extent}) #'(0 . {y_extent})"
         lines_string += f'\n\\postscript #"\n{ps}"'
-        fraction_markups = []
+        fraction_strings = []
         for offset in sorted(offset_mapping):
             offset = Multiplier(offset)
             numerator, denominator = offset.numerator, offset.denominator
@@ -3627,12 +3511,10 @@ class TimespanList(TypedList):
             x_translation -= postscript_x_offset
             string = rf"\translate #'({x_translation} . 1) \sans \fontsize #-3"
             string += rf" \center-align \fraction {numerator} {denominator}"
-            fraction = Markup(string)
-            fraction_markups.append(fraction)
-        fraction_markup = Markup.overlay(fraction_markups)
-        assert len(fraction_markup.contents) == 1, repr(fraction_markup)
-        fraction_ = fraction_markup.contents[0]
-        string = f"\\column {{\n{fraction_}\n{lines_string}\n}}"
+            fraction_strings.append(string)
+        fraction_string = "\n".join(fraction_strings)
+        fraction_string = rf"\overlay {{ {fraction_string} }}"
+        string = f"\\column {{\n{fraction_string}\n{lines_string}\n}}"
         return string
 
     ### PUBLIC PROPERTIES ###
