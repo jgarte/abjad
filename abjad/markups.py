@@ -3149,56 +3149,6 @@ class MarkupCommand:
     ### PUBLIC METHODS ###
 
 
-#    @staticmethod
-#    def combine_markup_commands(*commands):
-#        r"""
-#        Combines markup command and / or strings.
-#
-#        LilyPond's '\combine' markup command can only take two arguments, so in
-#        order to combine more than two stencils, a cascade of '\combine'
-#        commands must be employed.  ``combine_markup_commands`` simplifies this
-#        process.
-#
-#        ..  container:: example
-#
-#            >>> markup_a = abjad.MarkupCommand(
-#            ...     "draw-circle",
-#            ...     4,
-#            ...     0.4,
-#            ...     False,
-#            ...     )
-#            >>> markup_b = abjad.MarkupCommand(
-#            ...     "filled-box",
-#            ...     abjad.SchemePair((-4, 4)),
-#            ...     abjad.SchemePair((-0.5, 0.5)),
-#            ...     1,
-#            ...     )
-#            >>> markup_c = "some text"
-#
-#            >>> markup = abjad.MarkupCommand.combine_markup_commands(
-#            ...     markup_a,
-#            ...     markup_b,
-#            ...     markup_c,
-#            ...     )
-#            >>> result = markup._get_lilypond_format()
-#
-#            >>> print(result)
-#            \combine \combine \draw-circle #4 #0.4 ##f
-#                \filled-box #'(-4 . 4) #'(-0.5 . 0.5) #1 "some text"
-#
-#        Returns a markup command instance, or a string if that was the only
-#        argument.
-#        """
-#        assert len(commands)
-#        assert all(isinstance(command, (MarkupCommand, str)) for command in commands)
-#        if 1 == len(commands):
-#            return commands[0]
-#        combined = MarkupCommand("combine", commands[0], commands[1])
-#        for command in commands[2:]:
-#            combined = MarkupCommand("combine", combined, command)
-#        return combined
-
-
 class MarkupList(TypedList):
     r"""
     Markup list.
@@ -3385,12 +3335,6 @@ class MarkupList(TypedList):
         if self.item_class is Markup:
             names.remove("item_class")
         return FormatSpecification(client=self, storage_format_keyword_names=names)
-
-    def _update_expression(self, frame, force_return=None):
-        from .expression import Expression
-
-        callback = Expression._frame_to_callback(frame, force_return=force_return)
-        return self._expression.append_callback(callback)
 
     ### PUBLIC PROPERTIES ###
 
