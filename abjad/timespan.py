@@ -117,16 +117,16 @@ class OffsetCounter(TypedCounter):
             ps = ps.moveto(offset, -1)
             ps = ps.rlineto(0, (float(count) * -3) + 1)
             ps = ps.stroke()
-        markup = Markup.postscript(ps)
+        markup = Markup(rf'\postscript #"{ps}"')
         pieces = [markup]
         for offset in sorted(self):
             offset = Multiplier(offset)
-            numerator, denominator = offset.numerator, offset.denominator
-            fraction = Markup.fraction(numerator, denominator)
-            fraction = fraction.center_align().fontsize(-3).sans()
+            n, d = offset.numerator, offset.denominator
             x_translation = float(offset) * postscript_scale
             x_translation -= postscript_x_offset
-            fraction = fraction.translate((x_translation, 1))
+            string = rf"\translate #'({x_translation} . 1)"
+            string += rf" \sans \fontsize #-3 \center-align \fraction {n} {d}"
+            fraction = Markup(string)
             pieces.append(fraction)
         markup = Markup.overlay(pieces)
         return markup
@@ -3005,156 +3005,150 @@ class TimespanList(TypedList):
                 >>> lilypond_file = abjad.illustrate(timespans)
                 >>> markup = lilypond_file.items[-1]
                 >>> abjad.f(markup)
-                \markup {
-                    \column
-                        {
-                            \overlay
-                                {
-                                    \translate
-                                        #'(1.0 . 1)
-                                        \sans
-                                            \fontsize
-                                                #-3
-                                                \center-align
-                                                    \fraction
-                                                        -2
-                                                        1
-                                    \translate
-                                        #'(17.666666666666668 . 1)
-                                        \sans
-                                            \fontsize
-                                                #-3
-                                                \center-align
-                                                    \fraction
-                                                        0
-                                                        1
-                                    \translate
-                                        #'(59.33333333333334 . 1)
-                                        \sans
-                                            \fontsize
-                                                #-3
-                                                \center-align
-                                                    \fraction
-                                                        5
-                                                        1
-                                    \translate
-                                        #'(67.66666666666667 . 1)
-                                        \sans
-                                            \fontsize
-                                                #-3
-                                                \center-align
-                                                    \fraction
-                                                        6
-                                                        1
-                                    \translate
-                                        #'(101.00000000000001 . 1)
-                                        \sans
-                                            \fontsize
-                                                #-3
-                                                \center-align
-                                                    \fraction
-                                                        10
-                                                        1
-                                    \translate
-                                        #'(117.66666666666667 . 1)
-                                        \sans
-                                            \fontsize
-                                                #-3
-                                                \center-align
-                                                    \fraction
-                                                        12
-                                                        1
-                                    \translate
-                                        #'(151.0 . 1)
-                                        \sans
-                                            \fontsize
-                                                #-3
-                                                \center-align
-                                                    \fraction
-                                                        16
-                                                        1
-                                }
-                            \pad-to-box
-                                #'(0 . 82.33333333333333)
-                                #'(0 . 8.5)
-                                \postscript
-                                    #"
-                                    0.2 setlinewidth
-                                    1 6.5 moveto
-                                    67.66666666666667 6.5 lineto
-                                    stroke
-                                    1 7.25 moveto
-                                    1 5.75 lineto
-                                    stroke
-                                    67.66666666666667 7.25 moveto
-                                    67.66666666666667 5.75 lineto
-                                    stroke
-                                    17.666666666666668 3.5 moveto
-                                    67.66666666666667 3.5 lineto
-                                    stroke
-                                    17.666666666666668 4.25 moveto
-                                    17.666666666666668 2.75 lineto
-                                    stroke
-                                    67.66666666666667 4.25 moveto
-                                    67.66666666666667 2.75 lineto
-                                    stroke
-                                    101.00000000000001 3.5 moveto
-                                    151 3.5 lineto
-                                    stroke
-                                    101.00000000000001 4.25 moveto
-                                    101.00000000000001 2.75 lineto
-                                    stroke
-                                    151 4.25 moveto
-                                    151 2.75 lineto
-                                    stroke
-                                    59.33333333333334 0.5 moveto
-                                    67.66666666666667 0.5 lineto
-                                    stroke
-                                    59.33333333333334 1.25 moveto
-                                    59.33333333333334 -0.25 lineto
-                                    stroke
-                                    67.66666666666667 1.25 moveto
-                                    67.66666666666667 -0.25 lineto
-                                    stroke
-                                    101.00000000000001 0.5 moveto
-                                    117.66666666666667 0.5 lineto
-                                    stroke
-                                    101.00000000000001 1.25 moveto
-                                    101.00000000000001 -0.25 lineto
-                                    stroke
-                                    117.66666666666667 1.25 moveto
-                                    117.66666666666667 -0.25 lineto
-                                    stroke
-                                    0.1 setlinewidth
-                                    [ 0.1 0.2 ] 0 setdash
-                                    1 8.5 moveto
-                                    1 7 lineto
-                                    stroke
-                                    17.666666666666668 8.5 moveto
-                                    17.666666666666668 4 lineto
-                                    stroke
-                                    59.33333333333334 8.5 moveto
-                                    59.33333333333334 1 lineto
-                                    stroke
-                                    67.66666666666667 8.5 moveto
-                                    67.66666666666667 1 lineto
-                                    stroke
-                                    101.00000000000001 8.5 moveto
-                                    101.00000000000001 1 lineto
-                                    stroke
-                                    117.66666666666667 8.5 moveto
-                                    117.66666666666667 1 lineto
-                                    stroke
-                                    151 8.5 moveto
-                                    151 4 lineto
-                                    stroke
-                                    0 0 moveto
-                                    0.99 setgray
-                                    0 0.01 rlineto
-                                    stroke
-                                    "
-                        }
-                    }
+                \markup \column { \overlay
+                    {
+                        \translate
+                            #'(1.0 . 1)
+                            \sans
+                                \fontsize
+                                    #-3
+                                    \center-align
+                                        \fraction
+                                            -2
+                                            1
+                        \translate
+                            #'(17.666666666666668 . 1)
+                            \sans
+                                \fontsize
+                                    #-3
+                                    \center-align
+                                        \fraction
+                                            0
+                                            1
+                        \translate
+                            #'(59.33333333333334 . 1)
+                            \sans
+                                \fontsize
+                                    #-3
+                                    \center-align
+                                        \fraction
+                                            5
+                                            1
+                        \translate
+                            #'(67.66666666666667 . 1)
+                            \sans
+                                \fontsize
+                                    #-3
+                                    \center-align
+                                        \fraction
+                                            6
+                                            1
+                        \translate
+                            #'(101.00000000000001 . 1)
+                            \sans
+                                \fontsize
+                                    #-3
+                                    \center-align
+                                        \fraction
+                                            10
+                                            1
+                        \translate
+                            #'(117.66666666666667 . 1)
+                            \sans
+                                \fontsize
+                                    #-3
+                                    \center-align
+                                        \fraction
+                                            12
+                                            1
+                        \translate
+                            #'(151.0 . 1)
+                            \sans
+                                \fontsize
+                                    #-3
+                                    \center-align
+                                        \fraction
+                                            16
+                                            1
+                    } \pad-to-box
+                    #'(0 . 82.33333333333333)
+                    #'(0 . 8.5)
+                    \postscript
+                        #"
+                        0.2 setlinewidth
+                        1 6.5 moveto
+                        67.66666666666667 6.5 lineto
+                        stroke
+                        1 7.25 moveto
+                        1 5.75 lineto
+                        stroke
+                        67.66666666666667 7.25 moveto
+                        67.66666666666667 5.75 lineto
+                        stroke
+                        17.666666666666668 3.5 moveto
+                        67.66666666666667 3.5 lineto
+                        stroke
+                        17.666666666666668 4.25 moveto
+                        17.666666666666668 2.75 lineto
+                        stroke
+                        67.66666666666667 4.25 moveto
+                        67.66666666666667 2.75 lineto
+                        stroke
+                        101.00000000000001 3.5 moveto
+                        151 3.5 lineto
+                        stroke
+                        101.00000000000001 4.25 moveto
+                        101.00000000000001 2.75 lineto
+                        stroke
+                        151 4.25 moveto
+                        151 2.75 lineto
+                        stroke
+                        59.33333333333334 0.5 moveto
+                        67.66666666666667 0.5 lineto
+                        stroke
+                        59.33333333333334 1.25 moveto
+                        59.33333333333334 -0.25 lineto
+                        stroke
+                        67.66666666666667 1.25 moveto
+                        67.66666666666667 -0.25 lineto
+                        stroke
+                        101.00000000000001 0.5 moveto
+                        117.66666666666667 0.5 lineto
+                        stroke
+                        101.00000000000001 1.25 moveto
+                        101.00000000000001 -0.25 lineto
+                        stroke
+                        117.66666666666667 1.25 moveto
+                        117.66666666666667 -0.25 lineto
+                        stroke
+                        0.1 setlinewidth
+                        [ 0.1 0.2 ] 0 setdash
+                        1 8.5 moveto
+                        1 7 lineto
+                        stroke
+                        17.666666666666668 8.5 moveto
+                        17.666666666666668 4 lineto
+                        stroke
+                        59.33333333333334 8.5 moveto
+                        59.33333333333334 1 lineto
+                        stroke
+                        67.66666666666667 8.5 moveto
+                        67.66666666666667 1 lineto
+                        stroke
+                        101.00000000000001 8.5 moveto
+                        101.00000000000001 1 lineto
+                        stroke
+                        117.66666666666667 8.5 moveto
+                        117.66666666666667 1 lineto
+                        stroke
+                        151 8.5 moveto
+                        151 4 lineto
+                        stroke
+                        0 0 moveto
+                        0.99 setgray
+                        0 0.01 rlineto
+                        stroke
+                        " }
 
         ..  container:: example
 
@@ -3204,58 +3198,56 @@ class TimespanList(TypedList):
                                         }
                             \vspace
                                 #0.5
-                            \column
+                            #"
+                            \markup \column { \overlay
                                 {
-                                    \overlay
-                                        {
-                                            \translate
-                                                #'(1.0 . 1)
-                                                \sans
-                                                    \fontsize
-                                                        #-3
-                                                        \center-align
-                                                            \fraction
-                                                                0
-                                                                1
-                                            \translate
-                                                #'(151.0 . 1)
-                                                \sans
-                                                    \fontsize
-                                                        #-3
-                                                        \center-align
-                                                            \fraction
-                                                                1
-                                                                4
-                                        }
-                                    \pad-to-box
-                                        #'(0 . 149.0)
-                                        #'(0 . 2.5)
-                                        \postscript
-                                            #"
-                                            0.2 setlinewidth
-                                            1 0.5 moveto
-                                            151 0.5 lineto
-                                            stroke
-                                            1 1.25 moveto
-                                            1 -0.25 lineto
-                                            stroke
-                                            151 1.25 moveto
-                                            151 -0.25 lineto
-                                            stroke
-                                            0.1 setlinewidth
-                                            [ 0.1 0.2 ] 0 setdash
-                                            1 2.5 moveto
-                                            1 1 lineto
-                                            stroke
-                                            151 2.5 moveto
-                                            151 1 lineto
-                                            stroke
-                                            0 0 moveto
-                                            0.99 setgray
-                                            0 0.01 rlineto
-                                            stroke
-                                            "
-                                }
+                                    \translate
+                                        #'(1.0 . 1)
+                                        \sans
+                                            \fontsize
+                                                #-3
+                                                \center-align
+                                                    \fraction
+                                                        0
+                                                        1
+                                    \translate
+                                        #'(151.0 . 1)
+                                        \sans
+                                            \fontsize
+                                                #-3
+                                                \center-align
+                                                    \fraction
+                                                        1
+                                                        4
+                                } \pad-to-box
+                                #'(0 . 149.0)
+                                #'(0 . 2.5)
+                                \postscript
+                                    #"
+                                    0.2 setlinewidth
+                                    1 0.5 moveto
+                                    151 0.5 lineto
+                                    stroke
+                                    1 1.25 moveto
+                                    1 -0.25 lineto
+                                    stroke
+                                    151 1.25 moveto
+                                    151 -0.25 lineto
+                                    stroke
+                                    0.1 setlinewidth
+                                    [ 0.1 0.2 ] 0 setdash
+                                    1 2.5 moveto
+                                    1 1 lineto
+                                    stroke
+                                    151 2.5 moveto
+                                    151 1 lineto
+                                    stroke
+                                    0 0 moveto
+                                    0.99 setgray
+                                    0 0.01 rlineto
+                                    stroke
+                                    " }
+                            "
                             \vspace
                                 #0.5
                             \fontsize
@@ -3267,58 +3259,56 @@ class TimespanList(TypedList):
                                         }
                             \vspace
                                 #0.5
-                            \column
+                            #"
+                            \markup \column { \overlay
                                 {
-                                    \overlay
-                                        {
-                                            \translate
-                                                #'(1.0 . 1)
-                                                \sans
-                                                    \fontsize
-                                                        #-3
-                                                        \center-align
-                                                            \fraction
-                                                                0
-                                                                1
-                                            \translate
-                                                #'(151.0 . 1)
-                                                \sans
-                                                    \fontsize
-                                                        #-3
-                                                        \center-align
-                                                            \fraction
-                                                                1
-                                                                4
-                                        }
-                                    \pad-to-box
-                                        #'(0 . 149.0)
-                                        #'(0 . 2.5)
-                                        \postscript
-                                            #"
-                                            0.2 setlinewidth
-                                            1 0.5 moveto
-                                            151 0.5 lineto
-                                            stroke
-                                            1 1.25 moveto
-                                            1 -0.25 lineto
-                                            stroke
-                                            151 1.25 moveto
-                                            151 -0.25 lineto
-                                            stroke
-                                            0.1 setlinewidth
-                                            [ 0.1 0.2 ] 0 setdash
-                                            1 2.5 moveto
-                                            1 1 lineto
-                                            stroke
-                                            151 2.5 moveto
-                                            151 1 lineto
-                                            stroke
-                                            0 0 moveto
-                                            0.99 setgray
-                                            0 0.01 rlineto
-                                            stroke
-                                            "
-                                }
+                                    \translate
+                                        #'(1.0 . 1)
+                                        \sans
+                                            \fontsize
+                                                #-3
+                                                \center-align
+                                                    \fraction
+                                                        0
+                                                        1
+                                    \translate
+                                        #'(151.0 . 1)
+                                        \sans
+                                            \fontsize
+                                                #-3
+                                                \center-align
+                                                    \fraction
+                                                        1
+                                                        4
+                                } \pad-to-box
+                                #'(0 . 149.0)
+                                #'(0 . 2.5)
+                                \postscript
+                                    #"
+                                    0.2 setlinewidth
+                                    1 0.5 moveto
+                                    151 0.5 lineto
+                                    stroke
+                                    1 1.25 moveto
+                                    1 -0.25 lineto
+                                    stroke
+                                    151 1.25 moveto
+                                    151 -0.25 lineto
+                                    stroke
+                                    0.1 setlinewidth
+                                    [ 0.1 0.2 ] 0 setdash
+                                    1 2.5 moveto
+                                    1 1 lineto
+                                    stroke
+                                    151 2.5 moveto
+                                    151 1 lineto
+                                    stroke
+                                    0 0 moveto
+                                    0.99 setgray
+                                    0 0.01 rlineto
+                                    stroke
+                                    " }
+                            "
                             \vspace
                                 #0.5
                             \fontsize
@@ -3330,58 +3320,56 @@ class TimespanList(TypedList):
                                         }
                             \vspace
                                 #0.5
-                            \column
+                            #"
+                            \markup \column { \overlay
                                 {
-                                    \overlay
-                                        {
-                                            \translate
-                                                #'(1.0 . 1)
-                                                \sans
-                                                    \fontsize
-                                                        #-3
-                                                        \center-align
-                                                            \fraction
-                                                                0
-                                                                1
-                                            \translate
-                                                #'(151.0 . 1)
-                                                \sans
-                                                    \fontsize
-                                                        #-3
-                                                        \center-align
-                                                            \fraction
-                                                                1
-                                                                4
-                                        }
-                                    \pad-to-box
-                                        #'(0 . 149.0)
-                                        #'(0 . 2.5)
-                                        \postscript
-                                            #"
-                                            0.2 setlinewidth
-                                            1 0.5 moveto
-                                            151 0.5 lineto
-                                            stroke
-                                            1 1.25 moveto
-                                            1 -0.25 lineto
-                                            stroke
-                                            151 1.25 moveto
-                                            151 -0.25 lineto
-                                            stroke
-                                            0.1 setlinewidth
-                                            [ 0.1 0.2 ] 0 setdash
-                                            1 2.5 moveto
-                                            1 1 lineto
-                                            stroke
-                                            151 2.5 moveto
-                                            151 1 lineto
-                                            stroke
-                                            0 0 moveto
-                                            0.99 setgray
-                                            0 0.01 rlineto
-                                            stroke
-                                            "
-                                }
+                                    \translate
+                                        #'(1.0 . 1)
+                                        \sans
+                                            \fontsize
+                                                #-3
+                                                \center-align
+                                                    \fraction
+                                                        0
+                                                        1
+                                    \translate
+                                        #'(151.0 . 1)
+                                        \sans
+                                            \fontsize
+                                                #-3
+                                                \center-align
+                                                    \fraction
+                                                        1
+                                                        4
+                                } \pad-to-box
+                                #'(0 . 149.0)
+                                #'(0 . 2.5)
+                                \postscript
+                                    #"
+                                    0.2 setlinewidth
+                                    1 0.5 moveto
+                                    151 0.5 lineto
+                                    stroke
+                                    1 1.25 moveto
+                                    1 -0.25 lineto
+                                    stroke
+                                    151 1.25 moveto
+                                    151 -0.25 lineto
+                                    stroke
+                                    0.1 setlinewidth
+                                    [ 0.1 0.2 ] 0 setdash
+                                    1 2.5 moveto
+                                    1 1 lineto
+                                    stroke
+                                    151 2.5 moveto
+                                    151 1 lineto
+                                    stroke
+                                    0 0 moveto
+                                    0.99 setgray
+                                    0 0.01 rlineto
+                                    stroke
+                                    " }
+                            "
                         }
                     }
 
@@ -3602,7 +3590,7 @@ class TimespanList(TypedList):
                     postscript_x_offset, postscript_y_offset, postscript_scale
                 )
         if not draw_offsets:
-            markup = Markup.postscript(ps)
+            markup = Markup(rf'\postscript #"{ps}"')
             return markup
         ps = ps.setlinewidth(0.1)
         ps = ps.setdash([0.1, 0.2])
@@ -3622,7 +3610,7 @@ class TimespanList(TypedList):
         x_extent += postscript_x_offset
         x_extent = (0, x_extent)
         y_extent = (0, height + 1.5)
-        lines_markup = Markup.postscript(ps)
+        lines_markup = Markup(rf'\postscript #"{ps}"')
         lines_markup = lines_markup.pad_to_box(x_extent, y_extent)
         fraction_markups = []
         for offset in sorted(offset_mapping):
@@ -3635,7 +3623,11 @@ class TimespanList(TypedList):
             fraction = Markup(string)
             fraction_markups.append(fraction)
         fraction_markup = Markup.overlay(fraction_markups)
-        markup = Markup.column([fraction_markup, lines_markup])
+        assert len(fraction_markup.contents) == 1, repr(fraction_markup)
+        fraction_ = fraction_markup.contents[0]
+        assert len(lines_markup.contents) == 1, repr(lines_markup)
+        string = rf"\markup \column {{ {fraction_} {lines_markup.contents[0]} }}"
+        markup = Markup(string, literal=True)
         return markup
 
     ### PUBLIC PROPERTIES ###
