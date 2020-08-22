@@ -1831,9 +1831,10 @@ class Label:
                 pitches = PitchSegment.from_selection(leaves)
                 if not pitches:
                     continue
-                pitch_numbers = [pitch.number for pitch in pitches]
-                pitch_numbers = [Markup(_) for _ in pitch_numbers]
-                label = Markup.column(pitch_numbers, direction=direction)
+                pitch_numbers = [str(pitch.number) for pitch in pitches]
+                label = Markup(
+                    rf'\column {{ {" ".join(pitch_numbers)} }}', direction=direction,
+                )
             elif prototype is NumberedPitchClass:
                 leaves = vertical_moment.leaves
                 pitches = PitchSegment.from_selection(leaves)
@@ -1844,8 +1845,9 @@ class Label:
                 pitch_classes.sort()
                 pitch_classes.reverse()
                 numbers = [str(_) for _ in pitch_classes]
-                markup = [Markup(_) for _ in numbers]
-                label = Markup.column(markup, direction=direction)
+                label = Markup(
+                    rf'\column {{ {" ".join(numbers)} }}', direction=direction,
+                )
             elif prototype is NumberedInterval:
                 leaves = vertical_moment.leaves
                 notes = [_ for _ in leaves if isinstance(_, Note)]
@@ -1861,9 +1863,10 @@ class Label:
                         bass_note.written_pitch, upper_note.written_pitch
                     )
                     named_intervals.append(named_interval)
-                numbers = [x.number for x in named_intervals]
-                markup = [Markup(_) for _ in numbers]
-                label = Markup.column(markup, direction=direction)
+                numbers = [str(x.number) for x in named_intervals]
+                label = Markup(
+                    rf'\column {{ {" ".join(numbers)} }}', direction=direction,
+                )
             elif prototype is NumberedIntervalClass:
                 leaves = vertical_moment.leaves
                 notes = [_ for _ in leaves if isinstance(_, Note)]
@@ -1881,8 +1884,8 @@ class Label:
                     interval_class = NumberedIntervalClass(interval)
                     number = interval_class.number
                     numbers.append(number)
-                markup = [Markup(_) for _ in numbers]
-                label = Markup.column(markup, direction=direction)
+                string = " ".join([str(_) for _ in numbers])
+                label = Markup(rf"\column {{ {string} }}", direction=direction,)
             elif prototype is IntervalClassVector:
                 leaves = vertical_moment.leaves
                 pitches = PitchSegment.from_selection(leaves)
@@ -1912,7 +1915,8 @@ class Label:
             else:
                 raise TypeError(f"unknown prototype {prototype!r}.")
             if label is not None:
-                label = label.tiny()
+                assert len(label.contents) == 1, repr(label)
+                label = Markup(rf"\tiny {label.contents[0]}", direction=label.direction)
                 if direction is enums.Up:
                     leaf = vertical_moment.start_leaves[0]
                 else:
@@ -2960,14 +2964,7 @@ class Label:
                     }
                     {
                         <a d' fs'>4
-                        ^ \markup {
-                            \column
-                                {
-                                    fs'
-                                    d'
-                                    a
-                                }
-                            }
+                        ^ \markup \column { "fs'" "d'" "a" }
                         g'4
                         ^ \markup { g' }
                         ~
@@ -2995,14 +2992,7 @@ class Label:
                     }
                     {
                         <a d' fs'>4
-                        ^ \markup {
-                            \column
-                                {
-                                    fs'
-                                    d'
-                                    a
-                                }
-                            }
+                        ^ \markup \column { "fs'" "d'" "a" }
                         g'4
                         ^ \markup { g' }
                         ~
@@ -3033,14 +3023,7 @@ class Label:
                     }
                     {
                         <a d' fs'>4
-                        ^ \markup {
-                            \column
-                                {
-                                    "F#4"
-                                    D4
-                                    A3
-                                }
-                            }
+                        ^ \markup \column { "F#4" "D4" "A3" }
                         g'4
                         ^ \markup { G4 }
                         ~
@@ -3068,14 +3051,7 @@ class Label:
                     }
                     {
                         <a d' fs'>4
-                        ^ \markup {
-                            \column
-                                {
-                                    "F#4"
-                                    D4
-                                    A3
-                                }
-                            }
+                        ^ \markup \column { "F#4" "D4" "A3" }
                         g'4
                         ^ \markup { G4 }
                         ~
@@ -3516,12 +3492,17 @@ class Label:
                 elif isinstance(leaf, Chord):
                     pitches = leaf.written_pitches
                     pitches = reversed(pitches)
-                    markups = []
+                    names = []
                     for pitch in pitches:
-                        string = pitch.get_name(locale=locale)
-                        markup = Markup(string, literal=True)
-                        markups.append(markup)
-                    label = Markup.column(markups, direction=direction)
+                        name = pitch.get_name(locale=locale)
+                        name = '"' + name + '"'
+                        names.append(name)
+                    string = " ".join(names)
+                    label = Markup(
+                        rf"\markup \column {{ {string} }}",
+                        direction=direction,
+                        literal=True,
+                    )
             elif prototype is NumberedPitch:
                 if isinstance(leaf, Note):
                     pitch = leaf.written_pitch.number
@@ -3530,9 +3511,9 @@ class Label:
                 elif isinstance(leaf, Chord):
                     pitches = leaf.written_pitches
                     pitches = reversed(pitches)
-                    pitches = [_.number for _ in pitches]
-                    pitches = [Markup(_) for _ in pitches]
-                    label = Markup.column(pitches)
+                    pitches = [str(_.number) for _ in pitches]
+                    string = " ".join(pitches)
+                    label = Markup(rf"\column {{ {string} }}", direction=direction,)
             elif prototype is NumberedPitchClass:
                 if isinstance(leaf, Note):
                     pitch = leaf.written_pitch.pitch_class.number
@@ -3541,9 +3522,9 @@ class Label:
                 elif isinstance(leaf, Chord):
                     pitches = leaf.written_pitches
                     pitches = reversed(pitches)
-                    pitches = [_.pitch_class.number for _ in pitches]
-                    pitches = [Markup(_) for _ in pitches]
-                    label = Markup.column(pitches)
+                    pitches = [str(_.pitch_class.number) for _ in pitches]
+                    string = " ".join(pitches)
+                    label = Markup(rf"\column {{ {string} }}", direction=direction,)
             if label is not None:
                 label = new(label, direction=direction)
                 self._attach(label, leaf)
@@ -3918,7 +3899,9 @@ class Label:
             command = MarkupCommand("line", [string])
             label = Markup(command, direction=direction)
             if label is not None:
-                label = label.tiny()
+                label = Markup(
+                    rf"\tiny {label.contents[0]}", direction=label.direction,
+                )
                 leaf = selection[0]
                 self._attach(label, leaf)
 
