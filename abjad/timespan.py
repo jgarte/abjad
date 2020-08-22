@@ -91,6 +91,51 @@ class OffsetCounter(TypedCounter):
             >>> offset_counter = abjad.OffsetCounter(timespans)
             >>> abjad.show(offset_counter, scale=0.5) # doctest: +SKIP
 
+            ..  docs::
+
+                >>> markup = offset_counter._make_markup()
+                >>> abjad.f(markup)
+                \overlay {
+                \postscript #"
+                0.2 setlinewidth
+                [ 2 1 ] 0 setdash
+                1 -1 moveto
+                0 -2 rlineto
+                stroke
+                17.666666666666668 -1 moveto
+                0 -2 rlineto
+                stroke
+                59.33333333333334 -1 moveto
+                0 -2 rlineto
+                stroke
+                67.66666666666667 -1 moveto
+                0 -8 rlineto
+                stroke
+                101.00000000000001 -1 moveto
+                0 -5 rlineto
+                stroke
+                117.66666666666667 -1 moveto
+                0 -2 rlineto
+                stroke
+                151 -1 moveto
+                0 -2 rlineto
+                stroke"
+                \translate #'(1.0 . 1)
+                \sans \fontsize #-3 \center-align \fraction -2 1
+                \translate #'(17.666666666666668 . 1)
+                \sans \fontsize #-3 \center-align \fraction 0 1
+                \translate #'(59.33333333333334 . 1)
+                \sans \fontsize #-3 \center-align \fraction 5 1
+                \translate #'(67.66666666666667 . 1)
+                \sans \fontsize #-3 \center-align \fraction 6 1
+                \translate #'(101.00000000000001 . 1)
+                \sans \fontsize #-3 \center-align \fraction 10 1
+                \translate #'(117.66666666666667 . 1)
+                \sans \fontsize #-3 \center-align \fraction 12 1
+                \translate #'(151.0 . 1)
+                \sans \fontsize #-3 \center-align \fraction 16 1
+                }
+
         """
         if not self:
             return Markup.null()
@@ -117,18 +162,19 @@ class OffsetCounter(TypedCounter):
             ps = ps.moveto(offset, -1)
             ps = ps.rlineto(0, (float(count) * -3) + 1)
             ps = ps.stroke()
-        markup = Markup(rf'\postscript #"{ps}"')
-        pieces = [markup]
+        string = f'\\postscript #"\n{ps}"'
+        strings = [string]
         for offset in sorted(self):
             offset = Multiplier(offset)
             n, d = offset.numerator, offset.denominator
             x_translation = float(offset) * postscript_scale
             x_translation -= postscript_x_offset
             string = rf"\translate #'({x_translation} . 1)"
-            string += rf" \sans \fontsize #-3 \center-align \fraction {n} {d}"
-            fraction = Markup(string)
-            pieces.append(fraction)
-        markup = Markup.overlay(pieces)
+            strings.append(string)
+            string = rf"\sans \fontsize #-3 \center-align \fraction {n} {d}"
+            strings.append(string)
+        string = "\n".join(strings)
+        markup = Markup(f"\\overlay {{\n{string}\n}}", literal=True)
         return markup
 
     ### PRIVATE METHODS ###
