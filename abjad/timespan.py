@@ -3394,9 +3394,10 @@ class TimespanList(TypedList):
         postscript_scale *= float(scale)
         postscript_x_offset = (minimum_float * postscript_scale) - 1
         if key is None:
-            markup = self._make_timespan_list_markup(
+            string = self._make_timespan_list_markup(
                 self, postscript_x_offset, postscript_scale, sortkey=sortkey
             )
+            markup = Markup(rf"\markup {string}", literal=True)
         else:
             timespan_lists = {}
             for timespan in self:
@@ -3410,20 +3411,16 @@ class TimespanList(TypedList):
                 value, timespans = item
                 timespans.sort()
                 if 0 < i:
-                    # vspace_markup = Markup.vspace(0.5)
                     vspace_markup = Markup(r"\vspace #0.5")
                     markups.append(vspace_markup)
-                # value_markup = Markup(rf"\line {{ {value}: }}")
-                # value_markup = Markup.line([value_markup])
-                # value_markup = value_markup.sans().fontsize(-1)
                 value_markup = Markup(rf'\fontsize #-1 \sans \line {{ "{value}:" }}')
                 markups.append(value_markup)
-                # vspace_markup = Markup.vspace(0.5)
                 vspace_markup = Markup(r"\vspace #0.5")
                 markups.append(vspace_markup)
-                timespan_markup = self._make_timespan_list_markup(
+                string = self._make_timespan_list_markup(
                     timespans, postscript_x_offset, postscript_scale, sortkey=sortkey,
                 )
+                timespan_markup = Markup(rf"\markup {string}", literal=True)
                 markups.append(timespan_markup)
             markup = Markup.left_column(markups)
         return markup
@@ -3626,9 +3623,10 @@ class TimespanList(TypedList):
         assert len(fraction_markup.contents) == 1, repr(fraction_markup)
         fraction_ = fraction_markup.contents[0]
         assert len(lines_markup.contents) == 1, repr(lines_markup)
-        string = rf"\markup \column {{ {fraction_} {lines_markup.contents[0]} }}"
-        markup = Markup(string, literal=True)
-        return markup
+        string = rf"\column {{ {fraction_} {lines_markup.contents[0]} }}"
+        # markup = Markup(string, literal=True)
+        # return markup
+        return string
 
     ### PUBLIC PROPERTIES ###
 

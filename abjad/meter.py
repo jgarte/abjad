@@ -2728,9 +2728,10 @@ class MeterList(TypedList):
         postscript_scale = 125.0 / (maximum - minimum)
         postscript_scale *= float(scale)
         postscript_x_offset = (minimum * postscript_scale) - 1
-        timespan_markup = timespans._make_timespan_list_markup(
+        string = timespans._make_timespan_list_markup(
             timespans, postscript_x_offset, postscript_scale, draw_offsets=False,
         )
+        timespan_markup = markups.Markup(rf"\markup {string}", literal=True)
         ps = markups.Postscript()
         rational_x_offset = Offset(0)
         for meter in self:
