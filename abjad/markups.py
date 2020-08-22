@@ -3642,22 +3642,20 @@ class MarkupList(TypedList):
 
             ..  container:: example
 
-                >>> downbow = abjad.Markup.musicglyph("scripts.downbow")
-                >>> hspace = abjad.Markup(r'\hspace #1')
-                >>> upbow = abjad.Markup.musicglyph("scripts.upbow")
-                >>> markups = [downbow, hspace, upbow]
+                >>> markup_1 = abjad.Markup("Allegro")
+                >>> markup_2 = abjad.Markup(r'\hspace #1')
+                >>> markup_3 = abjad.Markup("assai")
+                >>> markups = [markup_1, markup_2, markup_3]
                 >>> markup_list = abjad.MarkupList(markups)
                 >>> markup = markup_list.concat(direction=abjad.Up)
                 >>> abjad.f(markup)
                 ^ \markup {
                     \concat
                         {
-                            \musicglyph
-                                #"scripts.downbow"
+                            Allegro
                             \hspace
                                 #1
-                            \musicglyph
-                                #"scripts.upbow"
+                            assai
                         }
                     }
 
@@ -4211,7 +4209,7 @@ class Postscript:
 
         Returns new markup.
         """
-        return Markup.postscript(self)
+        return Markup(rf'\postscript #"{self}"')
 
     def charpath(self, text, modify_font=True):
         """
