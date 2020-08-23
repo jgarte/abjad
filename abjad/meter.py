@@ -2731,7 +2731,7 @@ class MeterList(TypedList):
         string = timespans._make_timespan_list_markup(
             timespans, postscript_x_offset, postscript_scale, draw_offsets=False,
         )
-        timespan_markup = markups.Markup(rf"\markup {string}", literal=True)
+        timespan_markup = string
         ps = markups.Postscript()
         rational_x_offset = Offset(0)
         for meter in self:
@@ -2746,9 +2746,9 @@ class MeterList(TypedList):
                 ps = ps.rlineto(0, weight)
                 ps = ps.stroke()
             rational_x_offset += meter.duration
-        ps_markup = markups.Markup(r'\postscript #"{ps}"')
-        markup_list = markups.MarkupList([timespan_markup, ps_markup])
-        lines_markup = markup_list.combine()
+        ps_markup = rf'\postscript #"{ps}"'
+        string = rf"\combine {timespan_markup} {ps_markup}"
+        lines_markup = markups.Markup(string, literal=True)
         assert isinstance(lines_markup, markups.Markup)
         fraction_markups = []
         for meter, offset in zip(self, offsets):
@@ -2759,10 +2759,9 @@ class MeterList(TypedList):
             string += rf" \center-align \fraction {numerator} {denominator}"
             fraction = markups.Markup(string)
             fraction_markups.append(fraction)
-        fraction_markup = fraction_markups[0]
+        fraction_markup = str(fraction_markups[0].contents[0])
         for markup in fraction_markups[1:]:
-            markup_list = markups.MarkupList([fraction_markup, markup])
-            fraction_markup = markup_list.combine()
+            fraction_markup = rf"\combine {fraction_markup} {markup.contents[0]}"
         markup = markups.Markup(r"\column {{ {fraction_markup} {lines_markup} }}")
         lilypond_file = LilyPondFile.new()
         markup = new(markup, direction=None)
