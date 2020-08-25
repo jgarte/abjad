@@ -1047,7 +1047,7 @@ def glissando(
 
         LilyPond output looks like this:
 
-        >>> abjad.f(staff, strict=50)
+        >>> abjad.f(staff, align_tags=50)
         \new Staff
         {
             c'8
@@ -1075,7 +1075,7 @@ def glissando(
 
         LilyPond output looks like this:
 
-        >>> abjad.f(staff, strict=50)
+        >>> abjad.f(staff, align_tags=50)
         \new Staff
         {
             c'8
@@ -1109,7 +1109,7 @@ def glissando(
 
         LilyPond output looks like this:
 
-        >>> abjad.f(staff, strict=50)
+        >>> abjad.f(staff, align_tags=50)
         \new Staff
         {
             c'8
@@ -1146,7 +1146,7 @@ def glissando(
 
         LilyPond output looks like this:
 
-        >>> abjad.f(staff, strict=50)
+        >>> abjad.f(staff, align_tags=50)
         \new Staff
         {
             \hide NoteHead                                %! abjad.glissando(2):HIDE_TO_JOIN_BROKEN_SPANNERS:LEFT_BROKEN

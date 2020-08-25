@@ -180,7 +180,7 @@ class GroupedRhythmicStavesScoreTemplate(ScoreTemplate):
 
         ..  docs::
 
-            >>> abjad.f(template_1.__illustrate__()[abjad.Score], strict=60)
+            >>> abjad.f(template_1.__illustrate__()[abjad.Score], align_tags=60)
             \context Score = "Grouped_Rhythmic_Staves_Score"            %! abjad.GroupedRhythmicStavesScoreTemplate.__call__()
             <<                                                          %! abjad.GroupedRhythmicStavesScoreTemplate.__call__()
                 \context StaffGroup = "Grouped_Rhythmic_Staves_Staff_Group" %! abjad.GroupedRhythmicStavesScoreTemplate.__call__()
@@ -223,7 +223,7 @@ class GroupedRhythmicStavesScoreTemplate(ScoreTemplate):
         >>> score = template_1()
         >>> abjad.show(score) # doctest: +SKIP
 
-        >>> abjad.f(score, strict=60)
+        >>> abjad.f(score, align_tags=60)
         \context Score = "Grouped_Rhythmic_Staves_Score"            %! abjad.GroupedRhythmicStavesScoreTemplate.__call__()
         <<                                                          %! abjad.GroupedRhythmicStavesScoreTemplate.__call__()
             \context StaffGroup = "Grouped_Rhythmic_Staves_Staff_Group" %! abjad.GroupedRhythmicStavesScoreTemplate.__call__()
@@ -264,7 +264,7 @@ class GroupedRhythmicStavesScoreTemplate(ScoreTemplate):
 
         ..  docs::
 
-            >>> abjad.f(template_2.__illustrate__()[abjad.Score], strict=60)
+            >>> abjad.f(template_2.__illustrate__()[abjad.Score], align_tags=60)
             \context Score = "Grouped_Rhythmic_Staves_Score"            %! abjad.GroupedRhythmicStavesScoreTemplate.__call__()
             <<                                                          %! abjad.GroupedRhythmicStavesScoreTemplate.__call__()
                 \context StaffGroup = "Grouped_Rhythmic_Staves_Staff_Group" %! abjad.GroupedRhythmicStavesScoreTemplate.__call__()
@@ -304,7 +304,7 @@ class GroupedRhythmicStavesScoreTemplate(ScoreTemplate):
         >>> score = template_2()
         >>> abjad.show(score) # doctest: +SKIP
 
-        >>> abjad.f(score, strict=60)
+        >>> abjad.f(score, align_tags=60)
         \context Score = "Grouped_Rhythmic_Staves_Score"            %! abjad.GroupedRhythmicStavesScoreTemplate.__call__()
         <<                                                          %! abjad.GroupedRhythmicStavesScoreTemplate.__call__()
             \context StaffGroup = "Grouped_Rhythmic_Staves_Staff_Group" %! abjad.GroupedRhythmicStavesScoreTemplate.__call__()
@@ -450,7 +450,7 @@ class GroupedStavesScoreTemplate(ScoreTemplate):
 
         ..  docs::
 
-            >>> abjad.f(template.__illustrate__()[abjad.Score], strict=60)
+            >>> abjad.f(template.__illustrate__()[abjad.Score], align_tags=60)
             \context Score = "Grouped_Staves_Score"                     %! abjad.GroupedStavesScoreTemplate.__call__()
             <<                                                          %! abjad.GroupedStavesScoreTemplate.__call__()
                 \context StaffGroup = "Grouped_Staves_Staff_Group"      %! abjad.GroupedStavesScoreTemplate.__call__()
@@ -487,7 +487,7 @@ class GroupedStavesScoreTemplate(ScoreTemplate):
             >>                                                          %! abjad.GroupedStavesScoreTemplate.__call__()
 
         >>> score = template()
-        >>> abjad.f(score, strict=60)
+        >>> abjad.f(score, align_tags=60)
         \context Score = "Grouped_Staves_Score"                     %! abjad.GroupedStavesScoreTemplate.__call__()
         <<                                                          %! abjad.GroupedStavesScoreTemplate.__call__()
             \context StaffGroup = "Grouped_Staves_Staff_Group"      %! abjad.GroupedStavesScoreTemplate.__call__()
@@ -594,7 +594,7 @@ class StringOrchestraScoreTemplate(ScoreTemplate):
         >>> template = abjad.StringOrchestraScoreTemplate()
         >>> abjad.show(template) # doctest: +SKIP
 
-        >>> abjad.f(template.__illustrate__()[abjad.Score], strict=89)
+        >>> abjad.f(template.__illustrate__()[abjad.Score], align_tags=89)
         \context Score = "Score"                                                                 %! abjad.StringOrchestraScoreTemplate.__call__()
         <<                                                                                       %! abjad.StringOrchestraScoreTemplate.__call__()
             \tag #'(Violin_1 Violin_2 Violin_3 Violin_4 Violin_5 Violin_6 Viola_1 Viola_2 Viola_3 Viola_4 Cello_1 Cello_2 Cello_3 Contrabass_1 Contrabass_2) %! abjad.StringOrchestraScoreTemplate.__call__()
@@ -915,7 +915,7 @@ class StringOrchestraScoreTemplate(ScoreTemplate):
         ...     )
         >>> abjad.show(template) # doctest: +SKIP
 
-        >>> abjad.f(template.__illustrate__()[abjad.Score], strict=89)
+        >>> abjad.f(template.__illustrate__()[abjad.Score], align_tags=89)
         \context Score = "Score"                                                                 %! abjad.StringOrchestraScoreTemplate.__call__()
         <<                                                                                       %! abjad.StringOrchestraScoreTemplate.__call__()
             \tag #'(Violin_1 Violin_2 Viola Cello)                                               %! abjad.StringOrchestraScoreTemplate.__call__()
@@ -1024,7 +1024,7 @@ class StringOrchestraScoreTemplate(ScoreTemplate):
         ...     )
         >>> abjad.show(template) # doctest: +SKIP
 
-        >>> abjad.f(template.__illustrate__()[abjad.Score], strict=89)
+        >>> abjad.f(template.__illustrate__()[abjad.Score], align_tags=89)
         \context Score = "Score"                                                                 %! abjad.StringOrchestraScoreTemplate.__call__()
         <<                                                                                       %! abjad.StringOrchestraScoreTemplate.__call__()
             \tag #'(Cello)                                                                       %! abjad.StringOrchestraScoreTemplate.__call__()
@@ -1347,7 +1347,7 @@ class StringQuartetScoreTemplate(ScoreTemplate):
         >>> template = abjad.StringQuartetScoreTemplate()
         >>> abjad.show(template) # doctest: +SKIP
 
-        >>> abjad.f(template.__illustrate__()[abjad.Score], strict=60)
+        >>> abjad.f(template.__illustrate__()[abjad.Score], align_tags=60)
         \context Score = "String_Quartet_Score"                     %! abjad.StringQuartetScoreTemplate.__call__()
         <<                                                          %! abjad.StringQuartetScoreTemplate.__call__()
             \context StaffGroup = "String_Quartet_Staff_Group"      %! abjad.StringQuartetScoreTemplate.__call__()
@@ -1491,7 +1491,7 @@ class TwoStaffPianoScoreTemplate(ScoreTemplate):
         >>> template = abjad.TwoStaffPianoScoreTemplate()
         >>> abjad.show(template) # doctest: +SKIP
 
-        >>> abjad.f(template.__illustrate__()[abjad.Score], strict=60)
+        >>> abjad.f(template.__illustrate__()[abjad.Score], align_tags=60)
         \context Score = "Two_Staff_Piano_Score"                    %! abjad.TwoStaffPianoScoreTemplate.__call__()
         <<                                                          %! abjad.TwoStaffPianoScoreTemplate.__call__()
             \context GlobalContext = "Global_Context"               %! abjad.ScoreTemplate._make_global_context()
@@ -1559,7 +1559,7 @@ class TwoStaffPianoScoreTemplate(ScoreTemplate):
 
             ..  docs::
 
-                >>> abjad.f(score, strict=60)
+                >>> abjad.f(score, align_tags=60)
                 \context Score = "Two_Staff_Piano_Score"                    %! abjad.TwoStaffPianoScoreTemplate.__call__()
                 <<                                                          %! abjad.TwoStaffPianoScoreTemplate.__call__()
                     \context GlobalContext = "Global_Context"               %! abjad.ScoreTemplate._make_global_context()

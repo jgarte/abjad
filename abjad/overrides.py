@@ -1664,7 +1664,7 @@ class TweakInterface(Interface):
             >>> abjad.attach(markup, staff[0], tag=abjad.Tag("RED:M1"))
             >>> abjad.show(staff) # doctest: +SKIP
 
-            >>> abjad.f(staff, strict=40)
+            >>> abjad.f(staff, align_tags=40)
             \new Staff
             {
                 c'4

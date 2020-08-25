@@ -1077,7 +1077,7 @@ def detach(argument, target=None, by_id=False):
         ...     )
         >>> abjad.show(staff) # doctest: +SKIP
 
-        >>> abjad.f(staff, strict=50)
+        >>> abjad.f(staff, align_tags=50)
         \new Staff
         {
             c'4
@@ -1100,7 +1100,7 @@ def detach(argument, target=None, by_id=False):
 
         >>> abjad.show(staff) # doctest: +SKIP
 
-        >>> abjad.f(staff, strict=50)
+        >>> abjad.f(staff, align_tags=50)
         \new Staff
         {
             c'4
@@ -1128,7 +1128,7 @@ def detach(argument, target=None, by_id=False):
         ...     )
         >>> abjad.show(staff) # doctest: +SKIP
 
-        >>> abjad.f(staff, strict=50)
+        >>> abjad.f(staff, align_tags=50)
         \new Staff
         {
             c'4
@@ -1149,7 +1149,7 @@ def detach(argument, target=None, by_id=False):
 
         >>> abjad.show(staff) # doctest: +SKIP
 
-        >>> abjad.f(staff, strict=50)
+        >>> abjad.f(staff, align_tags=50)
         \new Staff
         {
             c'4
