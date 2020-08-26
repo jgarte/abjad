@@ -30,7 +30,8 @@ class String(str):
     )
 
     hyphen_delimited_lowercase_file_name_regex = re.compile(
-        "^{}$".format(hyphen_delimited_lowercase_file_name_regex_body), re.VERBOSE,
+        "^{}$".format(hyphen_delimited_lowercase_file_name_regex_body),
+        re.VERBOSE,
     )
 
     lowercamelcase_regex = re.compile(
@@ -54,7 +55,8 @@ class String(str):
     )
 
     underscore_delimited_lowercase_file_name_regex = re.compile(
-        "^{}$".format(underscore_delimited_lowercase_file_name_regex_body), re.VERBOSE,
+        "^{}$".format(underscore_delimited_lowercase_file_name_regex_body),
+        re.VERBOSE,
     )
 
     underscore_delimited_lowercase_file_name_with_extension_regex_body = r"""
@@ -81,7 +83,8 @@ class String(str):
     )
 
     underscore_delimited_lowercase_package_regex = re.compile(
-        "^{}$".format(underscore_delimited_lowercase_package_regex_body), re.VERBOSE,
+        "^{}$".format(underscore_delimited_lowercase_package_regex_body),
+        re.VERBOSE,
     )
 
     uppercamelcase_regex = re.compile("^([A-Z,0-9]+[a-z,0-9]*)*$", re.VERBOSE)
@@ -1655,7 +1658,9 @@ class String(str):
         return type(self)(string)
 
     @staticmethod
-    def to_tridirectional_direction_string(argument,) -> typing.Optional["String"]:
+    def to_tridirectional_direction_string(
+        argument,
+    ) -> typing.Optional["String"]:
         """
         Changes ``argument`` to tridirectional direction string.
 

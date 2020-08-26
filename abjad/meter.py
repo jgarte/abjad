@@ -262,7 +262,10 @@ class Meter:
     ### INITIALIZER ###
 
     def __init__(
-        self, argument=None, increase_monotonic=None, preferred_boundary_depth=None,
+        self,
+        argument=None,
+        increase_monotonic=None,
+        preferred_boundary_depth=None,
     ):
         argument = argument or (4, 4)
         assert isinstance(preferred_boundary_depth, (int, type(None)))
@@ -308,7 +311,10 @@ class Meter:
                                 )
                                 grouping.append(child)
                                 recurse(
-                                    child, factors, denominator, increase_monotonic,
+                                    child,
+                                    factors,
+                                    denominator,
+                                    increase_monotonic,
                                 )
                         else:
                             for _ in range(part):
@@ -2333,7 +2339,10 @@ class Meter:
         """
 
         def recurse(
-            boundary_depth=None, boundary_offsets=None, depth=0, logical_tie=None,
+            boundary_depth=None,
+            boundary_offsets=None,
+            depth=0,
+            logical_tie=None,
         ):
             offsets = _MeterManager.get_offsets_at_depth(depth, offset_inventory)
             logical_tie_duration = logical_tie._get_preprolated_duration()
@@ -2729,7 +2738,10 @@ class MeterList(TypedList):
         postscript_scale *= float(scale)
         postscript_x_offset = (minimum * postscript_scale) - 1
         string = timespans._make_timespan_list_markup(
-            timespans, postscript_x_offset, postscript_scale, draw_offsets=False,
+            timespans,
+            postscript_x_offset,
+            postscript_scale,
+            draw_offsets=False,
         )
         timespan_markup = string
         ps = markups.Postscript()

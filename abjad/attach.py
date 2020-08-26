@@ -467,7 +467,10 @@ class Wrapper:
         prototype = type(self.indicator)
         command = getattr(self.indicator, "command", None)
         wrapper = _inspect._get_effective(
-            component, prototype, attributes={"command": command}, unwrap=False,
+            component,
+            prototype,
+            attributes={"command": command},
+            unwrap=False,
         )
         wrapper_format_slot = None
         if wrapper is not None:

@@ -181,7 +181,8 @@ class StartTextSpan:
         left_text_string = self.left_text.contents[0]
         hspace_string = fr"\hspace #{self.concat_hspace_left}"
         markup = markups.Markup(
-            rf"\markup \concat {{ {left_text_string} {hspace_string} }}", literal=True,
+            rf"\markup \concat {{ {left_text_string} {hspace_string} }}",
+            literal=True,
         )
         override = LilyPondOverride(
             grob_name="TextSpanner",
@@ -232,7 +233,8 @@ class StartTextSpan:
             assert len(self.right_text.contents) == 1
             right_text = self.right_text.contents[0]
             markup = markups.Markup(
-                rf"\markup \concat {{ {right_text} \hspace #{number} }}", literal=True,
+                rf"\markup \concat {{ {right_text} \hspace #{number} }}",
+                literal=True,
             )
         else:
             markup = self.right_text

@@ -152,7 +152,11 @@ class DurationInequality(Inequality):
     ### INITIALIZER ###
 
     def __init__(
-        self, operator_string: str = "<", duration=None, *, preprolated: bool = None,
+        self,
+        operator_string: str = "<",
+        duration=None,
+        *,
+        preprolated: bool = None,
     ) -> None:
         Inequality.__init__(self, operator_string=operator_string)
         if duration is None:
@@ -861,7 +865,9 @@ class Selection(collections.abc.Sequence):
         template=None,
     ):
         callback = Expression._frame_to_callback(
-            frame, evaluation_template=evaluation_template, map_operand=map_operand,
+            frame,
+            evaluation_template=evaluation_template,
+            map_operand=map_operand,
         )
         callback = new(callback, lone=lone)
         expression = self._expression.append_callback(callback)
@@ -1118,7 +1124,9 @@ class Selection(collections.abc.Sequence):
             if current._parent is not first_parent:
                 same_parent = False
             if not self._immediately_precedes(
-                previous, current, ignore_before_after_grace=ignore_before_after_grace,
+                previous,
+                current,
+                ignore_before_after_grace=ignore_before_after_grace,
             ):
                 strictly_contiguous = False
             if current._parent is not None and (
@@ -2027,7 +2035,11 @@ class Selection(collections.abc.Sequence):
         return type(self)([_ for _ in self if predicate(_)])
 
     def filter_duration(
-        self, operator, duration: typings.DurationTyping, *, preprolated: bool = None,
+        self,
+        operator,
+        duration: typings.DurationTyping,
+        *,
+        preprolated: bool = None,
     ) -> typing.Union["Selection", Expression]:
         r"""
         Filters selection by ``operator`` and ``duration``.
@@ -2778,7 +2790,9 @@ class Selection(collections.abc.Sequence):
         return type(self)(Sequence(self).flatten(depth=depth))
 
     def get(
-        self, indices: typing.Union[typing.Sequence[int], Pattern], period: int = None,
+        self,
+        indices: typing.Union[typing.Sequence[int], Pattern],
+        period: int = None,
     ) -> typing.Union["Selection", Expression]:
         r"""
         Gets patterned items.
@@ -7358,7 +7372,10 @@ class Selection(collections.abc.Sequence):
             return self._update_expression(inspect.currentframe())
         result = []
         groups = Sequence(self).partition_by_counts(
-            [abs(_) for _ in counts], cyclic=cyclic, enchain=enchain, overhang=overhang,
+            [abs(_) for _ in counts],
+            cyclic=cyclic,
+            enchain=enchain,
+            overhang=overhang,
         )
         groups = list(groups)
         total = len(groups)
@@ -7389,7 +7406,13 @@ class Selection(collections.abc.Sequence):
         return type(self)(result)
 
     def partition_by_durations(
-        self, durations, *, cyclic=False, fill=None, in_seconds=False, overhang=False,
+        self,
+        durations,
+        *,
+        cyclic=False,
+        fill=None,
+        in_seconds=False,
+        overhang=False,
     ) -> typing.Union["Selection", Expression]:
         r"""
         Partitions selection by ``durations``.

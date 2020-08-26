@@ -281,7 +281,9 @@ class Component:
         if summary:
             values.append(summary)
         return FormatSpecification(
-            client=self, repr_args_values=values, storage_format_keyword_names=[],
+            client=self,
+            repr_args_values=values,
+            storage_format_keyword_names=[],
         )
 
     def _get_indicator(self, prototype=None, *, attributes=None, unwrap=True):
@@ -1709,7 +1711,8 @@ class Container(Component):
                 argument_.append(item)
             argument = argument_
         self.__setitem__(
-            slice(len(self), len(self)), argument.__getitem__(slice(0, len(argument))),
+            slice(len(self), len(self)),
+            argument.__getitem__(slice(0, len(argument))),
         )
 
     def index(self, component) -> int:
@@ -2704,7 +2707,9 @@ class Chord(Leaf):
             new_chord.note_heads.append(note_head)
         return new_chord
 
-    def __getnewargs__(self,) -> typing.Tuple[PitchSegment, Duration]:
+    def __getnewargs__(
+        self,
+    ) -> typing.Tuple[PitchSegment, Duration]:
         """
         Gets new chord arguments.
 
@@ -3031,7 +3036,11 @@ class Context(Container):
         self._remove_commands: typing.List[str] = []
         self.lilypond_type = lilypond_type
         Container.__init__(
-            self, simultaneous=simultaneous, components=components, name=name, tag=tag,
+            self,
+            simultaneous=simultaneous,
+            components=components,
+            name=name,
+            tag=tag,
         )
 
     ### SPECIAL METHODS ###

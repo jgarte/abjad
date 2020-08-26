@@ -567,7 +567,9 @@ class Markup:
     def _get_format_specification(self):
         names = list(StorageFormatManager(self).signature_keyword_names)
         return FormatSpecification(
-            client=self, repr_is_indented=False, storage_format_keyword_names=names,
+            client=self,
+            repr_is_indented=False,
+            storage_format_keyword_names=names,
         )
 
     def _get_lilypond_format(self):
@@ -4283,7 +4285,11 @@ class PostscriptOperator:
 
 
 def abjad_metronome_mark(
-    duration_log, dot_count, stem_height, units_per_minute, direction=None,
+    duration_log,
+    dot_count,
+    stem_height,
+    units_per_minute,
+    direction=None,
 ) -> Markup:
     r"""
     Abjad ``\abjad-metronome-mark-markup`` command.

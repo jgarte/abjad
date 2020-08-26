@@ -1235,7 +1235,13 @@ class OverrideInterface(Interface):
             pass
         elif argument in (True, False):
             argument = Scheme(argument)
-        elif argument in (enums.Up, enums.Down, enums.Left, enums.Right, enums.Center,):
+        elif argument in (
+            enums.Up,
+            enums.Down,
+            enums.Left,
+            enums.Right,
+            enums.Center,
+        ):
             argument = Scheme(repr(argument).lower())
         elif isinstance(argument, int) or isinstance(argument, float):
             argument = Scheme(argument)
@@ -1832,7 +1838,11 @@ class TweakInterface(Interface):
             else:
                 tag = None
             string = self.make_lilypond_tweak_string(
-                attribute, value, directed=directed, grob=grob, literal=self._literal,
+                attribute,
+                value,
+                directed=directed,
+                grob=grob,
+                literal=self._literal,
             )
             if tag is not None:
                 strings = [string]

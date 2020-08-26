@@ -1272,7 +1272,8 @@ class Expression:
                     argument_string = "{argument_name}={argument_value}"
                     argument_value = Expression._to_evaluable_string(argument_value)
                     argument_string = argument_string.format(
-                        argument_name=argument_name, argument_value=argument_value,
+                        argument_name=argument_name,
+                        argument_value=argument_value,
                     )
                     argument_strings.append(argument_string)
             arguments = ", ".join(argument_strings)

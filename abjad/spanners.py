@@ -1432,7 +1432,9 @@ def glissando(
                     )
                 else:
                     attach(
-                        literal, leaf, tag=tag.append(Tag("abjad.glissando(1)")),
+                        literal,
+                        leaf,
+                        tag=tag.append(Tag("abjad.glissando(1)")),
                     )
             elif left_broken and leaf is leaves[0]:
                 strings = [
@@ -1500,7 +1502,9 @@ def glissando(
                 else:
                     literal = LilyPondLiteral(strings)
                     attach(
-                        literal, leaf, tag=tag.append(Tag("abjad.glissando(6)")),
+                        literal,
+                        leaf,
+                        tag=tag.append(Tag("abjad.glissando(6)")),
                     )
         if should_attach_glissando:
             glissando = Glissando(zero_padding=zero_padding)

@@ -81,10 +81,14 @@ class ScoreTemplate:
         site = "abjad.ScoreTemplate._make_global_context()"
         tag = Tag(site)
         global_rests = Context(
-            lilypond_type="GlobalRests", name="Global_Rests", tag=tag,
+            lilypond_type="GlobalRests",
+            name="Global_Rests",
+            tag=tag,
         )
         global_skips = Context(
-            lilypond_type="GlobalSkips", name="Global_Skips", tag=tag,
+            lilypond_type="GlobalSkips",
+            name="Global_Skips",
+            tag=tag,
         )
         global_context = Context(
             [global_rests, global_skips],
@@ -1127,7 +1131,9 @@ class StringOrchestraScoreTemplate(ScoreTemplate):
                 instrument_staff_group,
                 instrument_tag_names,
             ) = self._make_instrument_staff_group(
-                clef_name=clef_name, count=instrument_count, instrument=instrument,
+                clef_name=clef_name,
+                count=instrument_count,
+                instrument=instrument,
             )
             staff_group.append(instrument_staff_group)
             tag_names.extend(instrument_tag_names)
@@ -1144,7 +1150,9 @@ class StringOrchestraScoreTemplate(ScoreTemplate):
                 instrument_staff_group,
                 instrument_tag_names,
             ) = self._make_instrument_staff_group(
-                clef_name=clef_name, count=instrument_count, instrument=instrument,
+                clef_name=clef_name,
+                count=instrument_count,
+                instrument=instrument,
             )
             staff_group.append(instrument_staff_group)
             tag_names.extend(instrument_tag_names)
@@ -1161,7 +1169,9 @@ class StringOrchestraScoreTemplate(ScoreTemplate):
                 instrument_staff_group,
                 instrument_tag_names,
             ) = self._make_instrument_staff_group(
-                clef_name=clef_name, count=instrument_count, instrument=instrument,
+                clef_name=clef_name,
+                count=instrument_count,
+                instrument=instrument,
             )
             staff_group.append(instrument_staff_group)
             tag_names.extend(instrument_tag_names)
@@ -1178,7 +1188,9 @@ class StringOrchestraScoreTemplate(ScoreTemplate):
                 instrument_staff_group,
                 instrument_tag_names,
             ) = self._make_instrument_staff_group(
-                clef_name=clef_name, count=instrument_count, instrument=instrument,
+                clef_name=clef_name,
+                count=instrument_count,
+                instrument=instrument,
             )
             staff_group.append(instrument_staff_group)
             tag_names.extend(instrument_tag_names)
@@ -1202,7 +1214,9 @@ class StringOrchestraScoreTemplate(ScoreTemplate):
         tag = Tag(site)
         name = instrument.name.title()
         instrument_staff_group = StaffGroup(
-            lilypond_type=f"{name}StaffGroup", name=f"{name}_Staff_Group", tag=tag,
+            lilypond_type=f"{name}StaffGroup",
+            name=f"{name}_Staff_Group",
+            tag=tag,
         )
         tag_names = []
         if count == 1:
@@ -1256,7 +1270,10 @@ class StringOrchestraScoreTemplate(ScoreTemplate):
             annotate(lh_staff, "pitch_range", pitch_range)
             annotate(lh_staff, "default_clef", Clef(clef_name))
             rh_voice = Voice(
-                [], lilypond_type="BowingVoice", name=f"{name}_Bowing_Voice", tag=tag,
+                [],
+                lilypond_type="BowingVoice",
+                name=f"{name}_Bowing_Voice",
+                tag=tag,
             )
             abbreviation = rh_voice.name.lower().replace(" ", "_")
             self.voice_abbreviations[abbreviation] = rh_voice.name
@@ -1270,7 +1287,10 @@ class StringOrchestraScoreTemplate(ScoreTemplate):
             staff_group.extend([rh_staff, lh_staff])
         else:
             lh_voice = Voice(
-                [], lilypond_type="FingeringVoice", name=f"{name}_Voice", tag=tag,
+                [],
+                lilypond_type="FingeringVoice",
+                name=f"{name}_Voice",
+                tag=tag,
             )
             lh_staff = Staff(
                 [lh_voice],
@@ -1475,7 +1495,9 @@ class StringQuartetScoreTemplate(ScoreTemplate):
 
         # make string quartet score
         string_quartet_score = Score(
-            [string_quartet_staff_group], name="String_Quartet_Score", tag=tag,
+            [string_quartet_staff_group],
+            name="String_Quartet_Score",
+            tag=tag,
         )
 
         # return string quartet score
@@ -1616,6 +1638,8 @@ class TwoStaffPianoScoreTemplate(ScoreTemplate):
 
         # SCORE
         score = Score(
-            [global_context, staff_group], name="Two_Staff_Piano_Score", tag=tag,
+            [global_context, staff_group],
+            name="Two_Staff_Piano_Score",
+            tag=tag,
         )
         return score

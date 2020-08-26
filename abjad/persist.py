@@ -10,7 +10,12 @@ from .illustrators import illustrate
 
 
 def as_ly(
-    argument, ly_file_path, *, illustrate_function=None, align_tags=None, **keywords,
+    argument,
+    ly_file_path,
+    *,
+    illustrate_function=None,
+    align_tags=None,
+    **keywords,
 ):
     """
     Persists ``argument`` as LilyPond file.

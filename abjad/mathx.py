@@ -472,7 +472,9 @@ def factors(n) -> typing.List[int]:
     return factors
 
 
-def fraction_to_proper_fraction(rational,) -> typing.Tuple[int, quicktions.Fraction]:
+def fraction_to_proper_fraction(
+    rational,
+) -> typing.Tuple[int, quicktions.Fraction]:
     """
     Changes ``rational`` to proper fraction.
 
